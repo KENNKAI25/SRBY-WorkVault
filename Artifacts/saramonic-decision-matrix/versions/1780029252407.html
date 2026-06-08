@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Saramonic Decision Matrix",
+  "schemaVersion": 1,
+  "description": "Interactive weighted decision matrix for Saramonic Indonesia social media management — compares in-house, freelancer, and agency options across 8 criteria with adjustable weights and scores."
+}
+</script>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saramonic Social Media Decision Matrix</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+:root { color-scheme: light; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f7f4; color: #1a1a19; padding: 24px; min-height: 100vh; }
+h1 { font-size: 20px; font-weight: 500; margin-bottom: 4px; }
+.subtitle { font-size: 13px; color: #73726c; margin-bottom: 20px; }
+.stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.stat-card { background: #fff; border: 0.5px solid #e0deda; border-radius: 10px; padding: 14px 16px; }
+.stat-platform { font-size: 12px; color: #73726c; margin-bottom: 4px; }
+.stat-num { font-size: 24px; font-weight: 500; }
+.stat-sub { font-size: 11px; color: #888780; margin-top: 2px; }
+.warn { font-size: 12px; color: #A32D2D; text-align: center; min-height: 18px; margin-bottom: 8px; }
+.reset-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.section-label { font-size: 12px; font-weight: 500; color: #73726c; text-transform: uppercase; letter-spacing: .05em; }
+button { font-size: 12px; padding: 5px 14px; cursor: pointer; border: 0.5px solid #c8c6be; border-radius: 8px; background: #fff; color: #1a1a19; }
+button:hover { background: #f1efe8; }
+
+.table-wrap { border: 0.5px solid #e0deda; border-radius: 12px; margin-bottom: 20px; overflow: hidden; background: #fff; }
+table { width: 100%; border-collapse: collapse; }
+thead { background: #f8f7f4; }
+th { font-size: 12px; font-weight: 500; color: #73726c; padding: 10px 12px; text-align: left; border-bottom: 0.5px solid #e0deda; }
+th.center { text-align: center; }
+td { padding: 12px 12px; border-bottom: 0.5px solid #f1efe8; vertical-align: middle; }
+.crit-name { font-size: 14px; font-weight: 500; }
+.crit-desc { font-size: 11px; color: #888780; margin-top: 2px; }
+.weight-row { display: flex; align-items: center; gap: 8px; }
+.weight-val { font-size: 13px; font-weight: 500; min-width: 38px; text-align: right; }
+input[type=range] { flex: 1; accent-color: #378ADD; }
+.score-cell { text-align: center; }
+.score-cell input[type=number] { width: 54px; text-align: center; font-size: 14px; padding: 5px 6px; border: 0.5px solid #c8c6be; border-radius: 8px; background: #fff; color: #1a1a19; }
+.score-cell input:focus { outline: none; border-color: #378ADD; }
+
+.totals-row td { background: #f0f8f4; border-top: 2px solid #1D9E75; border-bottom: none; padding: 14px 12px; }
+.total-label { font-size: 13px; font-weight: 500; color: #1a1a19; }
+.total-sub { font-size: 11px; color: #888780; margin-top: 2px; }
+.total-score-cell { text-align: center; }
+.total-num { font-size: 22px; font-weight: 500; }
+.total-denom { font-size: 12px; color: #888780; }
+.total-bar-wrap { margin: 5px auto 0; background: #d4ede2; border-radius: 4px; height: 5px; overflow: hidden; max-width: 80px; }
+.total-bar { height: 5px; border-radius: 4px; transition: width .4s ease; }
+.top-badge { display: inline-block; font-size: 10px; font-weight: 500; background: #1D9E75; color: #fff; padding: 2px 8px; border-radius: 6px; margin-bottom: 4px; }
+
+.results-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 20px; }
+.result-card { border-radius: 12px; border: 0.5px solid #e0deda; padding: 16px; background: #fff; }
+.result-card.winner { border: 2px solid #1D9E75; }
+.winner-badge { font-size: 11px; font-weight: 500; background: #E1F5EE; color: #0F6E56; padding: 3px 10px; border-radius: 8px; display: inline-block; margin-bottom: 8px; }
+.badge-spacer { height: 24px; }
+.result-name { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+.result-score { font-size: 30px; font-weight: 500; }
+.result-score span { font-size: 13px; color: #73726c; }
+.bar-wrap { margin-top: 8px; background: #f1efe8; border-radius: 4px; height: 6px; overflow: hidden; }
+.bar { height: 6px; border-radius: 4px; transition: width .4s ease; }
+.chart-section { background: #fff; border: 0.5px solid #e0deda; border-radius: 12px; padding: 16px; }
+.chart-legend { display: flex; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #73726c; }
+.legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<h1>Social Media Decision Matrix</h1>
+<p class="subtitle">Saramonic Indonesia — compare management options to grow awareness &amp; increase sales</p>
+
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="stat-platform">📸 Instagram @saramonic_id</div>
+    <div class="stat-num">17.3K</div>
+    <div class="stat-sub">followers &nbsp;·&nbsp; 1,620 posts &nbsp;·&nbsp; 52 following</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-platform">🎵 TikTok @saramonic.id</div>
+    <div class="stat-num">4,549</div>
+    <div class="stat-sub">followers &nbsp;·&nbsp; 14.9K total likes</div>
+  </div>
+</div>
+
+<div class="reset-row">
+  <span class="section-label">Adjust weights &amp; scores</span>
+  <button onclick="resetAll()">↺ Reset defaults</button>
+</div>
+<div id="warn-msg" class="warn"></div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:30%">Criterion</th>
+        <th style="width:18%" class="center">Weight (%)</th>
+        <th style="width:17%" class="center">🏠 In-house</th>
+        <th style="width:17%" class="center">⭐ Freelancer</th>
+        <th style="width:17%" class="center">🏢 Agency</th>
+      </tr>
+    </thead>
+    <tbody id="crit-body"></tbody>
+  </table>
+</div>
+
+<div class="results-row" id="results"></div>
+
+<div class="chart-section">
+  <div class="chart-legend" id="legend"></div>
+  <div style="position:relative;width:100%;height:260px">
+    <canvas id="radarChart" role="img" aria-label="Radar chart comparing in-house, freelancer, and agency across all decision criteria"></canvas>
+  </div>
+</div>
+
+<script>
+const CRITERIA = [
+  {name:'Cost efficiency',           desc:'Budget required vs. value delivered',          w:20, scores:[9,7,3]},
+  {name:'Content quality',           desc:'Production quality of posts & videos',          w:15, scores:[5,7,8]},
+  {name:'Brand & product knowledge', desc:'Understanding of Saramonic audio gear',         w:15, scores:[9,6,5]},
+  {name:'Consistency & reliability', desc:'Regular posting cadence & dependability',       w:10, scores:[5,6,9]},
+  {name:'Sales impact',              desc:'Ability to convert awareness into purchases',   w:20, scores:[5,6,9]},
+  {name:'Scalability',               desc:'Can grow output as the brand expands',          w:5,  scores:[3,7,9]},
+  {name:'Speed to results',          desc:'How quickly improvements become visible',       w:5,  scores:[4,7,7]},
+  {name:'Strategic expertise',       desc:'Data-driven campaign planning & optimisation', w:10, scores:[3,5,9]},
+];
+const OPTIONS = ['In-house','Freelancer','Agency'];
+const COLORS  = ['#378ADD','#1D9E75','#D85A30'];
+
+function getWeights(){return CRITERIA.map((_,i)=>parseFloat(document.getElementById('w'+i).value)||0)}
+function getScores(){return CRITERIA.map((_,i)=>OPTIONS.map((_,j)=>parseFloat(document.getElementById('s'+i+'_'+j).value)||0))}
+function totalWeight(){return getWeights().reduce((a,b)=>a+b,0)}
+
+function calcTotals(){
+  const w=getWeights(),s=getScores();
+  return OPTIONS.map((_,j)=>s.reduce((sum,row,i)=>sum+(w[i]/100)*row[i][j],0));
+}
+
+function renderWarn(){
+  const t=totalWeight(),el=document.getElementById('warn-msg');
+  el.textContent=Math.abs(t-100)>0.5?'Weights sum to '+t.toFixed(1)+'% — adjust to reach 100% for accurate scores.':'';
+}
+
+function renderResults(){
+  const totals=calcTotals(),max=Math.max(...totals);
+  document.getElementById('results').innerHTML=OPTIONS.map((name,j)=>{
+    const pct=(totals[j]/10*100).toFixed(0),isWin=totals[j]===max;
+    return `<div class="result-card ${isWin?'winner':''}">
+      ${isWin?'<div class="winner-badge">Top pick</div>':'<div class="badge-spacer"></div>'}
+      <div class="result-name">${['🏠','⭐','🏢'][j]} ${name}</div>
+      <div class="result-score">${totals[j].toFixed(2)}<span> / 10</span></div>
+      <div class="bar-wrap"><div class="bar" style="width:${pct}%;background:${COLORS[j]}"></div></div>
+    </div>`;
+  }).join('');
+}
+
+function renderTable(){
+  const rows = CRITERIA.map((c,i)=>`
+    <tr>
+      <td><div class="crit-name">${c.name}</div><div class="crit-desc">${c.desc}</div></td>
+      <td><div class="weight-row">
+        <input type="range" min="0" max="50" step="1" value="${c.w}" id="w${i}" oninput="onWeightChange(${i})">
+        <span class="weight-val" id="wv${i}">${c.w}%</span>
+      </div></td>
+      ${OPTIONS.map((_,j)=>`<td class="score-cell"><input type="number" min="1" max="10" step="0.5" value="${c.scores[j]}" id="s${i}_${j}" oninput="onScoreChange()" title="${OPTIONS[j]} — ${c.name}"></td>`).join('')}
+    </tr>`).join('');
+  document.getElementById('crit-body').innerHTML = rows;
+  renderTotalsRow();
+}
+
+function renderTotalsRow(){
+  const totals=calcTotals(), max=Math.max(...totals);
+  const existing=document.getElementById('totals-tr');
+  const tr=existing||document.createElement('tr');
+  tr.id='totals-tr';
+  tr.className='totals-row';
+  tr.innerHTML=`
+    <td>
+      <div class="total-label">⚖️ Weighted total score</div>
+      <div class="total-sub">Sum of (weight% × score) across all 8 criteria</div>
+    </td>
+    <td style="text-align:center;font-size:12px;color:#888780;font-weight:500">${totalWeight().toFixed(0)}%</td>
+    ${totals.map((t,j)=>`
+      <td class="total-score-cell">
+        ${t===max?'<div class="top-badge">★ Top pick</div>':'<div style="height:20px"></div>'}
+        <div class="total-num" style="color:${COLORS[j]}">${t.toFixed(2)}</div>
+        <div class="total-denom">out of 10</div>
+        <div class="total-bar-wrap"><div class="total-bar" style="width:${(t/10*100).toFixed(0)}%;background:${COLORS[j]}"></div></div>
+      </td>`).join('')}
+  `;
+  if(!existing) document.getElementById('crit-body').appendChild(tr);
+}
+
+let radarChart;
+function renderChart(){
+  const s=getScores(),labels=CRITERIA.map(c=>c.name);
+  const datasets=OPTIONS.map((name,j)=>({
+    label:name,data:CRITERIA.map((_,i)=>s[i][j]),
+    borderColor:COLORS[j],backgroundColor:COLORS[j]+'22',
+    pointBackgroundColor:COLORS[j],borderWidth:2,pointRadius:4,
+    borderDash:j===1?[5,3]:j===2?[2,2]:[]
+  }));
+  if(radarChart){radarChart.data.datasets=datasets;radarChart.update('none');return}
+  radarChart=new Chart(document.getElementById('radarChart'),{
+    type:'radar',
+    data:{labels,datasets},
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{r:{min:0,max:10,ticks:{stepSize:2,font:{size:10},color:'#888780',backdropColor:'transparent'},
+        pointLabels:{font:{size:11},color:'#5F5E5A'},
+        grid:{color:'rgba(136,135,128,0.2)'},angleLines:{color:'rgba(136,135,128,0.2)'}}}
+    }
+  });
+  document.getElementById('legend').innerHTML=OPTIONS.map((n,j)=>
+    `<span class="legend-item"><span class="legend-dot" style="background:${COLORS[j]}"></span>${n}</span>`
+  ).join('');
+}
+
+function onWeightChange(i){
+  document.getElementById('wv'+i).textContent=(parseFloat(document.getElementById('w'+i).value)||0)+'%';
+  renderWarn();renderResults();renderTotalsRow();renderChart();
+}
+function onScoreChange(){renderResults();renderTotalsRow();renderChart();}
+
+function resetAll(){
+  CRITERIA.forEach((c,i)=>{
+    document.getElementById('w'+i).value=c.w;
+    document.getElementById('wv'+i).textContent=c.w+'%';
+    OPTIONS.forEach((_,j)=>{document.getElementById('s'+i+'_'+j).value=c.scores[j]});
+  });
+  renderWarn();renderResults();renderTotalsRow();renderChart();
+}
+
+renderTable();renderWarn();renderResults();
+window.addEventListener('load',()=>setTimeout(renderChart,100));
+</script>
+</body>
+</html>
