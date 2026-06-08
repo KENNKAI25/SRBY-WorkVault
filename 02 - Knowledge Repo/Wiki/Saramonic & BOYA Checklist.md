@@ -10,7 +10,7 @@
 # Client Data
 
 - [ ] Check if there's any new dealer & integrate it with Lark
-- [ ] Update periodically for 
+- [ ] 
 
 --- 
 
