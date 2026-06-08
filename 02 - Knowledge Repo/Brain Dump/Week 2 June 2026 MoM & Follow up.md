@@ -4,11 +4,15 @@
 
 
 ### Erafone KOL Marketing 
-
+1. 2 KOL untuk Air SE 
+2. 2 KOL Air intro toko
+3. 2 KOL Air SE intro toko
 
 
 ### Giveaway Program Blast & Start program
 1. Penjelasan flow ke sales team
+2. Listing dealer yang akan ikut
+3. Pembuatan brief untuk dealer
 
 
 ### Dealer Segmentation untuk Giveaway
