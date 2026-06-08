@@ -68,10 +68,11 @@ Sebelum mulai task apa pun, Claude **wajib baca 5 file di folder `01 - About/`**
 2. `01 - About/Brand Context.md` — data referensi brand (partner, produk, identitas visual, channel) untuk Saramonic + BOYA.
 3. `01 - About/Memory.md` — long-term log: project status, decision log, open questions. **Wajib di-update di akhir task non-trivial.**
 4. `01 - About/Writing Rules.md` — gaya tulis + banned words list. Wajib diikuti tiap output yang melibatkan menulis (copy, brief, caption, deck, email).
-5. `01 - About/Marketing Activity.md` — master tracker semua aktivitas marketing Saramonic + BOYA (ongoing, planning, completed, cancelled). **Wajib dibaca tiap task yang menyangkut data marketing activity** — jangan pakai data project/kampanye dari sumber lain kalau file ini ada.
+5. **Todoist (via MCP)** — sumber kebenaran untuk semua aktivitas marketing Saramonic + BOYA (ongoing, planning, completed, cancelled). **Wajib query Todoist tiap task yang menyangkut data marketing activity** — jangan baca file lokal mana pun untuk data ini.
 
 **Aturan tambahan:**
-- **`01 - About/Marketing Activity.md` adalah satu-satunya sumber kebenaran untuk data aktivitas marketing** (status, tanggal, tipe, brand). Tiap kali Kenny minta info marketing activity (apa yang sedang jalan, apa yang planning, apa yang sudah selesai) — baca file ini dulu.
+- **Todoist adalah satu-satunya sumber kebenaran untuk data aktivitas marketing** (status, tanggal, tipe, brand). Tiap kali Kenny minta info marketing activity (apa yang sedang jalan, apa yang planning, apa yang sudah selesai) — query Todoist via MCP, bukan baca file lokal.
+- Jangan pernah fallback ke `01 - About/Marketing Activity.md` atau file lokal lain untuk data aktivitas marketing. Kalau Todoist MCP tidak tersedia, bilang eksplisit dan minta Kenny cek Todoist langsung.
 - **`01 - About/Brand Context.md` wajib dicek tiap task yang nyentuh brand** — termasuk content brief, copy, caption, KOL outreach, pricing, channel publishing, atau apapun yang butuh konteks Saramonic/BOYA. Jangan jalan tanpa baca file ini kalau task-nya brand-related.
 - Kalau ada info brand (produk, partner, channel, identity) → cek `01 - About/Brand Context.md` dulu. Kalau personal/audience/project → cek `01 - About/About Me.md`.
 - Kalau task melibatkan project yang sudah pernah dibahas → cek `01 - About/Memory.md` dulu sebelum nanya ulang.

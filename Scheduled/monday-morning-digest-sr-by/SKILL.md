@@ -61,9 +61,14 @@ Keep to 6–8 bullet points split by brand. If data hasn't changed since last we
 ---
 
 ### 3. 📋 Upcoming Activities This Week
-Read: `C:\KEN Work Vault\01 - About\Marketing Activity.md`
+Use the **Todoist MCP** to pull this week's marketing and brand activities. Do NOT read any local file.
 
-Scan for activities with a start date or end date falling within the current week (Monday–Sunday). List: activity name, brand, type, status, dates. If nothing this week, say so clearly.
+1. Call `find-tasks-by-date` for the current week (Monday–Sunday).
+2. Also call `find-tasks` filtering for projects or labels related to: Saramonic, BOYA, marketing, campaign, dealer, KOL, event, or aktivitas.
+3. From the results, surface: activity/task name, brand (Saramonic / BOYA / both), type, due date, and status.
+4. If nothing is scheduled in Todoist this week, say so clearly.
+
+> ⚠️ Do NOT fall back to any local file. If the Todoist MCP is unavailable, note it explicitly and skip this section.
 
 ---
 
