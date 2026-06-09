@@ -53,3 +53,9 @@ ATURAN:
 - Kalau Todoist MCP tidak tersedia, tulis: "⚠️ Todoist tidak bisa diakses. Cek langsung di Todoist."
 - Timezone: WIB (UTC+7)
 - Format tanggal: DD MMM YYYY
+
+OUTPUT FILE:
+Setelah konten digest selesai dibuat, simpan sebagai file .md ke:
+  C:\KEN Work Vault\05 - Digest\Weekly Digest\[YYYY-MM-DD].md
+  (gunakan tanggal Senin minggu ini sebagai nama file, contoh: 2026-06-09.md)
+Buat folder jika belum ada. Tulis konten digest lengkap ke file tersebut.

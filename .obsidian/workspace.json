@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02 - Knowledge Repo/Brain Dump/Week 2 June 2026 MoM & Follow up.md",
+                "file": "05 - Digest/Daily Digest/2026-06-09.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Week 2 June 2026 MoM & Follow up"
+              "title": "2026-06-09"
             }
           }
         ]
@@ -166,7 +166,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "02 - Knowledge Repo/Brain Dump/Week 2 June 2026 MoM & Follow up.md",
+                "file": "05 - Digest/Daily Digest/2026-06-09.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -176,7 +176,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Week 2 June 2026 MoM & Follow up"
+              "title": "Backlinks for 2026-06-09"
             }
           },
           {
@@ -185,12 +185,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "02 - Knowledge Repo/Brain Dump/Week 2 June 2026 MoM & Follow up.md",
+                "file": "05 - Digest/Daily Digest/2026-06-09.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Week 2 June 2026 MoM & Follow up"
+              "title": "Outgoing links from 2026-06-09"
             }
           },
           {
@@ -232,6 +232,10 @@
   },
   "active": "8efbf7641a571bf2",
   "lastOpenFiles": [
+    "02 - Knowledge Repo/Brain Dump/Week 2 June 2026 MoM & Follow up.md",
+    "05 - Digest/Weekly Digest/2026-06-09.md",
+    "05 - Digest/Weekly Digest/2026-06-09.md.tmp.48808.de0566f3cce2",
+    "05 - Digest/Daily Digest/2026-06-09.md",
     "02 - Knowledge Repo/Brain Dump/Marketing Follow Up June 2026.md",
     "02 - Knowledge Repo/Brain Dump/Untitled.md",
     "CLAUDE.md",
@@ -253,7 +257,6 @@
     "01 - About/Marketing Activity.md",
     "03 - Marketing Repo/Social Media Content/SR — Prompt — SNR Explained + Air & Air SE (5 Slides).md",
     "02 - Knowledge Repo/Brain Dump/Post Erajaya Minutes & New Sales.md",
-    "02 - Knowledge Repo/Brain Dump/Week 2 June 2026 MoM & Follow up.md",
     "02 - Knowledge Repo/Wiki/Saramonic & BOYA Checklist.md",
     "02 - Knowledge Repo/Wiki/Social Media Marketing Gameplan.md",
     "Scheduled/saramonic-monthly-sales-report/SKILL.md",
@@ -261,13 +264,10 @@
     "Scheduled/boya-monthly-sales-report/SKILL.md",
     "Scheduled/saramonic-monthly-sales-report",
     "Scheduled/monday-morning-digest-sr-by",
-    "Scheduled/boya-monthly-sales-report",
     "Artifacts/saramonic-decision-matrix/thumbnail.png",
     "02 - Knowledge Repo/Brain Dump/MOM Meeting 4 Juni 2026.md",
     "01 - About/Memory.md",
     "01 - About/Writing Rules.md",
-    "01 - About/Brand Context.md",
-    "04 - Sales Data/CLAUDE.md",
-    "03 - Marketing Repo/CLAUDE.md"
+    "01 - About/Brand Context.md"
   ]
 }
