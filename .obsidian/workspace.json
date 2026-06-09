@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Scheduled/boya-monthly-sales-report/SKILL.md",
+                "file": "Jakarta AI Meetup - Keynotes & Takeaways.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SKILL"
+              "title": "Jakarta AI Meetup - Keynotes & Takeaways"
             }
           }
         ]
@@ -166,7 +166,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Scheduled/boya-monthly-sales-report/SKILL.md",
+                "file": "Jakarta AI Meetup - Keynotes & Takeaways.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -176,7 +176,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for SKILL"
+              "title": "Backlinks for Jakarta AI Meetup - Keynotes & Takeaways"
             }
           },
           {
@@ -185,12 +185,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Scheduled/boya-monthly-sales-report/SKILL.md",
+                "file": "Jakarta AI Meetup - Keynotes & Takeaways.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from SKILL"
+              "title": "Outgoing links from Jakarta AI Meetup - Keynotes & Takeaways"
             }
           },
           {
@@ -212,7 +212,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -232,6 +233,8 @@
   },
   "active": "8efbf7641a571bf2",
   "lastOpenFiles": [
+    "Scheduled/boya-monthly-sales-report/SKILL.md",
+    "Jakarta AI Meetup - Keynotes & Takeaways.md",
     "05 - Digest/Weekly Digest/2026-06-09.md",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by SKU (Value).md",
     "01 - About/Memory.md.tmp.1608.09829bb78444",
@@ -265,7 +268,6 @@
     "02 - Knowledge Repo/Brain Dump/Post Erajaya Minutes & New Sales.md",
     "02 - Knowledge Repo/Wiki/Saramonic & BOYA Checklist.md",
     "02 - Knowledge Repo/Wiki/Social Media Marketing Gameplan.md",
-    "Scheduled/saramonic-monthly-sales-report/SKILL.md",
     "Scheduled/saramonic-monthly-sales-report",
     "Artifacts/saramonic-decision-matrix/thumbnail.png"
   ]
