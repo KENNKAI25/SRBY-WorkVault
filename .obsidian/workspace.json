@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "05 - Digest/Weekly Digest/2026-06-09.md",
+                "file": "Scheduled/boya-monthly-sales-report/SKILL.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-09"
+              "title": "SKILL"
             }
           }
         ]
@@ -166,7 +166,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "05 - Digest/Weekly Digest/2026-06-09.md",
+                "file": "Scheduled/boya-monthly-sales-report/SKILL.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -176,7 +176,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 2026-06-09"
+              "title": "Backlinks for SKILL"
             }
           },
           {
@@ -185,12 +185,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "05 - Digest/Weekly Digest/2026-06-09.md",
+                "file": "Scheduled/boya-monthly-sales-report/SKILL.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 2026-06-09"
+              "title": "Outgoing links from SKILL"
             }
           },
           {
@@ -232,13 +232,13 @@
   },
   "active": "8efbf7641a571bf2",
   "lastOpenFiles": [
+    "05 - Digest/Weekly Digest/2026-06-09.md",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by SKU (Value).md",
     "01 - About/Memory.md.tmp.1608.09829bb78444",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by SKU (QTY).md",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (QTY).md",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value).md",
     "04 - Sales Data/Saramonic/Monthly Reports/SR - Dealer Briefing - 2026-06-05.md",
-    "05 - Digest/Weekly Digest/2026-06-09.md",
     "05 - Digest/Daily Digest/2026-06-09.md",
     "02 - Knowledge Repo/Brain Dump/Week 2 June 2026 MoM & Follow up.md",
     "05 - Digest/Weekly Digest/2026-06-09.md.tmp.48808.de0566f3cce2",
