@@ -11,7 +11,7 @@ Program KOL Support | Saramonic Indonesia
 
 ### Deliverable
 - 1 video TikTok: unboxing + review Saramonic Air SE
-- Durasi: 45–90 detik
+- Durasi: 90 - 180  detik
 - Mention Erafone sebagai tempat beli resmi di akhir video
 
 ### Key Message (wajib masuk)
@@ -33,14 +33,13 @@ Program KOL Support | Saramonic Indonesia
 
 ### Mandatory
 - Hashtag: `#Saramonic` `#SaramonicID` `#Erafone`
-- Tag: `@saramonic_id`
+- Tag: `@saramonic_id` & IG Erafone Region 5
 - Mention Erafone di akhir konten — verbal atau text overlay
 
 ### Jangan
 - Klaim spec di luar yang tertera di produk
 - Sebut nama brand kompetitor secara langsung
 
-**Submit draft ke:** Kenny — @saramonic.ken
 **Deadline draft:** [TBD]
 **Tanggal tayang:** [TBD]
 
@@ -54,7 +53,7 @@ Program KOL Support | Saramonic Indonesia
 
 ### Deliverable
 - 1 video TikTok: store visit Erafone Region 5
-- Durasi: 45–90 detik
+- Durasi: 90 - 180  detik
 - Toko: pilih salah satu dari 8 lokasi Erafone Region 5
 
 ### Lokasi Toko (pilih 1)
@@ -84,7 +83,6 @@ Creator datang ke toko sebagai pembeli biasa. Sales counter Saramonic menjelaska
 - Sebut nama brand kompetitor
 - Opening overlay "AD" / "Collab" yang terlalu obvious
 
-**Koordinasi jadwal:** Kenny — @saramonic.ken
 **Tanggal tayang:** [TBD]
 
 ---
@@ -97,7 +95,7 @@ Creator datang ke toko sebagai pembeli biasa. Sales counter Saramonic menjelaska
 
 ### Deliverable
 - 1 video TikTok: store visit Erafone Region 5
-- Durasi: 45–90 detik
+- Durasi: 90 - 180 detik
 - Toko: pilih salah satu dari 8 lokasi Erafone Region 5
 
 ### Lokasi Toko (pilih 1)
@@ -127,5 +125,4 @@ Creator datang ke toko sebagai pembeli biasa. Sales counter Saramonic menjelaska
 - Sebut nama brand kompetitor
 - Opening overlay "AD" / "Collab" yang terlalu obvious
 
-**Koordinasi jadwal:** Kenny — @saramonic.ken
 **Tanggal tayang:** [TBD]
