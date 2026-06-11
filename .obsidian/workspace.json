@@ -207,6 +207,20 @@
               "icon": "lucide-tags",
               "title": "Tags"
             }
+          },
+          {
+            "id": "dac499f3c19d0567",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
           }
         ]
       }
@@ -231,7 +245,7 @@
       "marp-slides:Show Slide Preview": false
     }
   },
-  "active": "8efbf7641a571bf2",
+  "active": "d7c239fe0b91e545",
   "lastOpenFiles": [
     "Scheduled/boya-monthly-sales-report/SKILL.md",
     "Jakarta AI Meetup - Keynotes & Takeaways.md",
