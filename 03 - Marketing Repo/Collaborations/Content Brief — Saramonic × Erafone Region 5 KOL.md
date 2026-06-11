@@ -40,7 +40,6 @@ Program KOL Support | Saramonic Indonesia
 - Klaim spec di luar yang tertera di produk
 - Sebut nama brand kompetitor secara langsung
 
-**Deadline draft:** [TBD]
 **Tanggal tayang:** [TBD]
 
 ---
@@ -66,7 +65,7 @@ Creator datang ke toko sebagai pembeli biasa. Sales counter Saramonic menjelaska
 ### Key Spec untuk Sales Demo
 - 90 dB SnR — tertinggi di kelasnya untuk wireless mic mini
 - Satu-satunya wireless mic mini dengan opsi lavalier
-- Range 2.4 GHz, latency rendah
+- Ada layar monitoring pada receiver
 - Harga: Air-01 Rp 1.999.000 / Air-02 Rp 2.499.000
 
 ### Struktur Video
@@ -107,7 +106,8 @@ Creator datang ke toko sebagai pembeli biasa. Sales counter Saramonic menjelaska
 
 ### Key Spec untuk Sales Demo
 - Plug & play — connect langsung ke HP/kamera
-- Wireless 2.4 GHz, compact — cocok untuk daily use
+- Dapat digunakan sebagai mic todong
+- 
 - Entry-level, harga terjangkau untuk creator pemula
 - Harga: Air SE-01 Rp 780.000 / Air SE-02 Rp 1.099.000
 
