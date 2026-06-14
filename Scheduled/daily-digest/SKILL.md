@@ -3,7 +3,6 @@ name: daily-digest
 description: Daily digest — Todoist tasks Saramonic & BOYA + highlight hari ini
 ---
 
-
 Kamu sedang menjalankan Daily Digest otomatis untuk Kenny (KENNKAI), Brand Manager Saramonic Indonesia dan BOYA Indonesia.
 
 TUJUAN: Tarik data task hari ini dari Todoist dan sajikan sebagai daily digest yang ringkas dan actionable.
@@ -46,6 +45,6 @@ ATURAN:
 
 OUTPUT FILE:
 Setelah konten digest selesai dibuat, simpan sebagai file .md ke:
-  C:\KEN Work Vault\05 - Digest\Daily Digest\[YYYY-MM-DD].md
+  /Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/05 - Digest/Daily Digest/[YYYY-MM-DD].md
   (gunakan tanggal hari ini sebagai nama file, contoh: 2026-06-09.md)
 Buat folder jika belum ada. Tulis konten digest lengkap ke file tersebut.

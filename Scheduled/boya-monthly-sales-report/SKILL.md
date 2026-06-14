@@ -10,7 +10,7 @@ You are running a scheduled monthly task for Kenny (kennkai55@gmail.com). Today 
 ## STEP 1 — Read local instructions first
 
 Before doing anything else, read:
-`C:\KEN Work Vault\04 - Sales Data\CLAUDE.md`
+/Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/04 - Sales Data/CLAUDE.md
 
 Follow ALL rules in that file, especially:
 - Confidential by default — all sales data is strictly internal
@@ -32,18 +32,18 @@ The reporting period is the PREVIOUS calendar month relative to today's date at 
 Read ALL of the following files before generating anything:
 
 **BY Sales Data:**
-- `C:\KEN Work Vault\04 - Sales Data\BOYA\BY Sales Data\Sales by SKU (QTY).md`
-- `C:\KEN Work Vault\04 - Sales Data\BOYA\BY Sales Data\Sales by SKU (Value).md`
-- `C:\KEN Work Vault\04 - Sales Data\BOYA\BY Sales Data\Sales by Dealer (QTY).md`
-- `C:\KEN Work Vault\04 - Sales Data\BOYA\BY Sales Data\Sales by Dealer (Value).md`
-- `C:\KEN Work Vault\04 - Sales Data\BOYA\BY Sales Data\Categorized Sales Data (By Dealer Type).md`
+- /Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/04 - Sales Data/BOYA/BY Sales Data/Sales by SKU (QTY).md
+- /Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/04 - Sales Data/BOYA/BY Sales Data/Sales by SKU (Value).md
+- /Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/04 - Sales Data/BOYA/BY Sales Data/Sales by Dealer (QTY).md
+- /Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/04 - Sales Data/BOYA/BY Sales Data/Sales by Dealer (Value).md
+- /Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/04 - Sales Data/BOYA/BY Sales Data/Categorized Sales Data (By Dealer Type).md
 
 ---
 
 ## STEP 4 — Generate Part 1: Monthly Sales Report
 
 **Format rules (strict):**
-- Output format: `.md` only
+- Output format: .md only
 - Maximum length: 250 lines total across both parts combined — be concise, use tight tables, no padding
 - Use markdown tables for all data; avoid long prose blocks
 
@@ -63,7 +63,7 @@ Structure (stay within the 250-line cap across both parts combined):
 ## STEP 5 — Generate Part 2: Monthly Dealer Briefing
 
 **Format rules (strict):**
-- Output format: `.md` only
+- Output format: .md only
 - Included in the same 250-line cap as Part 1 — keep this section tight (aim for ~80 lines max)
 
 Structure:
@@ -80,13 +80,13 @@ Structure:
 ## STEP 6 — Save both outputs as .md files
 
 Save both files to:
-`C:\KEN Work Vault\04 - Sales Data\BOYA\Monthly Reports\`with the file output is in .MD file
+/Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/04 - Sales Data/BOYA/Monthly Reports/
 
 **Filenames** (use today's actual date at runtime):
-- Sales Report: `BY - Sales Report - YYYY-MM-DD.md`
-- Dealer Briefing: `BY - Dealer Briefing - YYYY-MM-DD.md`
+- Sales Report: BY - Sales Report - YYYY-MM-DD.md
+- Dealer Briefing: BY - Dealer Briefing - YYYY-MM-DD.md
 
-Do NOT overwrite existing files. If a file with the same name already exists, append `_v2`.
+Do NOT overwrite existing files. If a file with the same name already exists, append _v2.
 
 ---
 
