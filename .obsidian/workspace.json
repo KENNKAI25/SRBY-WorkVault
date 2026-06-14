@@ -11,12 +11,14 @@
             "id": "8efbf7641a571bf2",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Artifacts/saramonic-decision-matrix/thumbnail.png"
+                "file": "05 - Digest/Daily Digest/2026-06-14.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "thumbnail"
+              "icon": "lucide-file",
+              "title": "2026-06-14"
             }
           }
         ]
@@ -243,8 +245,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d7c239fe0b91e545",
+  "active": "8efbf7641a571bf2",
   "lastOpenFiles": [
+    "Artifacts/saramonic-decision-matrix/thumbnail.png",
     "03 - Marketing Repo/Collaborations/Content Brief — Saramonic × Erafone Region 5 KOL.md",
     "02 - Knowledge Repo/Brain Dump/Erajaya Regional Marketing Officer (Region 1 & 5) dan Channel Manager Meeting.md",
     "02 - Knowledge Repo/Brain Dump/SR & BY Policy Update.md",
@@ -272,7 +275,6 @@
     "02 - Knowledge Repo/Brain Dump/Week 2 June 2026 MoM & Follow up.md",
     "05 - Digest/Weekly Digest/2026-06-09.md.tmp.48808.de0566f3cce2",
     "02 - Knowledge Repo/Brain Dump/Untitled.md",
-    "CLAUDE.md",
     "05 - Digest/Daily Digest",
     "05 - Digest/Weekly Digest",
     "05 - Digest/Monthly Digest",
@@ -280,7 +282,6 @@
     "Scheduled/daily-digest",
     "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Clipping + Safety Track Air & Air SE (5 Slides).md.tmp.34680.045c2de11609",
     "CLAUDE.md.tmp.16116.a7488842f5d5",
-    "Scheduled/saramonic-monthly-sales-report",
-    "Artifacts/saramonic-decision-matrix/thumbnail.png"
+    "Scheduled/saramonic-monthly-sales-report"
   ]
 }
