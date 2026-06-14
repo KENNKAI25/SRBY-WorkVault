@@ -1,0 +1,285 @@
+<!DOCTYPE html><script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Saramonic Decision Matrix V2",
+  "schemaVersion": 1,
+  "description": "Interactive weighted decision matrix for Saramonic Indonesia social media management — compares in-house, freelancer, and agency options across 8 criteria with adjustable weights and scores."
+}
+</script>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saramonic Social Media Decision Matrix</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f7f4; color: #1a1a19; padding: 24px; }
+h1 { font-size: 20px; font-weight: 500; margin-bottom: 4px; }
+.subtitle { font-size: 13px; color: #73726c; margin-bottom: 20px; }
+.stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+.stat-card { background: #fff; border: 0.5px solid #e0deda; border-radius: 10px; padding: 14px 16px; }
+.stat-platform { font-size: 12px; color: #73726c; margin-bottom: 4px; }
+.stat-num { font-size: 24px; font-weight: 500; }
+.stat-sub { font-size: 11px; color: #888780; margin-top: 2px; }
+.toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.section-label { font-size: 12px; font-weight: 500; color: #73726c; text-transform: uppercase; letter-spacing: .05em; }
+.warn { font-size: 12px; color: #A32D2D; text-align: center; min-height: 16px; margin-bottom: 8px; }
+button { font-size: 12px; padding: 5px 14px; cursor: pointer; border: 0.5px solid #c8c6be; border-radius: 8px; background: #fff; color: #1a1a19; }
+button:hover { background: #f1efe8; }
+.table-wrap { border: 0.5px solid #e0deda; border-radius: 12px; margin-bottom: 20px; overflow: hidden; background: #fff; }
+table { width: 100%; border-collapse: collapse; }
+thead { background: #f8f7f4; }
+th { font-size: 12px; font-weight: 500; color: #73726c; padding: 10px 12px; text-align: left; border-bottom: 0.5px solid #e0deda; }
+th.c { text-align: center; }
+td { padding: 11px 12px; border-bottom: 0.5px solid #f1efe8; vertical-align: middle; }
+.crit-name { font-size: 13px; font-weight: 500; }
+.crit-desc { font-size: 11px; color: #888780; margin-top: 2px; }
+.w-row { display: flex; align-items: center; gap: 8px; }
+.w-val { font-size: 13px; font-weight: 500; min-width: 36px; text-align: right; }
+input[type=range] { flex: 1; accent-color: #378ADD; }
+.sc { text-align: center; }
+.sc input { width: 52px; text-align: center; font-size: 14px; padding: 4px 6px; border: 0.5px solid #c8c6be; border-radius: 8px; background: #fff; color: #1a1a19; }
+.sc input:focus { outline: none; border-color: #378ADD; }
+.total-row { background: #f0f8f4; }
+.total-row td { border-top: 2px solid #1D9E75; border-bottom: none; padding: 13px 12px; }
+.total-label { font-size: 13px; font-weight: 500; }
+.total-desc { font-size: 11px; color: #73726c; margin-top: 2px; }
+.total-sc { text-align: center; }
+.total-num { font-size: 22px; font-weight: 500; }
+.total-denom { font-size: 11px; color: #73726c; }
+.top-badge { display: inline-block; font-size: 10px; font-weight: 500; background: #1D9E75; color: #fff; padding: 2px 8px; border-radius: 6px; margin-bottom: 3px; }
+.t-bar-wrap { margin: 5px auto 0; background: #d4ede2; border-radius: 4px; height: 5px; overflow: hidden; max-width: 80px; }
+.t-bar { height: 5px; border-radius: 4px; }
+.results-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 20px; }
+.r-card { border-radius: 12px; border: 0.5px solid #e0deda; padding: 16px; background: #fff; }
+.r-card.winner { border: 2px solid #1D9E75; }
+.win-badge { font-size: 11px; font-weight: 500; background: #E1F5EE; color: #0F6E56; padding: 3px 10px; border-radius: 8px; display: inline-block; margin-bottom: 8px; }
+.badge-sp { height: 24px; }
+.r-name { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+.r-score { font-size: 30px; font-weight: 500; }
+.r-score span { font-size: 13px; color: #73726c; }
+.r-bar-wrap { margin-top: 8px; background: #f1efe8; border-radius: 4px; height: 6px; overflow: hidden; }
+.r-bar { height: 6px; border-radius: 4px; }
+.chart-box { background: #fff; border: 0.5px solid #e0deda; border-radius: 12px; padding: 16px; }
+.legend { display: flex; gap: 20px; margin-bottom: 12px; flex-wrap: wrap; }
+.leg-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #73726c; }
+.leg-dot { width: 10px; height: 10px; border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<h1>Social Media Decision Matrix</h1>
+<p class="subtitle">Saramonic Indonesia — compare management options to grow awareness &amp; increase sales</p>
+
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="stat-platform">📸 Instagram @saramonic_id</div>
+    <div class="stat-num">17.3K</div>
+    <div class="stat-sub">followers &nbsp;·&nbsp; 1,620 posts &nbsp;·&nbsp; 52 following</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-platform">🎵 TikTok @saramonic.id</div>
+    <div class="stat-num">4,549</div>
+    <div class="stat-sub">followers &nbsp;·&nbsp; 14.9K total likes</div>
+  </div>
+</div>
+
+<div class="toolbar">
+  <span class="section-label">Adjust weights &amp; scores (1–10)</span>
+  <button onclick="resetAll()">↺ Reset defaults</button>
+</div>
+<div id="warn" class="warn"></div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:30%">Criterion</th>
+        <th style="width:18%" class="c">Weight (%)</th>
+        <th style="width:17%" class="c">🏠 In-house</th>
+        <th style="width:17%" class="c">⭐ Freelancer</th>
+        <th style="width:17%" class="c">🏢 Agency</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<div class="results-row" id="results"></div>
+
+<div class="chart-box">
+  <div class="legend" id="legend"></div>
+  <div style="position:relative;width:100%;height:260px">
+    <canvas id="rc" role="img" aria-label="Radar chart comparing the three social media options"></canvas>
+  </div>
+</div>
+
+<script>
+var CRIT = [
+  {name:'Cost efficiency',           desc:'Budget required vs value delivered',           w:20, s:[9,7,3]},
+  {name:'Content quality',           desc:'Production quality of posts & videos',          w:15, s:[5,7,8]},
+  {name:'Brand & product knowledge', desc:'Understanding of Saramonic audio gear',         w:15, s:[9,6,5]},
+  {name:'Consistency & reliability', desc:'Regular posting cadence & dependability',       w:10, s:[5,6,9]},
+  {name:'Sales impact',              desc:'Ability to convert awareness into purchases',   w:20, s:[5,6,9]},
+  {name:'Scalability',               desc:'Can grow output as the brand expands',          w:5,  s:[3,7,9]},
+  {name:'Speed to results',          desc:'How quickly improvements become visible',       w:5,  s:[4,7,7]},
+  {name:'Strategic expertise',       desc:'Data-driven campaign planning & optimisation', w:10, s:[3,5,9]}
+];
+var OPT = ['In-house','Freelancer','Agency'];
+var COL = ['#378ADD','#1D9E75','#D85A30'];
+
+function getW(i){ return parseFloat(document.getElementById('w'+i).value) || 0; }
+function getS(i,j){ return parseFloat(document.getElementById('s'+i+'_'+j).value) || 0; }
+function sumW(){ var t=0; for(var i=0;i<CRIT.length;i++) t+=getW(i); return t; }
+
+function calcTotals(){
+  var totals = [0,0,0];
+  for(var i=0;i<CRIT.length;i++){
+    var w = getW(i)/100;
+    for(var j=0;j<3;j++){
+      totals[j] += w * getS(i,j);
+    }
+  }
+  return totals;
+}
+
+function renderWarn(){
+  var t = sumW();
+  document.getElementById('warn').textContent = Math.abs(t-100)>0.5 ? 'Weights sum to '+t.toFixed(1)+'% — adjust to reach 100% for accurate results.' : '';
+}
+
+function renderTable(){
+  var html = '';
+  for(var i=0;i<CRIT.length;i++){
+    var c = CRIT[i];
+    html += '<tr>';
+    html += '<td><div class="crit-name">'+c.name+'</div><div class="crit-desc">'+c.desc+'</div></td>';
+    html += '<td><div class="w-row"><input type="range" min="0" max="50" step="1" value="'+c.w+'" id="w'+i+'" oninput="onChange()"><span class="w-val" id="wv'+i+'">'+c.w+'%</span></div></td>';
+    for(var j=0;j<3;j++){
+      html += '<td class="sc"><input type="number" min="1" max="10" step="0.5" value="'+c.s[j]+'" id="s'+i+'_'+j+'" oninput="onChange()"></td>';
+    }
+    html += '</tr>';
+  }
+  document.getElementById('tbody').innerHTML = html;
+}
+
+function renderTotalRow(){
+  var totals = calcTotals();
+  var max = Math.max(totals[0], totals[1], totals[2]);
+  var existing = document.getElementById('total-tr');
+  var tr = existing || document.createElement('tr');
+  tr.id = 'total-tr';
+  tr.className = 'total-row';
+  var html = '';
+  html += '<td><div class="total-label">⚖️ Weighted total score</div>';
+  html += '<div class="total-desc">Sum of (weight% × score) across all criteria</div></td>';
+  html += '<td style="text-align:center;font-size:12px;color:#888780;font-weight:500">'+sumW().toFixed(0)+'%</td>';
+  for(var j=0;j<3;j++){
+    var t = totals[j];
+    var pct = Math.round(t/10*100);
+    var isTop = Math.abs(t-max)<0.001;
+    html += '<td class="total-sc">';
+    if(isTop){ html += '<div class="top-badge">★ Top pick</div>'; }
+    else      { html += '<div style="height:20px"></div>'; }
+    html += '<div class="total-num" style="color:'+COL[j]+'">'+t.toFixed(2)+'</div>';
+    html += '<div class="total-denom">out of 10</div>';
+    html += '<div class="t-bar-wrap"><div class="t-bar" style="width:'+pct+'%;background:'+COL[j]+'"></div></div>';
+    html += '</td>';
+  }
+  tr.innerHTML = html;
+  if(!existing) document.getElementById('tbody').appendChild(tr);
+}
+
+function renderResults(){
+  var totals = calcTotals();
+  var max = Math.max(totals[0], totals[1], totals[2]);
+  var html = '';
+  for(var j=0;j<3;j++){
+    var t = totals[j];
+    var pct = Math.round(t/10*100);
+    var isWin = Math.abs(t-max)<0.001;
+    html += '<div class="r-card'+(isWin?' winner':'')+'">';
+    if(isWin){ html += '<div class="win-badge">Top pick</div>'; }
+    else      { html += '<div class="badge-sp"></div>'; }
+    html += '<div class="r-name">'+['🏠','⭐','🏢'][j]+' '+OPT[j]+'</div>';
+    html += '<div class="r-score">'+t.toFixed(2)+'<span> / 10</span></div>';
+    html += '<div class="r-bar-wrap"><div class="r-bar" style="width:'+pct+'%;background:'+COL[j]+'"></div></div>';
+    html += '</div>';
+  }
+  document.getElementById('results').innerHTML = html;
+}
+
+var radar;
+function renderChart(){
+  var labels = [];
+  for(var i=0;i<CRIT.length;i++) labels.push(CRIT[i].name);
+  var datasets = [];
+  for(var j=0;j<3;j++){
+    var data = [];
+    for(var i=0;i<CRIT.length;i++) data.push(getS(i,j));
+    datasets.push({
+      label: OPT[j],
+      data: data,
+      borderColor: COL[j],
+      backgroundColor: COL[j]+'22',
+      pointBackgroundColor: COL[j],
+      borderWidth: 2,
+      pointRadius: 4,
+      borderDash: j===1?[5,3]:j===2?[2,2]:[]
+    });
+  }
+  if(radar){ radar.data.datasets=datasets; radar.update('none'); return; }
+  radar = new Chart(document.getElementById('rc'),{
+    type:'radar',
+    data:{labels:labels, datasets:datasets},
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}},
+      scales:{r:{min:0,max:10,
+        ticks:{stepSize:2,font:{size:10},color:'#888780',backdropColor:'transparent'},
+        pointLabels:{font:{size:11},color:'#5F5E5A'},
+        grid:{color:'rgba(136,135,128,0.2)'},
+        angleLines:{color:'rgba(136,135,128,0.2)'}
+      }}
+    }
+  });
+  var leg = '';
+  for(var j=0;j<3;j++){
+    leg += '<span class="leg-item"><span class="leg-dot" style="background:'+COL[j]+'"></span>'+OPT[j]+'</span>';
+  }
+  document.getElementById('legend').innerHTML = leg;
+}
+
+function onChange(){
+  for(var i=0;i<CRIT.length;i++){
+    document.getElementById('wv'+i).textContent = (parseFloat(document.getElementById('w'+i).value)||0)+'%';
+  }
+  renderWarn();
+  renderTotalRow();
+  renderResults();
+  renderChart();
+}
+
+function resetAll(){
+  for(var i=0;i<CRIT.length;i++){
+    document.getElementById('w'+i).value = CRIT[i].w;
+    document.getElementById('wv'+i).textContent = CRIT[i].w+'%';
+    for(var j=0;j<3;j++){
+      document.getElementById('s'+i+'_'+j).value = CRIT[i].s[j];
+    }
+  }
+  renderWarn();
+  renderTotalRow();
+  renderResults();
+  renderChart();
+}
+
+renderTable();
+renderTotalRow();
+renderWarn();
+renderResults();
+window.addEventListener('load', function(){ setTimeout(renderChart, 150); });
+</script>
+</body>
+</html>
