@@ -11,11 +11,8 @@
 1. Witalk9X perkiraan akan masuk di akhir juni 2026
 2. Adjustment harga Witalk9
 
-
 # iBox & Planet Gadget
-1. 
-
-
+1. Purchase support untuk Erafone, bisa di 500pcs free 20 Blink900 B2TG
 
 # Special Margin
 1. Special margin 20% untuk Air, Air SE, dan T4
