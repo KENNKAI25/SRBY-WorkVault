@@ -9,7 +9,7 @@
 
 # Witalk9, Witalk9X and WiTalk BASE
 1. Witalk9X perkiraan akan masuk di akhir juni 2026
-2. 
+2. Adjustment harga Witalk9
 
 
 # iBox & Planet Gadget
