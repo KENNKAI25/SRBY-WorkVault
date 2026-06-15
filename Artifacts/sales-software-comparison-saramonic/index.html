@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Sales Software Comparison Saramonic",
+  "schemaVersion": 1,
+  "description": "Perbandingan interaktif 9 software pencatat order & sales untuk Saramonic — dinilai pada 5 kriteria Kenny (catat sales, data customer, dashboard, MCP ke AI, gratis). Tabel sortable + kartu selling point + rekomendasi. Data riset web 15 Jun 2026, statis (tanpa connector)."
+}
+</script>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9 Software Pencatat Order & Sales — Saramonic</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f6f7f9; color: #1c2127; line-height: 1.55;
+  -webkit-font-smoothing: antialiased; padding: 28px 20px 60px;
+}
+.wrap { max-width: 1180px; margin: 0 auto; }
+.eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #c0392b; font-weight: 700; }
+h1 { font-size: 30px; line-height: 1.15; margin: 6px 0 10px; letter-spacing: -.02em; }
+.lede { font-size: 15px; color: #4a525c; max-width: 760px; }
+.crit { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 10px; margin: 22px 0 6px; }
+.crit div { background: #fff; border: 1px solid #e7e9ed; border-radius: 10px; padding: 11px 13px; font-size: 12.5px; color: #3b424b; }
+.crit b { display: block; font-size: 12px; color: #1c2127; margin-bottom: 2px; }
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 26px 0 12px; }
+.toolbar .lbl { font-size: 12px; color: #6b7280; margin-right: 2px; }
+.chip { font-size: 12.5px; padding: 6px 13px; border-radius: 20px; border: 1px solid #d6dae0;
+  background: #fff; color: #353b43; cursor: pointer; transition: .12s; font-weight: 600; }
+.chip:hover { border-color: #b4bbc4; }
+.chip.on { background: #1c2127; color: #fff; border-color: #1c2127; }
+.tablecard { background: #fff; border: 1px solid #e7e9ed; border-radius: 14px; overflow-x: auto; box-shadow: 0 1px 3px rgba(20,25,35,.04); }
+table { border-collapse: collapse; width: 100%; min-width: 900px; }
+th, td { text-align: center; padding: 12px 9px; border-bottom: 1px solid #eef0f3; font-size: 13px; }
+th { background: #fafbfc; font-weight: 700; color: #2a313a; cursor: pointer; user-select: none; white-space: nowrap; position: relative; }
+th:hover { background: #f1f3f6; }
+th.namecol, td.namecol { text-align: left; min-width: 168px; }
+th.sortable::after { content: " ⇅"; color: #c2c8d0; font-size: 11px; }
+th.asc::after { content: " ↑"; color: #c0392b; }
+th.desc::after { content: " ↓"; color: #c0392b; }
+td.namecol { font-weight: 700; }
+td.namecol small { display: block; font-weight: 500; color: #8a929c; font-size: 11.5px; }
+.dots { font-size: 14px; letter-spacing: 1px; }
+.d3 { color: #1f9d55; } .d2 { color: #e08e0b; } .d1 { color: #cf4b3b; }
+.tot { font-weight: 800; font-size: 14px; }
+.free-badge { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+.fb3 { background: #e3f6ea; color: #1f7a44; } .fb2 { background: #fdf1dd; color: #9a6a08; } .fb1 { background: #fbe4e1; color: #a8392b; }
+.legend { font-size: 12px; color: #6b7280; margin: 10px 2px 0; }
+.legend span { margin-right: 16px; }
+h2 { font-size: 20px; margin: 38px 0 4px; letter-spacing: -.01em; }
+.sub { font-size: 13px; color: #6b7280; margin-bottom: 16px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px,1fr)); gap: 14px; }
+.card { background: #fff; border: 1px solid #e7e9ed; border-radius: 14px; padding: 17px 18px; box-shadow: 0 1px 3px rgba(20,25,35,.04); }
+.card.dim { display: none; }
+.card .rank { font-size: 11px; font-weight: 800; color: #fff; background: #1c2127; border-radius: 6px; padding: 2px 7px; }
+.card h3 { font-size: 16.5px; margin: 9px 0 2px; }
+.card .type { font-size: 11.5px; color: #8a929c; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.card .sell { font-size: 13.5px; color: #353b43; margin: 10px 0; }
+.card .sell b { color: #c0392b; }
+.meta { border-top: 1px solid #eef0f3; padding-top: 10px; margin-top: 4px; font-size: 12.5px; }
+.meta div { display: flex; gap: 7px; padding: 3px 0; }
+.meta .k { color: #8a929c; min-width: 78px; flex-shrink: 0; }
+.meta .v { color: #2a313a; }
+.reco { background: linear-gradient(180deg,#fff,#fcfdff); border: 1px solid #d9e2f0; border-radius: 14px; padding: 20px 22px; margin-top: 22px; }
+.reco h2 { margin-top: 0; }
+.reco ol { margin: 10px 0 4px 18px; }
+.reco li { margin-bottom: 9px; font-size: 14px; }
+.reco li b { color: #1c2127; }
+.foot { font-size: 11.5px; color: #9aa1ab; margin-top: 26px; line-height: 1.7; }
+.foot a { color: #6b7280; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Saramonic Indonesia · Riset Tools · 15 Jun 2026</div>
+  <h1>9 Software Pencatat Order &amp; Sales — yang Bisa Disambungkan ke Claude</h1>
+  <p class="lede">Dibandingkan khusus untuk 5 syaratmu: catat penjualan (ID manual + customer terkait), catat data customer, dashboard + tabel report, koneksi MCP server ke Claude/AI, dan gratis sampai batas tertentu. Klik header tabel untuk sortir, atau pakai filter di bawah.</p>
+
+  <div class="crit">
+    <div><b>1. Catat Sales</b>ID sales manual + link ke customer</div>
+    <div><b>2. Data Customer</b>Database kontak/customer</div>
+    <div><b>3. Dashboard + Report</b>Visual + tabel report</div>
+    <div><b>4. MCP ke AI</b>Sambung ke Claude/AI tools</div>
+    <div><b>5. Gratis</b>Free sampai threshold tertentu</div>
+  </div>
+
+  <div class="toolbar">
+    <span class="lbl">Filter:</span>
+    <button class="chip on" data-f="all">Semua (9)</button>
+    <button class="chip" data-f="free">Gratis kuat</button>
+    <button class="chip" data-f="crm">CRM jadi</button>
+    <button class="chip" data-f="opensource">Open-source</button>
+    <button class="chip" data-f="official">MCP resmi</button>
+  </div>
+
+  <div class="tablecard">
+    <table id="t">
+      <thead>
+        <tr>
+          <th class="namecol sortable" data-c="name">Software</th>
+          <th class="sortable" data-c="s1">Catat Sales</th>
+          <th class="sortable" data-c="s2">Data Customer</th>
+          <th class="sortable" data-c="s3">Dashboard</th>
+          <th class="sortable" data-c="s4">MCP / AI</th>
+          <th class="sortable" data-c="s5">Gratis</th>
+          <th class="sortable desc" data-c="tot">Total</th>
+        </tr>
+      </thead>
+      <tbody id="tb"></tbody>
+    </table>
+  </div>
+  <div class="legend">
+    <span><b class="d3">●●●</b> Penuh</span>
+    <span><b class="d2">●●○</b> Cukup / ada catatan</span>
+    <span><b class="d1">●○○</b> Lemah / terbatas</span>
+    <span>Total = jumlah skor 5 kriteria (maks 15)</span>
+  </div>
+
+  <h2>Selling point tiap app</h2>
+  <p class="sub">Apa yang bikin masing-masing menonjol untuk use case Saramonic.</p>
+  <div class="cards" id="cards"></div>
+
+  <div class="reco">
+    <h2>Rekomendasi untuk Saramonic</h2>
+    <p style="font-size:14px;color:#3b424b;">Kamu non-developer, butuh setup cepat, dashboard rapi, dan tetap gratis. Urutan saran:</p>
+    <ol>
+      <li><b>Airtable</b> — top pick. MCP resmi tanpa API key (connect &lt;5 menit lewat setting Claude), bikin tabel Sales + Customer yang saling nge-link itu native, Interface buat dashboard sudah bawaan. Free 1.000 record/base — cukup untuk mulai. Begitu nabrak limit, baru pikir upgrade atau pindah ke NocoDB.</li>
+      <li><b>HubSpot CRM</b> — kalau mau CRM beneran end-to-end. Free CRM selamanya (deals, contacts, dashboard dasar), MCP resmi sudah GA (mcp.hubspot.com). Pas kalau pencatatan sales mau sekalian jadi pipeline + follow-up.</li>
+      <li><b>NocoDB / Baserow</b> — kalau prioritas <b>gratis tanpa batas</b> &amp; data ditahan sendiri (self-host). Open-source, record unlimited, MCP jalan. Trade-off: perlu sedikit effort hosting/setup.</li>
+    </ol>
+    <p style="font-size:13px;color:#6b7280;margin-top:6px;">⚠️ Heads up: Pipedrive masuk daftar karena CRM-nya kuat &amp; MCP-nya lengkap, tapi <b>tidak punya free tier permanen</b> (cuma trial 14 hari) — jadi gugur di syarat "gratis". Aku tetap cantumkan biar perbandinganmu adil.</p>
+  </div>
+
+  <div class="foot">
+    Catatan akurasi: MCP "resmi" = server dibuat/host vendor langsung (Airtable, HubSpot, Attio, Notion, Baserow). MCP "3rd-party/open-source" = community/connector (Zoho, Pipedrive, Grist, sebagian NocoDB self-host) — fungsinya jalan tapi support &amp; maintenance bergantung pihak ketiga. Detail free tier &amp; fitur bisa berubah; konfirmasi ke halaman pricing resmi sebelum komitmen.<br>
+    Sumber: Airtable Support, developers.hubspot.com, docs.attio.com, makenotion/notion-mcp-server (GitHub), baserow.io, nocodb.com/docs, getgrist.com, dokumentasi MCP Zoho &amp; Pipedrive (community). Diakses 15 Jun 2026.
+  </div>
+</div>
+
+<script>
+const data = [
+  { name:"Airtable", tag:"Spreadsheet-DB · MCP resmi", tags:["free","official"],
+    s1:3,s2:3,s3:3,s4:3,s5:2,
+    type:"No-code database",
+    sell:"<b>Top pick.</b> Tabel Sales ↔ Customer saling nge-link itu native, Interface untuk dashboard sudah bawaan. MCP resmi <b>tanpa API key</b>, connect &lt;5 menit dari setting Claude.",
+    free:"1.000 record/base, base unlimited, 5 editor", fb:"fb2",
+    mcp:"Resmi (OAuth, no API key)", best:"Balance termudah ↔ terkuat" },
+
+  { name:"HubSpot CRM", tag:"CRM penuh · MCP resmi", tags:["free","crm","official"],
+    s1:3,s2:3,s3:2,s4:3,s5:3,
+    type:"CRM",
+    sell:"CRM beneran: deals (sales), contacts, dashboard, semua dalam satu. <b>Free CRM selamanya</b>. MCP resmi (mcp.hubspot.com) sudah GA Apr 2026.",
+    free:"Free CRM selamanya, s/d 1jt kontak", fb:"fb3",
+    mcp:"Resmi (remote, GA)", best:"Sales + follow-up jadi satu" },
+
+  { name:"Attio", tag:"CRM modern · MCP resmi", tags:["crm","official"],
+    s1:3,s2:3,s3:2,s4:3,s5:2,
+    type:"CRM modern",
+    sell:"Tampilan paling modern, auto data-enrichment customer, real-time sync. MCP hosted resmi — jarang ada di CRM lain.",
+    free:"3 seat, 50.000 record, 3 report", fb:"fb2",
+    mcp:"Resmi (hosted)", best:"UI modern + enrichment" },
+
+  { name:"Zoho CRM", tag:"CRM ekosistem · MCP 3rd-party", tags:["crm"],
+    s1:3,s2:3,s3:3,s4:2,s5:2,
+    type:"CRM",
+    sell:"Dashboard &amp; report paling lengkap di kelas gratis, plus ekosistem Zoho (Books, Desk, dll). MCP via open-source/CData (sebagian read-only).",
+    free:"3 user, fitur sales inti", fb:"fb2",
+    mcp:"3rd-party / open-source", best:"Report kaya + ekosistem" },
+
+  { name:"Pipedrive", tag:"CRM sales-first · MCP 3rd-party", tags:["crm"],
+    s1:3,s2:3,s3:3,s4:2,s5:1,
+    type:"Sales CRM",
+    sell:"Paling fokus ke pipeline penjualan; MCP community sampai 75 tools (full CRUD deals, persons, products). <b>Tapi cuma trial 14 hari — tak ada free permanen.</b>",
+    free:"Trial 14 hari (tak ada free tier)", fb:"fb1",
+    mcp:"3rd-party (75 tools)", best:"Pipeline sales murni" },
+
+  { name:"Notion", tag:"Workspace-DB · MCP resmi", tags:["free","official"],
+    s1:2,s2:3,s3:1,s4:2,s5:3,
+    type:"Workspace + database",
+    sell:"Pas kalau kerjamu sudah di Notion — database Sales/Customer + catatan jadi satu tempat. MCP resmi, free plan generous.",
+    free:"Free plan generous (personal)", fb:"fb3",
+    mcp:"Resmi (query DB butuh Enterprise+AI)", best:"Yang sudah pakai Notion" },
+
+  { name:"NocoDB", tag:"Airtable alt open-source", tags:["free","opensource"],
+    s1:3,s2:3,s3:2,s4:2,s5:3,
+    type:"No-code DB (self-host)",
+    sell:"Alternatif Airtable yang <b>gratis tanpa batas record</b> kalau self-host. Data 100% di tanganmu. MCP cloud gratis; self-host ada sedikit catatan setup.",
+    free:"Open-source, record unlimited (self-host)", fb:"fb3",
+    mcp:"Cloud resmi / self-host (3rd-party)", best:"Gratis unlimited + kontrol penuh" },
+
+  { name:"Baserow", tag:"Airtable alt · MCP bawaan", tags:["free","opensource","official"],
+    s1:3,s2:3,s3:2,s4:3,s5:3,
+    type:"No-code DB (self-host/cloud)",
+    sell:"Open-source dengan <b>MCP server bawaan (native)</b> — data bisa nggak keluar dari firewall sendiri. Gratis, CRUD lewat natural language.",
+    free:"Open-source gratis (self-host/cloud free)", fb:"fb3",
+    mcp:"Bawaan (native, built-in)", best:"Privacy + gratis + MCP native" },
+
+  { name:"Grist", tag:"Spreadsheet-DB open-source", tags:["free","opensource"],
+    s1:3,s2:3,s3:3,s4:2,s5:3,
+    type:"Spreadsheet-database",
+    sell:"Buat yang mindset-nya spreadsheet: formula kuat ala Excel + widget chart/dashboard di dokumen. Open-source, free plan penuh. MCP via community.",
+    free:"Free plan penuh + open-source", fb:"fb3",
+    mcp:"3rd-party (community)", best:"Pencinta spreadsheet + formula" }
+];
+
+const dotMap = { 3:'<span class="dots d3">●●●</span>', 2:'<span class="dots d2">●●○</span>', 1:'<span class="dots d1">●○○</span>' };
+data.forEach(d => d.tot = d.s1+d.s2+d.s3+d.s4+d.s5);
+
+let sortKey = 'tot', sortDir = -1, filter = 'all';
+
+function rows() {
+  let arr = data.filter(d => filter==='all' || d.tags.includes(filter));
+  arr.sort((a,b)=>{
+    let va=a[sortKey], vb=b[sortKey];
+    if(sortKey==='name'){ return sortDir * va.localeCompare(vb); }
+    return sortDir * (va - vb);
+  });
+  return arr;
+}
+
+function renderTable() {
+  const tb = document.getElementById('tb');
+  tb.innerHTML = rows().map(d => `
+    <tr>
+      <td class="namecol">${d.name}<small>${d.tag}</small></td>
+      <td>${dotMap[d.s1]}</td>
+      <td>${dotMap[d.s2]}</td>
+      <td>${dotMap[d.s3]}</td>
+      <td>${dotMap[d.s4]}</td>
+      <td><span class="dots ${d.s5===3?'d3':d.s5===2?'d2':'d1'}">${'●'.repeat(d.s5)+'○'.repeat(3-d.s5)}</span></td>
+      <td class="tot">${d.tot}</td>
+    </tr>`).join('');
+}
+
+function renderCards() {
+  const c = document.getElementById('cards');
+  const ranked = [...data].sort((a,b)=>b.tot-a.tot);
+  c.innerHTML = ranked.map((d,i) => `
+    <div class="card" data-tags="${d.tags.join(' ')}">
+      <span class="rank">#${i+1} · ${d.tot}/15</span>
+      <h3>${d.name}</h3>
+      <div class="type">${d.type}</div>
+      <div class="sell">${d.sell}</div>
+      <div class="meta">
+        <div><span class="k">Gratis</span><span class="v"><span class="free-badge ${d.fb}">${d.free}</span></span></div>
+        <div><span class="k">MCP</span><span class="v">${d.mcp}</span></div>
+        <div><span class="k">Cocok utk</span><span class="v">${d.best}</span></div>
+      </div>
+    </div>`).join('');
+  applyCardFilter();
+}
+
+function applyCardFilter() {
+  document.querySelectorAll('.card').forEach(el => {
+    const t = el.dataset.tags.split(' ');
+    el.classList.toggle('dim', !(filter==='all' || t.includes(filter)));
+  });
+}
+
+document.querySelectorAll('th.sortable').forEach(th => {
+  th.addEventListener('click', () => {
+    const c = th.dataset.c;
+    if(sortKey===c){ sortDir*=-1; } else { sortKey=c; sortDir = (c==='name')?1:-1; }
+    document.querySelectorAll('th').forEach(h=>h.classList.remove('asc','desc'));
+    th.classList.add(sortDir>0?'asc':'desc');
+    renderTable();
+  });
+});
+
+document.querySelectorAll('.chip').forEach(ch => {
+  ch.addEventListener('click', () => {
+    document.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));
+    ch.classList.add('on');
+    filter = ch.dataset.f;
+    renderTable(); applyCardFilter();
+  });
+});
+
+renderTable();
+renderCards();
+</script>
+</body>
+</html>
