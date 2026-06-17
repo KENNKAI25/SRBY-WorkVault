@@ -64,10 +64,6 @@ tbody tr:hover{background:#f8fafc}
 .flagcard .ft{font-weight:700;font-size:13px}
 .flagcard .fd{font-size:12.3px;color:#444;margin-top:3px}
 .flagcard .fm{font-size:11.5px;color:var(--mut);margin-top:4px}
-.rank{display:inline-block;background:#1a1d21;color:#fff;border-radius:50%;width:19px;height:19px;line-height:19px;text-align:center;font-size:11px;font-weight:700;margin-right:3px}
-.tag-drop{background:#fbe7e5;color:#d8453b}
-.tag-once{background:#fdf2dd;color:#b5790f}
-.tag-dorm{background:#eef0f3;color:#555}
 .sec-h{font-size:13px;font-weight:700;margin:16px 0 9px;display:flex;align-items:center;gap:8px}
 .sec-h .cnt{background:#eef0f3;color:var(--mut);border-radius:10px;font-size:11px;padding:1px 8px}
 .searchbar{width:100%;padding:8px 11px;border:1px solid var(--line);border-radius:9px;font-size:13px;margin-bottom:11px}
@@ -190,9 +186,14 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
  <!-- FLAGS -->
  <section class="panel" id="panel-flags">
   <div class="card">
-   <h2>Butuh Perhatian — Dealer (Top 10 Prioritas)</h2>
-   <p class="hint">Diurutkan dari paling kritis. Dari 3 kondisi: <strong>Drop ≥20%</strong> (turun MoM &amp; QoQ), <strong>One-time</strong> (1 order besar mendominasi), <strong>Dormant</strong> (tidak order ≥1 bln). Bulan penuh terakhir = Mei 2026. <span id="flagsMore" class="muted"></span></p>
-   <div id="flagsList"></div>
+   <h2>Butuh Perhatian — Dealer</h2>
+   <p class="hint">Bulan penuh terakhir = Mei 2026 (Juni berjalan, di-exclude). Satu dealer bisa muncul di lebih dari satu kategori.</p>
+   <div class="sec-h">📉 Drop signifikan — turun ≥20% MoM &amp; QoQ <span class="cnt" id="cnt-drop">0</span></div>
+   <div id="flagsDrop"></div>
+   <div class="sec-h">⚡ Pembelian besar sekali-jalan (big one-time) <span class="cnt" id="cnt-once">0</span></div>
+   <div id="flagsOnce"></div>
+   <div class="sec-h">💤 Tidak order ≥1 bulan <span class="cnt" id="cnt-dorm">0</span></div>
+   <div id="flagsDorm"></div>
   </div>
  </section>
 
@@ -226,54 +227,44 @@ function recentVel(s){ // avg qty Mar,Apr,May (idx 5,6,7)
   return (s.qty[5]+s.qty[6]+s.qty[7])/3;
 }
 const LF=LASTFULL; // index of last complete month (May 2026); June = LF+1 (partial)
-const MAXFLAGS=10;
 function lastActive(v){let li=-1;for(let i=0;i<M.length;i++)if(v[i]>0)li=i;return li;}
-let rawFlags=[];
+const flagsDrop=[],flagsOnce=[],flagsDorm=[];
 DATA.dealers.forEach(d=>{
   const v=d.value, tot=d.totalValue; if(tot<=0)return;
   const li=lastActive(v);
   const active=v.filter(x=>x>0).length;
-  // KONDISI 3 — tidak order >=1 bulan penuh
+  // FLAG 3 — tidak order >=1 bulan penuh (tidak ada order di Mei/bulan penuh terakhir)
   const dormant = li>=0 && li<=LF-1;
   if(dormant){
-    const gap=LF-li; const sev=gap>=2?'bad':'warn';
-    const consW = active>=3?1.4:active===2?1.0:0.55; // regular yg berhenti > one-shot
-    rawFlags.push({cat:'Dormant',catCls:'dorm',sev,name:d.name,loc:d.location,
-      score:tot*(sev==='bad'?1.5:1.0)*consW,
+    const gap=LF-li;
+    flagsDorm.push({sev:gap>=2?'bad':'warn',name:d.name,loc:d.location,
       title:gap+' bln tanpa order — terakhir '+fmtMonthLbl(M[li]),
-      detail:'Total historis '+rp(tot)+'. Belum ada order s/d '+fmtMonthLbl(M[LF])+'. ('+active+' bln pernah order)',
-      meta:'Aksi: follow-up / re-aktivasi'});
+      detail:'Total historis '+rp(tot)+'. Belum ada order s/d '+fmtMonthLbl(M[LF])+'.',
+      meta:'Aksi: follow-up / re-aktivasi',sortv:tot});
   } else {
-    // KONDISI 1 — drop >=20% MoM DAN QoQ (dealer masih aktif)
+    // FLAG 1 — drop >=20% MoM DAN QoQ (hanya dealer yang masih aktif)
     const prev=v[LF-1],cur=v[LF];
-    const rq=v[5]+v[6]+v[7], pq=v[2]+v[3]+v[4];   // Mar-Mei vs Des-Feb
+    const rq=v[5]+v[6]+v[7], pq=v[2]+v[3]+v[4];   // Mar-Mei vs Des-Feb (3 bln penuh)
     const md = prev>0 ? (prev-cur)/prev : 0;
     const qd = pq>0 ? (pq-rq)/pq : 0;
     if(prev>0 && pq>=5e6 && md>=0.20 && qd>=0.20){
-      const sev=(md>=0.5||qd>=0.5)?'bad':'warn';
-      rawFlags.push({cat:'Drop ≥20%',catCls:'drop',sev,name:d.name,loc:d.location,
-        score:tot*1.3*(sev==='bad'?1.5:1.0),
+      flagsDrop.push({sev:(md>=0.5||qd>=0.5)?'bad':'warn',name:d.name,loc:d.location,
         title:'Turun '+Math.round(md*100)+'% MoM & '+Math.round(qd*100)+'% QoQ',
         detail:fmtMonthLbl(M[LF-1])+' '+rp(prev)+' → '+fmtMonthLbl(M[LF])+' '+rp(cur)+' · Q sblm '+rp(pq)+' → Q akhir '+rp(rq)+'.',
-        meta:'Aksi: cek penyebab, dorong reorder'});
+        meta:'Aksi: cek penyebab, dorong reorder',sortv:tot});
     }
   }
-  // KONDISI 2 — big one-time purchase
+  // FLAG 2 — big one-time purchase (independen; satu order besar mendominasi)
   const mx=Math.max(...v), mi=v.indexOf(mx);
   if(mx>=25e6 && mx/tot>=0.80 && active<=2){
-    rawFlags.push({cat:'One-time',catCls:'once',sev:'warn',name:d.name,loc:d.location,
-      score:mx*0.7,
+    flagsOnce.push({sev:'warn',name:d.name,loc:d.location,
       title:'Order besar sekali-jalan — '+rp(mx)+' di '+fmtMonthLbl(M[mi]),
       detail:(active===1?'Hanya 1 bulan ada order':active+' bulan ada order')+'; '+Math.round(mx/tot*100)+'% dari total dealer ini.',
-      meta:'Kemungkinan order proyek/tender — bukan demand reguler'});
+      meta:'Kemungkinan order proyek/tender — jangan dianggap demand reguler',sortv:mx});
   }
 });
-const rawCount=rawFlags.length;
-// dedupe per dealer (ambil skor tertinggi), urut kritis dulu, batasi 10
-const seen={};
-rawFlags.sort((a,b)=>b.score-a.score).forEach(f=>{if(!seen[f.name])seen[f.name]=f;});
-const flags=Object.values(seen).sort((a,b)=>b.score-a.score).slice(0,MAXFLAGS);
-const totalFlags=flags.length;
+[flagsDrop,flagsOnce,flagsDorm].forEach(a=>a.sort((x,y)=> x.sev===y.sev ? y.sortv-x.sortv : (x.sev==='bad'?-1:1)));
+const totalFlags=flagsDrop.length+flagsOnce.length+flagsDorm.length;
 
 /* render KPIs */
 const momCls = mom>1?'up':mom<-1?'down':'flat';
@@ -283,9 +274,12 @@ document.getElementById('kpis').innerHTML = [
  [fmtMonthLbl(M[LASTFULL])+' (bln penuh)', rp(lastFull), momTxt, momCls],
  ['Dealer Aktif', activeDealers, 'dari '+DATA.dealers.length+' total','flat'],
  ['SKU Aktif', activeSkus, 'dari '+DATA.skus.length+' SKU','flat'],
- ['Flags (prioritas)', totalFlags, 'top '+totalFlags+' dari '+rawCount+' terdeteksi', rawCount>0?'down':'up'],
+ ['Flags', totalFlags, flagsDrop.length+' drop · '+flagsOnce.length+' one-time · '+flagsDorm.length+' dormant', totalFlags>0?'down':'up'],
 ].map(k=>`<div class="kpi"><div class="lab">${k[0]}</div><div class="val">${k[1]}</div><div class="delta ${k[3]}">${k[2]}</div></div>`).join('');
 document.getElementById('flagbadge').textContent=totalFlags;
+document.getElementById('cnt-drop').textContent=flagsDrop.length;
+document.getElementById('cnt-once').textContent=flagsOnce.length;
+document.getElementById('cnt-dorm').textContent=flagsDorm.length;
 
 /* ---------- tabs ---------- */
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
@@ -474,12 +468,10 @@ function flagHtml(f){return `<div class="flagcard ${f.sev}">
   <div class="fd">${f.title}</div>
   <div class="fd">${f.detail}</div>
   <div class="fm">${f.meta}</div></div>`;}
-document.getElementById('flagsList').innerHTML = flags.length ? flags.map((f,i)=>`<div class="flagcard ${f.sev}">
-  <div class="ft"><span class="rank">${i+1}</span> ${f.name}${f.loc?` <span class="lochip">· ${f.loc}</span>`:''} <span class="tag tag-${f.catCls}">${f.cat}</span> <span class="pill ${f.sev}" style="float:right">${f.sev==='bad'?'Kritis':'Perhatian'}</span></div>
-  <div class="fd">${f.title}</div>
-  <div class="fd">${f.detail}</div>
-  <div class="fm">${f.meta}</div></div>`).join('') : '<p class="muted" style="font-size:12.5px">Tidak ada dealer yang perlu perhatian khusus. ✅</p>';
-document.getElementById('flagsMore').textContent = rawCount>flags.length ? `Menampilkan ${flags.length} teratas dari ${rawCount} dealer terdeteksi.` : '';
+const noFlag='<p class="muted" style="font-size:12.5px">Tidak ada. ✅</p>';
+document.getElementById('flagsDrop').innerHTML=flagsDrop.length?flagsDrop.map(flagHtml).join(''):noFlag;
+document.getElementById('flagsOnce').innerHTML=flagsOnce.length?flagsOnce.map(flagHtml).join(''):noFlag;
+document.getElementById('flagsDorm').innerHTML=flagsDorm.length?flagsDorm.map(flagHtml).join(''):noFlag;
 
 drawTrend('month');
 </script>

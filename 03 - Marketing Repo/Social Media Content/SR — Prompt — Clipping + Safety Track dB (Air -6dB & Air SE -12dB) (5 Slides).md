@@ -20,7 +20,7 @@ Create a **5-slide static image carousel** for Instagram (1080 × 1350 px, 4:5) 
 
 ### SERIES OVERVIEW
 
-**Topic:** Audio clipping — apa itu, kenapa merusak konten, dan cara mencegahnya pakai fitur Safety Track di Saramonic Air & Air SE
+**Topic:** "Apa itu Clipping dalam Audio? Dan Cara Mengatasinya"
 **Content arc:** Hook (Slide 1) → jelaskan masalah (Slide 2–3) → kenalkan solusi + cara kerja Safety Track (Slide 3–4) → produk + spec dB (Slide 4–5)
 **Tone:** Direct, practical, creator-first. Bukan kuliah fisika — jelaskan seperti sound engineer yang ngomong ke creator yang baru saja merusak satu take.
 **Visual language:** Abstract/concept-driven Slides 1–3. Product + spec-focused Slides 4–5.
