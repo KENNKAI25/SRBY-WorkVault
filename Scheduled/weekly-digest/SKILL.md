@@ -10,7 +10,7 @@ TUJUAN: Sajikan ringkasan mingguan yang mencakup data sales Saramonic dan overvi
 LANGKAH:
 1. Baca konteks brand dari: /Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/01 - About/Brand Context.md
 2. Baca ongoing project dari: /Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/01 - About/Memory.md
-3. Cari data sales Saramonic minggu ini — cek folder: /Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/04 - Sales Data/ (atau subfolder yang relevan). Cari file terbaru dengan data sales mingguan/bulanan Saramonic.
+3. Cari data sales Saramonic minggu ini — cek folder: /Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/04 - Sales Data/Saramonic/SR Sales Data Cari file terbaru dengan data sales mingguan/bulanan Saramonic.
 4. Query Todoist via MCP:
    a. Task completed minggu lalu (7 hari ke belakang) — Saramonic + BOYA
    b. Task due minggu ini (7 hari ke depan) — Saramonic + BOYA
