@@ -1,3 +1,4 @@
+
 |   |   |   |   |   |   |
 |---|---|---|---|---|---|
 |SKU Name|Title|Warehouse|Area|Shelf|Available for whole warehouse|
