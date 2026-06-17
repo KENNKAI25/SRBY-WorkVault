@@ -3,20 +3,9 @@ Program KOL Support | Saramonic Indonesia
 
 **Scope:** 9 toko · 3 KOL · Produk Air & Air SE
 
-### Lokasi Toko Erafone Region 1 (9 lokasi)
-1. Summarecon Mall Bekasi
-2. Gandaria City
-3. PIK Avenue
-4. Pacific Place
-5. Mall of Indonesia
-6. Aeon Mall Sentul
-7. Mall Kelapa Gading
-8. Ruko Kemang
-9. Mall Pondok Indah
-
 ---
 
-## BRIEF — @prisciliatanbayong
+## BRIEF — @dizzlipin
 **Type:** Online KOL Support
 **Platform:** Instagram (primary) / TikTok
 **Product:** Saramonic Air SE
