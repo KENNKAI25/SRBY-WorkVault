@@ -13,6 +13,7 @@
 
 # iBox & Planet Gadget
 1. Purchase support untuk Erafone, bisa di 500pcs free 20 Blink900 B2TG
+2. Start kejerin iBox untuk start PO
 
 # Special Margin
 1. Special margin 20% untuk Air, Air SE, dan T4
