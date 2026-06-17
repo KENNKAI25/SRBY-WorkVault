@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02 - Knowledge Repo/Brain Dump/Marketing Follow Up June 2026.md",
+                "file": "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (QTY).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Marketing Follow Up June 2026"
+              "title": "Sales by Dealer (QTY)"
             }
           }
         ]
@@ -245,8 +245,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d7c239fe0b91e545",
+  "active": "8efbf7641a571bf2",
   "lastOpenFiles": [
+    "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value).md",
+    "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (QTY).md",
+    "04 - Sales Data/Saramonic/SR Sales Data/Sales by SKU (Value).md",
+    "04 - Sales Data/Saramonic/SR Sales Data/Sales by SKU (QTY).md",
+    "02 - Knowledge Repo/Brain Dump/Marketing Follow Up June 2026.md",
     "05 - Digest/Daily Digest/2026-06-17.md",
     "02 - Knowledge Repo/Brain Dump/June 2026 kejar target point.md",
     "Artifacts/sales-software-comparison-saramonic/thumbnail.png",
@@ -268,18 +273,13 @@
     "02 - Knowledge Repo/Brain Dump/Erajaya Regional Marketing Officer (Region 1 & 5) dan Channel Manager Meeting.md",
     "02 - Knowledge Repo/Brain Dump/Saramonic Air & Air SE — Dealer Sell-Out Initiatives.md",
     "02 - Knowledge Repo/Brain Dump/Saramonic Air & Air SE — Dealer Sell-Out Action Plan v2.md",
-    "02 - Knowledge Repo/Brain Dump/Marketing Follow Up June 2026.md",
     "03 - Marketing Repo/Collaborations/Saramonic x Erajaya Marketing Plan.md",
     "04 - Sales Data/Saramonic/Saramonic Stock Data.md",
     "04 - Sales Data/Saramonic/Sales Analysis/SR - Sales Analysis Report - 2026-05-12.md",
     "04 - Sales Data/Saramonic/Sales Analysis/Saramonic Stock Analysis — May 2026.md",
-    "04 - Sales Data/Saramonic/SR Sales Data/Sales by SKU (QTY).md",
-    "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (QTY).md",
     "05 - Digest/Daily Digest/2026-06-09.md",
     "Jakarta AI Meetup - Keynotes & Takeaways.md",
     "Scheduled/boya-monthly-sales-report/SKILL.md",
-    "05 - Digest/Weekly Digest/2026-06-09.md",
-    "04 - Sales Data/Saramonic/SR Sales Data/Sales by SKU (Value).md",
     "01 - About/Memory.md.tmp.1608.09829bb78444",
     "05 - Digest/Weekly Digest/2026-06-09.md.tmp.48808.de0566f3cce2",
     "05 - Digest/Daily Digest",
