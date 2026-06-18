@@ -8,15 +8,22 @@ Kamu sedang menjalankan Daily Digest otomatis untuk Kenny (KENNKAI), Brand Manag
 TUJUAN: Tarik data task hari ini dari Todoist dan sajikan sebagai daily digest yang ringkas dan actionable.
 
 LANGKAH:
-1. Query Todoist via MCP — gunakan find-tasks-by-date dengan filter projectId untuk masing-masing project:
-   - Project "Saramonic" (project ID: 6gq65x4rH4fJh9H6)
-   - Project "BOYA" (project ID: 6gq65v3rFMmqC59H)
-   Query keduanya secara terpisah. JANGAN ambil task dari project lain (Brand Management, Brand Research, Content Creation, Inbox, dll.).
-2. Untuk masing-masing project, ambil:
-   a. Task yang due hari ini
-   b. Task yang overdue (due date sudah lewat, belum selesai)
-   c. Task prioritas tinggi (p1/p2) yang due dalam 3 hari ke depan
-3. Gabungkan hasil dan format sesuai template di bawah.
+1. Query Todoist via MCP — gunakan find-tasks dengan filter string Todoist per project. Jalankan 4 query secara parallel:
+   a. Saramonic today + overdue:       filter = "##Saramonic & (today | overdue)"
+   b. BOYA today + overdue:            filter = "##BOYA & (today | overdue)"
+   c. Saramonic high priority 3 hari:  filter = "##Saramonic & (p1 | p2) & 3 days & !today"
+   d. BOYA high priority 3 hari:       filter = "##BOYA & (p1 | p2) & 3 days & !today"
+
+   PENTING: Gunakan tool find-tasks (BUKAN find-tasks-by-date) dengan parameter "filter".
+   JANGAN query project lain — filter ##Saramonic dan ##BOYA sudah menjamin scope-nya.
+
+2. Dari hasil query (a) dan (b), pisahkan:
+   - Task due hari ini (dueDate == tanggal hari ini)
+   - Task overdue (dueDate < tanggal hari ini)
+
+3. Hasil query (c) dan (d) = High Priority 3 hari ke depan.
+
+4. Gabungkan semua hasil dan format sesuai template di bawah.
 
 FORMAT OUTPUT (Bahasa Indonesia):
 ---
