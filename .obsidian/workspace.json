@@ -50,7 +50,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "material",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -146,8 +146,7 @@
               "title": "Files"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -246,7 +245,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8efbf7641a571bf2",
+  "active": "d7c239fe0b91e545",
   "lastOpenFiles": [
     "02 - Knowledge Repo/Brain Dump/Marketing Follow Up June 2026.md",
     "Artifacts/saramonic-sales-dashboard/versions/1781677716094.html",
