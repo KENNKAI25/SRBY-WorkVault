@@ -69,7 +69,7 @@ Creator datang ke toko sebagai pembeli biasa. Sales counter Saramonic menjelaska
 ### Struktur Video
 1. Creator masuk toko — approach counter Saramonic
 2. Sales demo produk natural — creator aktif tanya-jawab
-3. Closing: creator putuskan beli — tampilkan di kasir / bag dengan produk
+3. Closing: creator putuskan beli — tampilkan di kasir / bag dengan produk, sebutkan juga dimana saja customer bisa nyoba & beli Saramonic (Region 1)
 
 ### Mandatory
 - Hashtag: `#Saramonic` `#SaramonicID` `#Erafone` `#saramonicair`
@@ -108,7 +108,7 @@ Creator datang ke toko sebagai pembeli biasa. Sales counter Saramonic menjelaska
 ### Struktur Video
 1. Creator masuk toko — approach counter Saramonic
 2. Sales demo produk natural — creator aktif tanya-jawab
-3. Closing: creator putuskan beli — tampilkan di kasir / bag dengan produk
+3. Closing: creator putuskan beli — tampilkan di kasir / bag dengan produk, sebutkan juga dimana saja customer bisa nyoba & beli Saramonic (Region 1)
 
 ### Mandatory
 - Hashtag: `#Saramonic` `#SaramonicID` `#Erafone` `#saramonicairse`
