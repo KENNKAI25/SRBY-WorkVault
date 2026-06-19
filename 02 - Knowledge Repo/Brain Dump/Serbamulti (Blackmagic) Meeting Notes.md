@@ -1,0 +1,13 @@
+# Workshop IKJ
+1. Profile peserta ->
+2. Ekspektasi workshop ->
+3. Apakah IKJ akan purchase ->
+
+# Student Program
+1. Collaboration with Serbamulti ->
+
+
+# Special Pricing for Serbamulti
+1. B2B Pricing -> follow https://docs.google.com/spreadsheets/d/17STWCq_9eZWMKdZjlhsbAX3WGtjELZWzoewLchNiBSQ/edit?gid=0#gid=0
+2. B2B Termin -> Purchase < 20 jt, Termin 30 hari & CBD discount 5%
+3. B2B Termin -> Purchase > 20 jt, termin 3
