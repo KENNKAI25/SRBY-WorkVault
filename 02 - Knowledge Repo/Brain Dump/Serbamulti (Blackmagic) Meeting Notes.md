@@ -1,4 +1,5 @@
 # Workshop IKJ
+Serbamulti (disributor blackmagic) mengundang kita untuk melakukan workshop bersama di IKJ, dimana workshop ini gratis kita tidak keluar fee. Dan nanti focus utama 
 1. Profile peserta ->
 2. Ekspektasi workshop ->
 3. Apakah IKJ akan purchase ->
