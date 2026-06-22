@@ -68,8 +68,6 @@ tbody tr:hover{background:#f8fafc}
 .tag-drop{background:#fbe7e5;color:#d8453b}
 .tag-once{background:#fdf2dd;color:#b5790f}
 .tag-dorm{background:#eef0f3;color:#555}
-.qcol{background:#f3f6ff}
-th.qcol{background:#e9eeff}
 .sec-h{font-size:13px;font-weight:700;margin:16px 0 9px;display:flex;align-items:center;gap:8px}
 .sec-h .cnt{background:#eef0f3;color:var(--mut);border-radius:10px;font-size:11px;padding:1px 8px}
 .searchbar{width:100%;padding:8px 11px;border:1px solid var(--line);border-radius:9px;font-size:13px;margin-bottom:11px}
@@ -150,14 +148,9 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
   </div>
   <div class="card">
    <h2>Semua Dealer</h2>
-   <p class="hint">Klik header kolom untuk sort. "Ringkasan": bulan penuh terakhir + total + terakhir order. "Value per Bulan": revenue per bulan + subtotal quarter. Q4'25=Okt–Des · Q1'26=Jan–Mar · Q2'26=Apr–Jun (berjalan).</p>
-   <div class="seg" id="dealer-seg">
-    <button data-v="ring" class="active">Ringkasan</button>
-    <button data-v="val">Value per Bulan</button>
-   </div>
+   <p class="hint">Klik header kolom untuk sort. "Terakhir" = bulan terakhir ada pembelian. Klik nama dealer untuk lihat top SKU.</p>
    <input class="searchbar" id="dealerSearch" placeholder="Cari dealer / lokasi…">
-   <div id="dealerView-ring"><div class="tblwrap"><table id="dealerTable"></table></div></div>
-   <div id="dealerView-val" style="display:none"><div class="tblwrap"><table id="dealerValTable"></table></div></div>
+   <div class="tblwrap"><table id="dealerTable"></table></div>
   </div>
   <div class="card">
    <h2>Detail SKU per Dealer — Qty (total &amp; bulanan)</h2>
@@ -183,16 +176,14 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
   </div>
   <div class="card">
    <h2>Semua SKU</h2>
-   <p class="hint">"Velocity" = rata-rata unit/bln (Mar–Mei). "Cover" = stok ÷ velocity. "Qty per Bulan" = unit terjual per bulan. "Value per Bulan" = revenue per bulan + subtotal quarter (Q4'25 / Q1'26 / Q2'26 berjalan). Klik header untuk sort.</p>
+   <p class="hint">"Velocity" = rata-rata unit/bln (Mar–Mei). "Cover" = stok ÷ velocity. Stok = best-effort match ke Stock Data. "Qty per Bulan" = unit terjual per SKU tiap bulan.</p>
    <div class="seg" id="sku-seg">
     <button data-v="ring" class="active">Ringkasan</button>
     <button data-v="qty">Qty per Bulan</button>
-    <button data-v="val">Value per Bulan</button>
    </div>
    <input class="searchbar" id="skuSearch" placeholder="Cari SKU / kategori…">
    <div id="skuView-ring"><div class="tblwrap"><table id="skuTable"></table></div></div>
    <div id="skuView-qty" style="display:none"><div class="tblwrap"><table id="skuQtyTable"></table></div></div>
-   <div id="skuView-val" style="display:none"><div class="tblwrap"><table id="skuValTable"></table></div></div>
   </div>
  </section>
 
@@ -216,31 +207,6 @@ const fmtMonthLbl = m => {const [y,mo]=m.split('-');const n=['','Jan','Feb','Mar
 function rp(v){v=Math.round(v);if(Math.abs(v)>=1e9)return 'Rp '+(v/1e9).toFixed(2).replace('.',',')+' M';if(Math.abs(v)>=1e6)return 'Rp '+(v/1e6).toFixed(0)+' jt';if(Math.abs(v)>=1e3)return 'Rp '+(v/1e3).toFixed(0)+' rb';return 'Rp '+v;}
 function rpFull(v){return 'Rp '+Math.round(v).toLocaleString('id-ID');}
 const sum=a=>a.reduce((x,y)=>x+y,0);
-
-/* shared value matrix: months + quarter subtotals + total, sortable */
-const QH=["Q4 '25","Q1 '26","Q2 '26 *"];
-function qOf(v){return [v[0]+v[1]+v[2], v[3]+v[4]+v[5], v[6]+v[7]+v[8]];}
-function renderValMatrix(tableId, rows, c2head, state, rerender){
-  const data=rows.map(r=>({name:r.name,c2:r.c2,value:r.value,q:qOf(r.value),tot:r.value.reduce((a,b)=>a+b,0)}));
-  const k=state.k,dir=state.dir;
-  data.sort((a,b)=>{
-    if(k==='name')return a.name<b.name?-dir:a.name>b.name?dir:0;
-    if(k==='c2'){const x=a.c2||'',y=b.c2||'';return x<y?-dir:x>y?dir:0;}
-    if(k[0]==='m'){const i=+k.slice(1);return (a.value[i]-b.value[i])*dir;}
-    if(k[0]==='q'){const i=+k.slice(1);return (a.q[i]-b.q[i])*dir;}
-    return (a.tot-b.tot)*dir;
-  });
-  let hdr='<thead><tr><th class="sortable" data-k="name">Nama</th><th class="sortable" data-k="c2">'+c2head+'</th>';
-  M.forEach((m,i)=>hdr+='<th class="sortable" data-k="m'+i+'">'+fmtMonthLbl(m)+(i===M.length-1?' *':'')+'</th>');
-  QH.forEach((qq,i)=>hdr+='<th class="sortable qcol" data-k="q'+i+'">'+qq+'</th>');
-  hdr+='<th class="sortable" data-k="tot">Total</th></tr></thead>';
-  const body=data.map(r=>'<tr><td>'+r.name+'</td><td><span class="lochip">'+(r.c2||'-')+'</span></td>'+
-    r.value.map(x=>'<td>'+(x?rp(x):'<span class=muted>·</span>')+'</td>').join('')+
-    r.q.map(x=>'<td class="qcol">'+(x?rp(x):'<span class=muted>·</span>')+'</td>').join('')+
-    '<td><strong>'+rp(r.tot)+'</strong></td></tr>').join('');
-  const t=document.getElementById(tableId);t.innerHTML=hdr+'<tbody>'+body+'</tbody>';
-  t.querySelectorAll('th.sortable').forEach(th=>th.onclick=()=>{const kk=th.dataset.k;if(state.k===kk)state.dir*=-1;else{state.k=kk;state.dir=(kk==='name'||kk==='c2')?1:-1;}rerender();});
-}
 
 document.getElementById('gendate').textContent = DATA.generated;
 document.getElementById('period-range').textContent = fmtMonthLbl(M[0])+' – '+fmtMonthLbl(M[M.length-1]);
@@ -424,20 +390,8 @@ function renderDealerTable(){
   const t=document.getElementById('dealerTable');t.innerHTML=hdr+'<tbody>'+body+'</tbody>';
   t.querySelectorAll('th.sortable').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(dealerSort.k===k)dealerSort.dir*=-1;else{dealerSort={k,dir:k==='name'?1:-1};}renderDealerTable();});
 }
-let dlrValState={k:'tot',dir:-1};
-function renderDealerVal(){
-  const q=document.getElementById('dealerSearch').value.toLowerCase();
-  const rows=DATA.dealers.filter(d=>d.totalValue>0 && (d.name.toLowerCase().includes(q)||(d.location||'').toLowerCase().includes(q)))
-    .map(d=>({name:d.name,c2:d.location,value:d.value}));
-  renderValMatrix('dealerValTable',rows,'Lokasi',dlrValState,renderDealerVal);
-}
-document.querySelectorAll('#dealer-seg button').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('#dealer-seg button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
-  const v=b.dataset.v;
-  ['ring','val'].forEach(x=>document.getElementById('dealerView-'+x).style.display=(v===x?'':'none'));
-});
-document.getElementById('dealerSearch').oninput=()=>{renderDealerTable();renderDealerVal();};
-renderDealerTable();renderDealerVal();
+document.getElementById('dealerSearch').oninput=renderDealerTable;
+renderDealerTable();
 
 /* ---------- SKU ---------- */
 (function(){
@@ -487,20 +441,14 @@ function renderSkuQty(){
     s.qty.map(x=>'<td>'+(x?x:'<span class=muted>·</span>')+'</td>').join('')+'<td><strong>'+s.totalQty+'</strong></td></tr>').join('');
   document.getElementById('skuQtyTable').innerHTML=hdr+'<tbody>'+body+'</tbody>';
 }
-let skuValState={k:'tot',dir:-1};
-function renderSkuVal(){
-  const q=document.getElementById('skuSearch').value.toLowerCase();
-  const rows=DATA.skus.filter(s=>s.totalValue>0 && (s.name.toLowerCase().includes(q)||s.type.toLowerCase().includes(q)))
-    .map(s=>({name:s.name,c2:s.type,value:s.value}));
-  renderValMatrix('skuValTable',rows,'Kategori',skuValState,renderSkuVal);
-}
 document.querySelectorAll('#sku-seg button').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('#sku-seg button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
   const v=b.dataset.v;
-  ['ring','qty','val'].forEach(x=>document.getElementById('skuView-'+x).style.display=(v===x?'':'none'));
+  document.getElementById('skuView-ring').style.display=v==='ring'?'':'none';
+  document.getElementById('skuView-qty').style.display=v==='qty'?'':'none';
 });
-document.getElementById('skuSearch').oninput=()=>{renderSkuTable();renderSkuQty();renderSkuVal();};
-renderSkuTable();renderSkuQty();renderSkuVal();
+document.getElementById('skuSearch').oninput=()=>{renderSkuTable();renderSkuQty();};
+renderSkuTable();renderSkuQty();
 
 /* ---------- DEALER → SKU monthly detail ---------- */
 (function(){
