@@ -153,13 +153,11 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
    <p class="hint">Klik header kolom untuk sort. "Ringkasan": bulan penuh terakhir + total + terakhir order. "Value per Bulan": revenue per bulan + subtotal quarter. Q4'25=Okt–Des · Q1'26=Jan–Mar · Q2'26=Apr–Jun (berjalan).</p>
    <div class="seg" id="dealer-seg">
     <button data-v="ring" class="active">Ringkasan</button>
-    <button data-v="mval">Value Bulanan</button>
-    <button data-v="qval">Value Quarter</button>
+    <button data-v="val">Value per Bulan</button>
    </div>
    <input class="searchbar" id="dealerSearch" placeholder="Cari dealer / lokasi…">
    <div id="dealerView-ring"><div class="tblwrap"><table id="dealerTable"></table></div></div>
-   <div id="dealerView-mval" style="display:none"><div class="tblwrap"><table id="dealerMValTable"></table></div></div>
-   <div id="dealerView-qval" style="display:none"><div class="tblwrap"><table id="dealerQValTable"></table></div></div>
+   <div id="dealerView-val" style="display:none"><div class="tblwrap"><table id="dealerValTable"></table></div></div>
   </div>
   <div class="card">
    <h2>Detail SKU per Dealer — Qty (total &amp; bulanan)</h2>
@@ -222,9 +220,7 @@ const sum=a=>a.reduce((x,y)=>x+y,0);
 /* shared value matrix: months + quarter subtotals + total, sortable */
 const QH=["Q4 '25","Q1 '26","Q2 '26 *"];
 function qOf(v){return [v[0]+v[1]+v[2], v[3]+v[4]+v[5], v[6]+v[7]+v[8]];}
-function renderValMatrix(tableId, rows, c2head, state, rerender, mode){
-  mode=mode||'full';
-  const showM=mode!=='quarter', showQ=mode!=='month';
+function renderValMatrix(tableId, rows, c2head, state, rerender){
   const data=rows.map(r=>({name:r.name,c2:r.c2,value:r.value,q:qOf(r.value),tot:r.value.reduce((a,b)=>a+b,0)}));
   const k=state.k,dir=state.dir;
   data.sort((a,b)=>{
@@ -235,12 +231,12 @@ function renderValMatrix(tableId, rows, c2head, state, rerender, mode){
     return (a.tot-b.tot)*dir;
   });
   let hdr='<thead><tr><th class="sortable" data-k="name">Nama</th><th class="sortable" data-k="c2">'+c2head+'</th>';
-  if(showM)M.forEach((m,i)=>hdr+='<th class="sortable" data-k="m'+i+'">'+fmtMonthLbl(m)+(i===M.length-1?' *':'')+'</th>');
-  if(showQ)QH.forEach((qq,i)=>hdr+='<th class="sortable qcol" data-k="q'+i+'">'+qq+'</th>');
+  M.forEach((m,i)=>hdr+='<th class="sortable" data-k="m'+i+'">'+fmtMonthLbl(m)+(i===M.length-1?' *':'')+'</th>');
+  QH.forEach((qq,i)=>hdr+='<th class="sortable qcol" data-k="q'+i+'">'+qq+'</th>');
   hdr+='<th class="sortable" data-k="tot">Total</th></tr></thead>';
   const body=data.map(r=>'<tr><td>'+r.name+'</td><td><span class="lochip">'+(r.c2||'-')+'</span></td>'+
-    (showM?r.value.map(x=>'<td>'+(x?rp(x):'<span class=muted>·</span>')+'</td>').join(''):'')+
-    (showQ?r.q.map(x=>'<td class="qcol">'+(x?rp(x):'<span class=muted>·</span>')+'</td>').join(''):'')+
+    r.value.map(x=>'<td>'+(x?rp(x):'<span class=muted>·</span>')+'</td>').join('')+
+    r.q.map(x=>'<td class="qcol">'+(x?rp(x):'<span class=muted>·</span>')+'</td>').join('')+
     '<td><strong>'+rp(r.tot)+'</strong></td></tr>').join('');
   const t=document.getElementById(tableId);t.innerHTML=hdr+'<tbody>'+body+'</tbody>';
   t.querySelectorAll('th.sortable').forEach(th=>th.onclick=()=>{const kk=th.dataset.k;if(state.k===kk)state.dir*=-1;else{state.k=kk;state.dir=(kk==='name'||kk==='c2')?1:-1;}rerender();});
@@ -428,21 +424,20 @@ function renderDealerTable(){
   const t=document.getElementById('dealerTable');t.innerHTML=hdr+'<tbody>'+body+'</tbody>';
   t.querySelectorAll('th.sortable').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(dealerSort.k===k)dealerSort.dir*=-1;else{dealerSort={k,dir:k==='name'?1:-1};}renderDealerTable();});
 }
-let dlrMState={k:'tot',dir:-1}, dlrQState={k:'tot',dir:-1};
-function dealerValRows(){
+let dlrValState={k:'tot',dir:-1};
+function renderDealerVal(){
   const q=document.getElementById('dealerSearch').value.toLowerCase();
-  return DATA.dealers.filter(d=>d.totalValue>0 && (d.name.toLowerCase().includes(q)||(d.location||'').toLowerCase().includes(q)))
+  const rows=DATA.dealers.filter(d=>d.totalValue>0 && (d.name.toLowerCase().includes(q)||(d.location||'').toLowerCase().includes(q)))
     .map(d=>({name:d.name,c2:d.location,value:d.value}));
+  renderValMatrix('dealerValTable',rows,'Lokasi',dlrValState,renderDealerVal);
 }
-function renderDealerMVal(){renderValMatrix('dealerMValTable',dealerValRows(),'Lokasi',dlrMState,renderDealerMVal,'month');}
-function renderDealerQVal(){renderValMatrix('dealerQValTable',dealerValRows(),'Lokasi',dlrQState,renderDealerQVal,'quarter');}
 document.querySelectorAll('#dealer-seg button').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('#dealer-seg button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
   const v=b.dataset.v;
-  ['ring','mval','qval'].forEach(x=>document.getElementById('dealerView-'+x).style.display=(v===x?'':'none'));
+  ['ring','val'].forEach(x=>document.getElementById('dealerView-'+x).style.display=(v===x?'':'none'));
 });
-document.getElementById('dealerSearch').oninput=()=>{renderDealerTable();renderDealerMVal();renderDealerQVal();};
-renderDealerTable();renderDealerMVal();renderDealerQVal();
+document.getElementById('dealerSearch').oninput=()=>{renderDealerTable();renderDealerVal();};
+renderDealerTable();renderDealerVal();
 
 /* ---------- SKU ---------- */
 (function(){
