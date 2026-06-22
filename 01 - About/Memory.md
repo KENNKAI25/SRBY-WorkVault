@@ -48,6 +48,7 @@
 
 > Aktivitas terbaru yang saya (Claude) bantu kerjakan. Format: tanggal — apa yang dikerjain — file/output.
 
+- **2026-06-22** — Sintesis action plan dari MoM Serbamulti (Blackmagic Distributor) untuk workshop IKJ 29 Jun 2026 + follow-up purchase route via Serbamulti, collab November di M Bloc Space, dan student loan program. Sumber: `02 - Knowledge Repo/Brain Dump/Serbamulti (Blackmagic) Meeting Notes.md`.
 - **2026-05-09** — Setup awal: bikin `CLAUDE.md` (instruksi sistem global) + folder `About/` dengan `About Me.md`, `Memory.md`, `Writing Rules.md`. — `C:\KENNKAI - Saramonic & BOYA\Saramonic\`
 - **2026-05-09** — Update `CLAUDE.md`: insert §6 baru ("Wajib Baca: Folder About/") + renumber §7–§13. CLAUDE.md sekarang otomatis arahkan baca 3 file di `About/` tiap task baru.
 - **2026-05-09** — Update `About Me.md` §7 + `Memory.md` §1 dengan Saramonic-only ongoing projects dari MKT Activity Tracker 2026. 8 project aktif (on-going/planning/draft) + 16 completed untuk konteks. Ada 2 item training (Astra Foto 7 Mei, MitraKamera 8 Mei) yang perlu konfirmasi apakah sudah jalan — flagged di tracker.
