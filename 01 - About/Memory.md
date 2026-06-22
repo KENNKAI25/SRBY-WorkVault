@@ -1,8 +1,8 @@
 # Memory — Long-Term Project Log
 
-> File ini Claude update otomatis tiap dapat task. Tujuan: jadi memori jangka panjang supaya progress project, decision penting, dan konteks lintas-percakapan nggak hilang.
+> File ini Claude / Codex update otomatis tiap dapat task. Tujuan: jadi memori jangka panjang supaya progress project, decision penting, dan konteks lintas-percakapan nggak hilang.
 
-**Aturan update untuk Claude:**
+**Aturan update untuk Claude & Codex:**
 
 1. **Tiap dapat task baru:** baca file ini dulu sebelum mulai kerja. Cek apakah ada konteks/decision lama yang relevan.
 2. **Selesai task:** tambah entry baru di bagian yang sesuai (Active Projects, Decision Log, atau Open Questions).
@@ -46,7 +46,7 @@
 
 ## 2. Recent Activity Log
 
-> Aktivitas terbaru yang saya (Claude) bantu kerjakan. Format: tanggal — apa yang dikerjain — file/output.
+> Aktivitas terbaru yang saya (Claude / Codex) bantu kerjakan. Format: tanggal — apa yang dikerjain — file/output.
 
 - **2026-06-22** — Sintesis action plan dari MoM Serbamulti (Blackmagic Distributor) untuk workshop IKJ 29 Jun 2026 + follow-up purchase route via Serbamulti, collab November di M Bloc Space, dan student loan program. Sumber: `02 - Knowledge Repo/Brain Dump/Serbamulti (Blackmagic) Meeting Notes.md`.
 - **2026-05-09** — Setup awal: bikin `CLAUDE.md` (instruksi sistem global) + folder `About/` dengan `About Me.md`, `Memory.md`, `Writing Rules.md`. — `C:\KENNKAI - Saramonic & BOYA\Saramonic\`
