@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
+                "file": "01 - About/Writing Rules.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides)"
+              "title": "Writing Rules"
             }
           }
         ]
@@ -124,13 +124,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
+                "file": "01 - About/Writing Rules.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides)"
+              "title": "Outline of Writing Rules"
             }
           },
           {
@@ -247,9 +247,9 @@
   },
   "active": "8efbf7641a571bf2",
   "lastOpenFiles": [
+    "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
     "03 - Marketing Repo/Social Media Content/SR — Prompt — Clipping + Safety Track dB (Air -6dB & Air SE -12dB) (5 Slides).md",
     "03 - Marketing Repo/Social Media Content/SR — Prompt (ChatGPT Image) — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
-    "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
     "AI Assistant Workflow (Claude & Codex).md",
     "CLAUDE.md",
     "AGENTS.md",
