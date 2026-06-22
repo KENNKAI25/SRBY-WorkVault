@@ -8,30 +8,31 @@
 
 ## 1. Prinsip Utama
 
-Gunakan assistant berdasarkan jenis kerja, bukan berdasarkan kebiasaan.
+Gunakan assistant berdasarkan tahap kerja, bukan berdasarkan kebiasaan.
 
-- **Claude** dipakai untuk kerja kreatif, analisis, dan bikin app lokal.
-- **Codex** dipakai untuk baca/edit file, cek dokumen, OCR PDF, dan jadi opsi kedua saat Claude usage penuh.
+- **Codex** dipakai untuk pure image generation, baca/edit file, cek dokumen, OCR PDF, dan jadi opsi kedua saat Claude usage penuh.
+- **Claude** dipakai untuk merakit image hasil generate jadi konten lengkap, analisis, dan bikin app lokal.
 - Kalau output akan dipakai untuk kerja brand Saramonic/BOYA, tetap ikuti instruksi di `AGENTS.md` dan folder `01 - About/`.
 
 ---
 
 ## 2. Pakai Claude Untuk
 
-### 2.1 Image Generation untuk Social Media Content
+### 2.1 Final Content Assembly dari Generated Images
 
 Gunakan Claude saat butuh:
 
-- Konsep visual untuk Instagram/TikTok.
-- Background, scene, product mood, atau image generation untuk konten sosial.
-- Variasi visual dari satu brief.
-- Eksplorasi gaya visual sebelum masuk Figma/Canva.
+- Menggabungkan beberapa image hasil generate dari Codex.
+- Menambahkan teks, headline, caption visual, CTA, dan brand element.
+- Membuat layout final untuk Instagram/TikTok.
+- Merapikan sequence carousel atau konten multi-slide.
+- Menyesuaikan tone visual dengan Saramonic/BOYA.
 
 Catatan:
 
 - Untuk konten brand, tetap cek `01 - About/Brand Context.md`.
 - Untuk produk fisik, pastikan ada foto referensi asli kalau output harus akurat.
-- Untuk teks panjang di dalam gambar, lebih aman render manual di Figma/Canva.
+- Untuk teks panjang atau layout presisi, Claude dipakai sebagai compositor/direction tool; final text tetap bisa dirapikan di Figma/Canva kalau perlu.
 
 ### 2.2 Data Analysis
 
@@ -69,7 +70,25 @@ Contoh:
 
 ## 3. Pakai Codex Untuk
 
-### 3.1 File Reader: PDF, Excel, PPT
+### 3.1 Pure Image Generation
+
+Gunakan Codex saat butuh generate image mentah:
+
+- New renderings.
+- People generation.
+- Background scene.
+- Product mood visual.
+- Lifestyle visual.
+- Visual asset variasi dari satu brief.
+
+Catatan:
+
+- Codex dipakai untuk bikin bahan visual utama, bukan final branded content.
+- Jangan minta Codex render teks panjang di dalam gambar kalau teks harus presisi.
+- Untuk konten brand, hasil dari Codex perlu lanjut ke Claude/Figma/Canva untuk teks, layout, logo, dan brand consistency.
+- Untuk produk fisik, pakai foto referensi asli kalau bentuk produk harus akurat.
+
+### 3.2 File Reader: PDF, Excel, PPT
 
 Gunakan Codex saat butuh:
 
@@ -83,7 +102,7 @@ Catatan:
 - Codex lebih cocok untuk kerja yang butuh akses file lokal dan perubahan file yang jelas.
 - Kalau revisi dokumen besar, buat versi baru: `_v2`, `_revisi`, atau tanggal.
 
-### 3.2 PDF OCR Check dan Matching Tools
+### 3.3 PDF OCR Check dan Matching Tools
 
 Gunakan Codex saat butuh:
 
@@ -98,13 +117,13 @@ Contoh:
 - Cek apakah angka di report PDF sama dengan Excel source.
 - Extract tabel dari PDF scan lalu validasi ulang.
 
-### 3.3 Second AI Assistant Saat Claude Usage Full
+### 3.4 Second AI Assistant Saat Claude Usage Full
 
 Gunakan Codex sebagai backup saat:
 
 - Claude limit/usage penuh.
 - Task harus tetap jalan hari itu.
-- Task tidak butuh image generation Claude secara spesifik.
+- Task tidak butuh final compositing Claude secara spesifik.
 - Task lebih cocok dikerjakan via file lokal, dokumen, atau coding ringan.
 
 Cara pindah:
@@ -120,8 +139,11 @@ Cara pindah:
 
 | Kebutuhan | Assistant Utama | Backup |
 | --- | --- | --- |
-| Image generation social media | Claude | Codex kalau hanya butuh prompt/brief |
-| Visual concept exploration | Claude | Codex untuk struktur brief |
+| Pure image generation / new rendering | Codex | Claude untuk prompt refinement |
+| People generation | Codex | Claude untuk final content assembly |
+| Background / lifestyle visual | Codex | Claude untuk final content assembly |
+| Gabung image + teks + branding | Claude | Figma/Canva untuk final polish |
+| Visual concept exploration | Codex | Claude untuk struktur content final |
 | Data analysis + insight bisnis | Claude | Codex kalau datanya file lokal |
 | Dashboard / matrix / local app | Claude | Codex untuk debugging/edit file |
 | Baca PDF/Excel/PPT | Codex | Claude kalau hanya perlu summary ringan |
@@ -139,8 +161,9 @@ Pindah assistant kalau salah satu kondisi ini terjadi:
 - Assistant utama tidak punya tool yang dibutuhkan.
 - Usage limit penuh.
 - Output butuh akses file lokal yang lebih kuat.
+- Task berubah dari image generation mentah menjadi final branded content.
+- Task berubah dari final content assembly menjadi kebutuhan generate visual baru.
 - Task berubah dari ide kreatif menjadi eksekusi file.
-- Task berubah dari edit file menjadi eksplorasi visual atau image generation.
 
 Jangan paksakan satu assistant untuk semua kerja. Pilih yang paling cocok untuk tahap kerja saat itu.
 
