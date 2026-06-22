@@ -48,6 +48,7 @@
 
 > Aktivitas terbaru yang saya (Claude / Codex) bantu kerjakan. Format: tanggal — apa yang dikerjain — file/output.
 
+- **2026-06-22** — Isi file workflow pribadi untuk memilih Claude vs Codex berdasarkan use case: Claude untuk image generation social media, data analysis, local apps; Codex untuk file reader PDF/Excel/PPT, PDF OCR/matching, dan backup saat Claude usage penuh. File: `AI Assistant Workflow (Claude & Codex).md`.
 - **2026-06-22** — Sintesis action plan dari MoM Serbamulti (Blackmagic Distributor) untuk workshop IKJ 29 Jun 2026 + follow-up purchase route via Serbamulti, collab November di M Bloc Space, dan student loan program. Sumber: `02 - Knowledge Repo/Brain Dump/Serbamulti (Blackmagic) Meeting Notes.md`.
 - **2026-05-09** — Setup awal: bikin `CLAUDE.md` (instruksi sistem global) + folder `About/` dengan `About Me.md`, `Memory.md`, `Writing Rules.md`. — `C:\KENNKAI - Saramonic & BOYA\Saramonic\`
 - **2026-05-09** — Update `CLAUDE.md`: insert §6 baru ("Wajib Baca: Folder About/") + renumber §7–§13. CLAUDE.md sekarang otomatis arahkan baca 3 file di `About/` tiap task baru.

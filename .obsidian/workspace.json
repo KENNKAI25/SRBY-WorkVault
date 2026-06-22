@@ -124,13 +124,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02 - Saramonic & BOYA/SR & BY - Claude Cowork/Knowledge Repo/Brain Dump/MOM Meeting 4 Juni 2026.md",
+                "file": "AI Assistant Workflow (Claude & Codex).md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of MOM Meeting 4 Juni 2026"
+              "title": "Outline of AI Assistant Workflow (Claude & Codex)"
             }
           },
           {
@@ -245,7 +245,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8efbf7641a571bf2",
+  "active": "d7c239fe0b91e545",
   "lastOpenFiles": [
     "CLAUDE.md",
     "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
