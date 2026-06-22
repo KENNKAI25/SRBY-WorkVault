@@ -73,6 +73,8 @@ th.qcol{background:#e9eeff}
 .sec-h{font-size:13px;font-weight:700;margin:16px 0 9px;display:flex;align-items:center;gap:8px}
 .sec-h .cnt{background:#eef0f3;color:var(--mut);border-radius:10px;font-size:11px;padding:1px 8px}
 .searchbar{width:100%;padding:8px 11px;border:1px solid var(--line);border-radius:9px;font-size:13px;margin-bottom:11px}
+.srt{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--mut);margin-bottom:11px;margin-right:14px}
+.sortsel{padding:7px 10px;border:1px solid var(--line);border-radius:9px;font-size:12.5px;background:#fff;color:var(--ink)}
 .bars{display:flex;flex-direction:column;gap:7px}
 .barrow{display:grid;grid-template-columns:160px 1fr 92px;align-items:center;gap:9px;font-size:12.3px}
 .barrow .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -157,6 +159,12 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
     <button data-v="mval">Value Bulanan</button>
     <button data-v="qval">Value Quarter</button>
    </div>
+   <label class="srt">Urutkan: <select class="sortsel" id="dlrSortSel">
+     <option value="vd">Nilai ↓ (besar→kecil)</option>
+     <option value="va">Nilai ↑ (kecil→besar)</option>
+     <option value="az">Nama A→Z</option>
+     <option value="za">Nama Z→A</option>
+   </select></label>
    <input class="searchbar" id="dealerSearch" placeholder="Cari dealer / lokasi…">
    <div id="dealerView-ring"><div class="tblwrap"><table id="dealerTable"></table></div></div>
    <div id="dealerView-mval" style="display:none"><div class="tblwrap"><table id="dealerMValTable"></table></div></div>
@@ -166,6 +174,12 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
    <h2>Detail SKU per Dealer — Qty (total &amp; bulanan)</h2>
    <p class="hint">Pilih dealer untuk lihat SKU apa saja yang dibeli + jumlah unit per bulan.</p>
    <select class="searchbar" id="dealerPick"></select>
+   <label class="srt">Urutkan SKU: <select class="sortsel" id="dlrSkuSortSel">
+     <option value="vd">Qty ↓ (besar→kecil)</option>
+     <option value="va">Qty ↑ (kecil→besar)</option>
+     <option value="az">Nama A→Z</option>
+     <option value="za">Nama Z→A</option>
+   </select></label>
    <div class="tblwrap"><table id="dealerSkuTable"></table></div>
   </div>
  </section>
@@ -192,6 +206,12 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
     <button data-v="qty">Qty per Bulan</button>
     <button data-v="val">Value per Bulan</button>
    </div>
+   <label class="srt">Urutkan: <select class="sortsel" id="skuSortSel">
+     <option value="vd">Nilai ↓ (besar→kecil)</option>
+     <option value="va">Nilai ↑ (kecil→besar)</option>
+     <option value="az">Nama A→Z</option>
+     <option value="za">Nama Z→A</option>
+   </select></label>
    <input class="searchbar" id="skuSearch" placeholder="Cari SKU / kategori…">
    <div id="skuView-ring"><div class="tblwrap"><table id="skuTable"></table></div></div>
    <div id="skuView-qty" style="display:none"><div class="tblwrap"><table id="skuQtyTable"></table></div></div>
@@ -463,6 +483,15 @@ document.querySelectorAll('#dealer-seg button').forEach(b=>b.onclick=()=>{
   const v=b.dataset.v;
   ['ring','mval','qval'].forEach(x=>document.getElementById('dealerView-'+x).style.display=(v===x?'':'none'));
 });
+function dlrSortApply(){
+  const m=document.getElementById('dlrSortSel').value;
+  const dir=(m==='va'||m==='az')?1:-1, byName=(m==='az'||m==='za');
+  dealerSort={k:byName?'name':'totalValue',dir};
+  dlrMState={k:byName?'name':'tot',dir};
+  dlrQState={k:byName?'name':'tot',dir};
+  renderDealerTable();renderDealerMVal();renderDealerQVal();
+}
+document.getElementById('dlrSortSel').onchange=dlrSortApply;
 document.getElementById('dealerSearch').oninput=()=>{renderDealerTable();renderDealerMVal();renderDealerQVal();};
 renderDealerTable();renderDealerMVal();renderDealerQVal();
 
@@ -508,13 +537,14 @@ function renderSkuTable(){
 function renderSkuQty(){
   const q=document.getElementById('skuSearch').value.toLowerCase();
   let arr=DATA.skus.filter(s=>s.totalQty>0 && (s.name.toLowerCase().includes(q)||s.type.toLowerCase().includes(q)));
-  arr.sort((a,b)=>b.totalQty-a.totalQty);
+  arr.sort((a,b)=> skuQtyState.byName ? (a.name<b.name?-skuQtyState.dir:a.name>b.name?skuQtyState.dir:0) : (a.totalQty-b.totalQty)*skuQtyState.dir);
   const hdr='<thead><tr><th>SKU</th><th>Kategori</th>'+M.map(m=>'<th>'+fmtMonthLbl(m)+(m===M[M.length-1]?' *':'')+'</th>').join('')+'<th>Total</th></tr></thead>';
   const body=arr.map(s=>'<tr><td>'+s.name+'</td><td><span class="lochip">'+s.type+'</span></td>'+
     s.qty.map(x=>'<td>'+(x?x:'<span class=muted>·</span>')+'</td>').join('')+'<td><strong>'+s.totalQty+'</strong></td></tr>').join('');
   document.getElementById('skuQtyTable').innerHTML=hdr+'<tbody>'+body+'</tbody>';
 }
 let skuValState={k:'tot',dir:-1};
+let skuQtyState={byName:false,dir:-1};
 function renderSkuVal(){
   const q=document.getElementById('skuSearch').value.toLowerCase();
   const rows=DATA.skus.filter(s=>s.totalValue>0 && (s.name.toLowerCase().includes(q)||s.type.toLowerCase().includes(q)))
@@ -526,6 +556,15 @@ document.querySelectorAll('#sku-seg button').forEach(b=>b.onclick=()=>{
   const v=b.dataset.v;
   ['ring','qty','val'].forEach(x=>document.getElementById('skuView-'+x).style.display=(v===x?'':'none'));
 });
+function skuSortApply(){
+  const m=document.getElementById('skuSortSel').value;
+  const dir=(m==='va'||m==='az')?1:-1, byName=(m==='az'||m==='za');
+  skuSort={k:byName?'name':'totalValue',dir};
+  skuQtyState={byName,dir};
+  skuValState={k:byName?'name':'tot',dir};
+  renderSkuTable();renderSkuQty();renderSkuVal();
+}
+document.getElementById('skuSortSel').onchange=skuSortApply;
 document.getElementById('skuSearch').oninput=()=>{renderSkuTable();renderSkuQty();renderSkuVal();};
 renderSkuTable();renderSkuQty();renderSkuVal();
 
@@ -536,7 +575,10 @@ renderSkuTable();renderSkuQty();renderSkuVal();
   sel.innerHTML=list.map(d=>'<option>'+d.name+' — '+rp(d.totalValue)+'</option>').join('');
   function render(idx){
     const d=list[idx]; if(!d)return;
-    const sm=d.skuMonthly||[];
+    const sm=[...(d.skuMonthly||[])];
+    const mode=document.getElementById('dlrSkuSortSel').value;
+    const dir=(mode==='va'||mode==='az')?1:-1, byName=(mode==='az'||mode==='za');
+    sm.sort((a,b)=> byName ? (a.name<b.name?-dir:a.name>b.name?dir:0) : (a.t-b.t)*dir);
     const hdr='<thead><tr><th>SKU</th>'+M.map(m=>'<th>'+fmtMonthLbl(m)+(m===M[M.length-1]?' *':'')+'</th>').join('')+'<th>Total</th></tr></thead>';
     let body=sm.map(r=>'<tr><td>'+r.name+'</td>'+r.m.map(x=>'<td>'+(x?x:'<span class=muted>·</span>')+'</td>').join('')+'<td><strong>'+r.t+'</strong></td></tr>').join('');
     const tot=M.map((_,i)=>sm.reduce((a,r)=>a+r.m[i],0));
@@ -544,6 +586,7 @@ renderSkuTable();renderSkuQty();renderSkuVal();
     document.getElementById('dealerSkuTable').innerHTML=hdr+'<tbody>'+body+'</tbody>';
   }
   sel.onchange=()=>render(sel.selectedIndex);
+  document.getElementById('dlrSkuSortSel').onchange=()=>render(sel.selectedIndex);
   if(list.length)render(0);
 })();
 
