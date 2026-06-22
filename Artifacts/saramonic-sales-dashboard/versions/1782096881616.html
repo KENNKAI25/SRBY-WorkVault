@@ -29,13 +29,6 @@ h1{font-size:20px;margin:0;letter-spacing:-.2px}
 .kpi .lab{font-size:11.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.4px}
 .kpi .val{font-size:21px;font-weight:700;margin-top:4px}
 .kpi .delta{font-size:12px;margin-top:3px;font-weight:600}
-.kpis-primary{grid-template-columns:repeat(auto-fit,minmax(212px,1fr));margin-bottom:10px}
-.kpis-primary .kpi{border-top:3px solid var(--brand)}
-.kpis-primary .lab{color:var(--brand2)}
-.kpis-primary .val{font-size:25px}
-.kpis-secondary{margin-bottom:16px}
-.kpis-secondary .kpi{padding:11px 13px}
-.kpis-secondary .val{font-size:18px}
 .up{color:var(--good)}.down{color:var(--bad)}.flat{color:var(--mut)}
 .tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:16px;flex-wrap:wrap}
 .tab{padding:9px 15px;cursor:pointer;border:none;background:none;font-size:13.5px;font-weight:600;color:var(--mut);border-bottom:2px solid transparent;margin-bottom:-1px}
@@ -106,8 +99,7 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
 
  <div class="note" id="partial-note"></div>
 
- <div class="kpis kpis-primary" id="kpis-primary"></div>
- <div class="kpis kpis-secondary" id="kpis-secondary"></div>
+ <div class="kpis" id="kpis"></div>
 
  <div class="tabs">
   <button class="tab active" data-tab="perf">Performance</button>
@@ -261,27 +253,11 @@ document.getElementById('partial-note').innerHTML =
 
 /* ---------- KPI ---------- */
 const grand = sum(DATA.monthlyTotal);
+const lastFull = DATA.monthlyTotal[LASTFULL];
+const prevFull = DATA.monthlyTotal[LASTFULL-1];
+const mom = prevFull? (lastFull-prevFull)/prevFull*100 : 0;
 const activeDealers = DATA.dealers.filter(d=>d.totalValue>0).length;
 const activeSkus = DATA.skus.filter(s=>s.totalValue>0).length;
-const mi = M.length-1;                       // bulan terakhir = bulan berjalan
-const thisMonthV = DATA.monthlyTotal[mi];
-const prevMonthV = DATA.monthlyTotal[mi-1];
-function ymOf(m){const p=m.split('-');return{y:+p[0],mo:+p[1]};}
-function quarterOf(m){const o=ymOf(m);return{y:o.y,q:Math.ceil(o.mo/3)};}
-const curQ=quarterOf(M[mi]);
-const prevQ=curQ.q===1?{y:curQ.y-1,q:4}:{y:curQ.y,q:curQ.q-1};
-function qSum(qq){let s=null;M.forEach((m,i)=>{const o=quarterOf(m);if(o.y===qq.y&&o.q===qq.q)s=(s||0)+DATA.monthlyTotal[i];});return s;}
-const thisQV=qSum(curQ), prevQV=qSum(prevQ);
-const curY=ymOf(M[mi]).y;
-function ySum(y){let s=null;M.forEach((m,i)=>{if(ymOf(m).y===y)s=(s||0)+DATA.monthlyTotal[i];});return s;}
-const thisYV=ySum(curY);
-const qLbl=qq=>'Q'+qq.q+" '"+String(qq.y).slice(2);
-function pctVal(cur,base,label){
-  if(base==null||base<=0) return {txt:label+': n/a', cls:'flat'};
-  const ch=(cur-base)/base*100, dv=cur-base;
-  const arrow=ch>0.05?'▲':ch<-0.05?'▼':'•';
-  return {txt:arrow+' '+Math.abs(ch).toFixed(1)+'% '+label+' · Δ '+(dv>=0?'+':'−')+rp(Math.abs(dv)), cls:ch>1?'up':ch<-1?'down':'flat'};
-}
 
 /* ---------- FLAG ENGINE ---------- */
 function recentVel(s){ // avg qty Mar,Apr,May (idx 5,6,7)
@@ -338,20 +314,15 @@ const flags=Object.values(seen).sort((a,b)=>b.score-a.score).slice(0,MAXFLAGS);
 const totalFlags=flags.length;
 
 /* render KPIs */
-const momD=pctVal(thisMonthV,prevMonthV,'MoM');
-const qoqD=pctVal(thisQV,prevQV,'QoQ');
-const cardHtml=k=>`<div class="kpi"><div class="lab">${k[0]}</div><div class="val" title="${k[4]||k[1]}">${k[1]}</div><div class="delta ${k[3]}">${k[2]}</div></div>`;
-document.getElementById('kpis-primary').innerHTML=[
- ['Sales Bulan Ini · '+fmtMonthLbl(M[mi])+' (berjalan)', rp(thisMonthV), momD.txt, momD.cls, rpFull(thisMonthV)],
- ['Sales Quarter Ini · '+qLbl(curQ)+' (berjalan)', rp(thisQV), qoqD.txt, qoqD.cls, rpFull(thisQV)],
- ['Sales Tahun Ini · '+curY+' (YTD)', rp(thisYV), 'YoY: n/a — data 2025 belum genap setahun', 'flat', rpFull(thisYV)],
-].map(cardHtml).join('');
-document.getElementById('kpis-secondary').innerHTML=[
- ["Total Revenue · Okt'25–"+fmtMonthLbl(M[mi]), rp(grand), 'akumulasi semua periode','flat', rpFull(grand)],
+const momCls = mom>1?'up':mom<-1?'down':'flat';
+const momTxt = (mom>0?'▲ ':mom<0?'▼ ':'• ')+Math.abs(mom).toFixed(1)+'% MoM';
+document.getElementById('kpis').innerHTML = [
+ ['Total Revenue','<span title="'+rpFull(grand)+'">'+rp(grand)+'</span>', fmtMonthLbl(M[0])+'–'+fmtMonthLbl(M[M.length-1]),'flat'],
+ [fmtMonthLbl(M[LASTFULL])+' (bln penuh)', rp(lastFull), momTxt, momCls],
  ['Dealer Aktif', activeDealers, 'dari '+DATA.dealers.length+' total','flat'],
  ['SKU Aktif', activeSkus, 'dari '+DATA.skus.length+' SKU','flat'],
  ['Flags (prioritas)', totalFlags, 'top '+totalFlags+' dari '+rawCount+' terdeteksi', rawCount>0?'down':'up'],
-].map(cardHtml).join('');
+].map(k=>`<div class="kpi"><div class="lab">${k[0]}</div><div class="val">${k[1]}</div><div class="delta ${k[3]}">${k[2]}</div></div>`).join('');
 document.getElementById('flagbadge').textContent=totalFlags;
 
 /* ---------- tabs ---------- */
