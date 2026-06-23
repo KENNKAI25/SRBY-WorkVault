@@ -31,13 +31,11 @@ Contoh flow:
 
 ## Pilar Konten Utama
 
-| Pillar | Funnel | AIDA Focus | Goal Konten | Contoh Topik |
-| --- | --- | --- | --- | --- |
-| Audio Problem Awareness | TOFU | Attention -> Interest | Bikin audience sadar problem audio yang sering mereka abaikan | Kenapa suara vlog outdoor sering bocor?; Mic HP vs wireless mic di mall; Apa itu clipping? |
-| Product Knowledge | MOFU | Interest | Jelasin fitur produk dengan konteks nyata, bukan spec dump | Air vs Air SE; Safety Track; 90 dB SnR; lavalier optional; full duplex intercom |
-| Creator Workflow / Use Case | TOFU-MOFU | Attention -> Interest | Tunjukin kapan produk dipakai dalam workflow creator/pro user | Setup interview 2 orang; vlog handheld; event crew communication; podcast mobile |
-| Real Test & Comparison | MOFU | Interest -> Desire soft | Buktiin benefit lewat test visual/audio yang gampang dipahami | Before-after audio; indoor vs outdoor; noisy mall test; Air SE vs built-in phone mic |
-| Buying & Setup Guide | MOFU-BOFU | Interest -> Desire -> Action soft | Bantu audience pilih produk yang cocok tanpa terasa jualan keras | Air SE atau Air untuk creator HP-first; single TX vs dual TX; setup pertama setelah beli wireless mic |
+| Pillar                       | Funnel    | AIDA Focus            | Goal Konten                                                                                                                                    | Contoh Topik                                                                                                                           |
+| ---------------------------- | --------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Audio Problem Awareness      | TOFU      | Attention -> Interest | Bikin audience sadar problem audio yang sering mereka abaikan                                                                                  | Kenapa suara vlog outdoor sering bocor?; Mic HP vs wireless mic di mall; Apa itu clipping?                                             |
+| Product Knowledge            | MOFU      | Interest              | Jelasin fitur produk dengan konteks nyata dan juga istilah-istilah penting pada product, bukan spec dump                                       | Air vs Air SE; Safety Track; 90 dB SnR; lavalier optional; full duplex intercom                                                        |
+| Pro User Workflow / Use Case | TOFU-MOFU | Attention -> Interest | Tunjukin kapan produk dipakai dalam workflow pro user Saramonic: show manager, event organizer, filmmaker, rental, soundman, dan crew produksi | Event crew communication; show caller workflow; filmmaker set communication; rental intercom setup; multi-crew production coordination |
 
 
 
