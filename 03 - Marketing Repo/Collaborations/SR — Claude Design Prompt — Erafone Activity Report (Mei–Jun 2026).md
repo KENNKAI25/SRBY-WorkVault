@@ -29,56 +29,7 @@
 
 ---
 
-## BAGIAN 2 — Material Checklist (ISI DULU SEBELUM RUN)
-
-> Yang sudah diisi = data Kenny/Todoist. `{{...}}` = masih kosong, lengkapi (kalau belum ada angka, tulis "menyusul").
-
-### Global
-- Periode: **Mei – Juni 2026**
-- Logo Saramonic: **Saramonic Logo** · Logo Erafone: **Erafone_(Inverted).svg**
-
-### Executive Summary
-- 4 sesi training · 4 toko di-branding · 6 KOL aktivasi · **21 peserta** dilatih
-- Highlight sales (opsional, hati-hati ke partner): `{{SALES_HIGHLIGHT}}`
-
-### Slide 3 — Erafone Training (selesai)
-- Produk: Air, Air SE, Ultra, SR-C series
-- Toko & peserta: **Margonda 6** (2 Jun) · **Sedayu 5** (awal Jun) · **Region 5 — 5** (6 Jun) · **MOI 5** (15 Jun) = **21**
-- Output (umum): Staff paham key selling point utama & cara jualan tiap produk
-- Challenges (umum): Jumlah peserta per sesi sedikit → transfer knowledge ke ERO lain belum optimal
-- Foto: Margonda `{{MARGONDA_FOTO}}` · Sedayu `{{SEDAYU_FOTO}}` · R5 `{{R5_FOTO}}` · MOI **tidak ada (lupa foto)**
-
-### Slide 4 — Visual Branding 4 Toko (ongoing, target 26 Jun)
-- Toko & ukuran (cm): Bintaro Xchange (96×62) · Ruko Kemang (96×58) · Kelapa Gading (108,5×59) · MOI (92×56)
-- Output: `{{BRANDING_OUTPUT}}` (mis. status print/pasang per toko)
-- Challenges: `{{BRANDING_CHALLENGE}}` · Foto: `{{BRANDING_FOTO}}`
-
-### Slide 5 — Dealer Program (special price & discount untuk Erafone)
-- Program: PAYDAY (25 Mei–6 Jun) · Double Date 5.5 · Payday Sharing (25 Jun–7 Jul)
-- Output: `{{PROMO_OUTPUT}}` (mis. uplift sell-out %, SKU terlaris)
-- Challenges: `{{PROMO_CHALLENGE}}`
-
-### Slide 6 — Special Purchase Program & Voucher
-- **Bundling pembelian:** Beli 500 pcs Saramonic Air / Air SE → gratis 20 pcs Blink900 B2TG (nilai ≈ **Rp 80 juta**)
-- **Voucher Indomaret:** Rp 500.000 untuk tiap toko yang capai target sell-out **Rp 20 juta/toko**
-- Output: `{{SPP_OUTPUT}}` (mis. jumlah toko capai target, total unit terjual)
-- Challenges: `{{SPP_CHALLENGE}}`
-
-### Slide 7 — Marketing Activity
-- **PWP Bundling (OPPO/VIVO, draft):** Output/status `{{PWP_OUTPUT}}` · Challenges `{{PWP_CHALLENGE}}`
-- **Cross Brand Workshop:** Brief `{{WORKSHOP_BRIEF}}` · Output `{{WORKSHOP_OUTPUT}}` · Challenges `{{WORKSHOP_CHALLENGE}}`
-- **KOL Visit Program (6, on-progress):** offline — rizalhamzahnasution, technoboy.10, Akkang Heyhe, endrilost · online — rhyndutech, Priscilia Tanbayong → Output `{{KOL_OUTPUT}}` · Challenges `{{KOL_CHALLENGE}}`
-- **Lainnya (opsional):** `{{MKT_LAINNYA}}`
-
-### Slide 8 — Content & Collaboration
-- **Podcast & Live Session Erafone R5** (upcoming — 25 Jun) → Target output `{{PODCAST_TARGET}}` · Catatan/risiko `{{PODCAST_CHALLENGE}}`
-
----
-
-## BAGIAN 3 — THE PROMPT (copy-paste ke Claude Design)
-
-> Replace `{{...}}` dengan angka asli dulu, lalu copy semua dari garis bawah ini.
-
+## BAGIAN 2 — THE PROMPT (copy-paste ke Claude Design)
 ---
 
 Buatkan **presentasi visual (HTML deck, rasio 16:9, navigasi keyboard kiri/kanan, satu file mandiri tanpa dependency eksternal)** berisi laporan aktivitas **Saramonic × Erafone periode Mei–Juni 2026**, untuk dipresentasikan ke **partner Erajaya/Erafone**. Tone profesional, partnership, fokus hasil & komitmen. Semua teks **Bahasa Indonesia**.
@@ -94,7 +45,7 @@ Buatkan **presentasi visual (HTML deck, rasio 16:9, navigasi keyboard kiri/kanan
 
 1. **Cover** — "Saramonic × Erafone — Activity Report" · subjudul "Periode Mei–Juni 2026" · ruang logo Saramonic & Erafone.
 
-2. **Executive Summary** — 4 metrik besar: **4** sesi training · **4** toko di-branding · **6** KOL aktivasi · **21** peserta dilatih. Tambah 1 kalimat ringkas pencapaian. (Highlight sales: {{SALES_HIGHLIGHT}} — hapus baris ini kalau kosong.)
+2. **Executive Summary** — 4 metrik besar: **4** sesi training · **4** toko di-branding · **6** KOL aktivasi · **21** peserta dilatih. Tambah 1 kalimat ringkas pencapaian. 
 
 3. **Erafone Training**
    - BRIEF: Training & demoday produk Air, Air SE, Ultra, dan SR-C series untuk staff ERO di 4 toko Erafone — Region 1 Margonda, Region 1 Sedayu, Region 5, dan MOI (Mei–Jun 2026).
@@ -128,23 +79,4 @@ Buatkan **presentasi visual (HTML deck, rasio 16:9, navigasi keyboard kiri/kanan
 
 9. **Key Learnings & Next Step** — 3–4 poin pembelajaran utama dari aktivitas Mei–Jun + rekomendasi Phase 2 (sesi training lanjutan untuk perluasan ERO, scale visual branding, perluas KOL & cross-brand). Tutup dengan kalimat komitmen partnership Saramonic × Erafone.
 
----
 
-## BAGIAN 4 — Step-by-Step
-
-1. Lengkapi placeholder yang tersisa di BAGIAN 2 (branding, dealer program, special purchase, marketing activity, podcast). Prioritas: output + challenge. Cross Brand Workshop perlu brief singkat dari kamu.
-2. Replace `{{...}}` di BAGIAN 3 dengan angka asli; hapus baris yang kosong.
-3. Paste BAGIAN 3 ke Claude Design → generate.
-4. Pasang foto per slide (drag / minta ganti). MOI tidak ada foto — pakai grafis/ikon saja.
-5. Review tone partner di blok Challenges (pola "kendala → solusi", jangan nyalahin Erafone).
-6. Export / print-to-PDF kalau perlu versi kirim.
-
----
-
-## Catatan & flag
-
-- **Dealer Program** = khusus special price & discount. **Special Purchase Program & Voucher** = slide terpisah (bundling Blink900 + voucher Indomaret). Aktivitas marketing lain (PWP, Cross Brand Workshop, KOL) ada di slide **Marketing Activity**.
-- **Voucher Indomaret** saya tafsirkan: Rp 500.000/toko diberikan kalau toko capai target sell-out Rp 20 juta. Koreksi kalau mekanismenya beda.
-- **Cross Brand Workshop** = item baru, brief masih kosong (`{{WORKSHOP_BRIEF}}`) — kasih detail singkat (apa, kapan, brand partner).
-- **Sales number** default tidak ditampilkan ke partner kecuali kamu mau (isi `{{SALES_HIGHLIGHT}}`).
-- Tanggal Sedayu ("awal Jun") & R5 ("6 Jun") — konfirmasi kalau butuh presisi.
