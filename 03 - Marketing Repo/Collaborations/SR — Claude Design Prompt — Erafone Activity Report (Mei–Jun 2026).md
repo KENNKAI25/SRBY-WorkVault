@@ -44,15 +44,13 @@
 ### Global
 - Periode laporan: **Mei – Juni 2026**
 - Logo Saramonic: Saramonic Logo
-- Logo Erafone/Erajaya: `{{PATH_LOGO_ERAFONE}}`
-- Warna aksen deck: hitam/charcoal + aksen oranye Saramonic (ganti kalau ada hex resmi: `{{HEX_AKSEN}}`)
+- Logo Erafone/Erajaya: Erafone_(Inverted).svg
 
 ### Executive Summary (angka besar)
 - Total sesi training Erafone: **4** (Margonda, Sedayu, R5, MOI)
 - Total toko di-branding: **4** (Bintaro Xchange, Ruko Kemang, Kelapa Gading, MOI)
 - Total KOL approved visit Erafone: **6**
-- Total peserta training (semua sesi): `{{TOTAL_PESERTA}}`
-- Sell-in / sell-out highlight (opsional): `{{SALES_HIGHLIGHT}}`
+- Total peserta training (semua sesi): 21
 
 ### A. Training (per sesi — isi yang sama buat tiap toko)
 **A1. Erafone Region 1 — Margonda** (selesai 2 Jun 2026)
@@ -72,15 +70,10 @@
 
 **A4. Erafone MOI (Mall of Indonesia)** (selesai 15 Jun 2026)
 - Produk: Air, Air SE, Ultra, SR-C series
-- Peserta: `{{MOI_PESERTA}}` · Output: `{{MOI_OUTPUT}}` · Challenges: `{{MOI_CHALLENGE}}` · Foto: `{{MOI_FOTO}}`
+- Peserta: 5 · Output: Pembelajaran key selling point utama & cara jualan · Challenges: `{{MOI_CHALLENGE}}` · Foto: No Photo, forget to take
 
 ### B. Merchandising & Branding
-**B1. POP Material Air & Air SE** (selesai 10–13 Jun 2026)
-- Brief: desain POP material hero product (Air & Air SE) + versi informatif harga, untuk display Erafone
-- Output: `{{POP_OUTPUT}}` (mis. X desain final, didistribusi ke Y toko)
-- Challenges: `{{POP_CHALLENGE}}` · Foto: `{{POP_FOTO}}`
-
-**B2. Visual Branding 4 Toko** (ongoing, target 26 Jun 2026)
+**B1. Visual Branding 4 Toko** (ongoing, target 26 Jun 2026)
 - Toko & ukuran: Bintaro Xchange (96×62), Ruko Kemang (96×58), Kelapa Gading (108,5×59), MOI (92×56)
 - Output: `{{BRANDING_OUTPUT}}` (mis. status print/pasang per toko)
 - Challenges: `{{BRANDING_CHALLENGE}}` · Foto: `{{BRANDING_FOTO}}`
