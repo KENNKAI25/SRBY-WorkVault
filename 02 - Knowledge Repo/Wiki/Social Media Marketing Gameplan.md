@@ -7,18 +7,8 @@
 - Istilah-istilah dalam product audio sharing
 - Product knowledge meliputi Air, Air SE, Ultra, K9, Witalk9, Witalk9x, WiTalk BASE, SG Mic, Soundbird V6
 
-### 
 
 
-# Funnels
 
-### AIDA Framework
-**Awareness**
-
-**Interest**
-
-**Desire**
-
-**Action**
 
 
