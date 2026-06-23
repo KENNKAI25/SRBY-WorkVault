@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Marketing Repo/CLAUDE.md",
+                "file": "03 - Marketing Repo/Guidelines/Social Media Marketing Gameplan.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CLAUDE"
+              "title": "Social Media Marketing Gameplan"
             }
           }
         ]
@@ -124,13 +124,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "03 - Marketing Repo/CLAUDE.md",
+                "file": "03 - Marketing Repo/Guidelines/Social Media Marketing Gameplan.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of CLAUDE"
+              "title": "Outline of Social Media Marketing Gameplan"
             }
           },
           {
@@ -247,12 +247,12 @@
   },
   "active": "68e82cc49853292d",
   "lastOpenFiles": [
+    "03 - Marketing Repo/CLAUDE.md",
     "07 - Drawings/Social Media Content Workflow.excalidraw.md",
     "06 - Clippings/Higher usage limits for Claude and a compute deal with SpaceX.md",
     "06 - Clippings/Getting better results with Claude.md",
     "06 - Clippings/Your first conversation with Claude.md",
     "04 - Sales Data/CLAUDE.md",
-    "03 - Marketing Repo/CLAUDE.md",
     "02 - Knowledge Repo/Brain Dump/Saramonic & BOYA Checklist.md",
     "03 - Marketing Repo/AGENTS.md",
     "03 - Marketing Repo/Guidelines/Social Media Marketing Gameplan.md",

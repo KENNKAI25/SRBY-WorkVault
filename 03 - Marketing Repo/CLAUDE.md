@@ -8,113 +8,63 @@ Instruksi ini berlaku untuk semua task yang dikerjakan di dalam folder `03 - Mar
 
 `Marketing Repo` adalah **pusat dokumentasi eksekusi marketing** untuk Saramonic Indonesia & BOYA Indonesia.
 
-Setiap task yang menyebut, merujuk, atau berhubungan dengan:
-- **Event** (pameran, trade show, pop-up, road show)
-- **Workshop / Masterclass**
-- **Aktivitas promosi** (demo day, sampling, experiential)
-- **Kolaborasi** (KOL, brand partner, komunitas, media)
-- **Campaign brief / marketing brief** yang sudah atau akan dieksekusi
-
-→ **Wajib merujuk ke folder ini** dan menyimpan output di sini, bukan di tempat lain.
+Setiap task yang berhubungan dengan kolaborasi, konten sosmed, pameran, workshop, KOL, atau aktivitas marketing lainnya → **wajib merujuk ke folder ini** dan menyimpan output di sini.
 
 ---
 
 ## 2. Struktur Subfolder & Aturan Penggunaan
 
-### 📁 `Brainstorm Area/`
-
-**Isi:** Dokumen brainstorm, riset, analisis, dan rencana strategi **sebelum implementasi** dimulai.
-
-**Masuk ke sini kalau:**
-- Brainstorm ide marketing, strategi baru untuk event, aktivitas, atau kampanye
-- Riset kompetitor, market sizing, atau audience mapping yang mendahului eksekusi
-- Draft brief awal yang belum dikonfirmasi
-- Post-mortem / evaluasi aktivitas yang sudah selesai
-
-**Jangan masuk sini:** Dokumen yang sudah final & dikonfirmasi → pindah ke subfolder yang relevan.
-
-**Naming convention:** `[Brand]_[Tipe Dokumen]_[Nama Aktivitas]_[YYYY-MM]`
-*Contoh: `SR_PlanningBrief_RoadshowBandung_2026-06.docx`*
-
----
-
 ### 📁 `Collaborations/`
 
-**Isi:** Brief kolaborasi yang sudah **dikonfirmasi** — artinya ada sign-off dari Kenny atau sudah ada komitmen dari pihak partner.
+**Isi:** Brief atau catatan kolaborasi yang sudah **dikonfirmasi** — ada sign-off dari Kenny atau komitmen dari pihak partner.
 
 **Masuk ke sini kalau:**
 - Brief kolaborasi KOL / kreator yang sudah disetujui
-- Partnership deck / MOU brief dengan brand/komunitas/media yang sudah confirmed
-- Activation plan kolaborasi yang sudah di-greenlight
+- Partnership deck / plan dengan brand, komunitas, retailer, atau media yang sudah confirmed
+- Dokumen aktivasi (pameran, workshop, event) yang sudah di-greenlight
 
-**Jangan masuk sini:**
-- Proposal kolaborasi yang masih dalam negosiasi → taruh di `Brainstorm Area/` dulu
-- Kolaborasi yang dibatalkan / rejected
-
-**Naming convention:** `[Brand]_Collab_[Nama Partner]_[YYYY-MM]`
-*Contoh: `BY_Collab_KOLJakarta_2026-07.docx`*
+**Jangan masuk sini:** Draft/proposal yang masih negosiasi atau belum confirmed → simpan di `02 - Knowledge Repo/Brain Dump/`.
 
 ---
 
-### 📁 `Exhibition/`
+### 📁 `Guidelines/`
 
-**Isi:** Brief pameran / exhibition yang sudah **dikonfirmasi** — booth sudah dibooking atau keikutsertaan sudah diputuskan.
+**Isi:** Panduan dan referensi strategis untuk eksekusi marketing — content pillar, framework scripting, tone of voice, SOP, dll.
+
+**Cara penggunaan:**
+- **Fast skim saja** — tidak perlu dibaca penuh setiap saat.
+- **Wajib dirujuk** kalau task yang sedang dikerjakan relevan dengan isi file tersebut.
+  - Contoh: sebelum buat brief konten sosmed → baca `Social Media Marketing Gameplan.md` dulu.
+- Kalau ada conflict antara Guidelines dan instruksi langsung dari Kenny → ikuti instruksi Kenny.
+
+---
+
+### 📁 `Social Media Content/`
+
+**Isi:** Semua brief konten social media — baik yang sudah final maupun yang sedang dikerjakan.
 
 **Masuk ke sini kalau:**
-- Exhibition brief resmi (Indofest, Comiket, trade show, dsb.) yang sudah fixed
-- Floor plan, booth layout brief, atau run-of-show untuk pameran
-- Materi pendukung booth (product lineup, talking points, activation plan) yang sudah final
+- Brief / prompt konten untuk Instagram, TikTok, YouTube Shorts, atau platform sosmed lainnya
+- Slide deck brief, carousel brief, atau video script brief untuk konten sosmed Saramonic / BOYA
 
-**Jangan masuk sini:**
-- Evaluasi pameran yang sudah lewat → taruh di `Brainstorm Area/`
-- Pameran yang masih tahap consideration → taruh di `Brainstorm Area/`
-
-**Naming convention:** `[Brand]_Exhibition_[Nama Event]_[YYYY-MM]`
-*Contoh: `SR_Exhibition_Indofest2026_2026-08.docx`*
+**Cara penggunaan:**
+- Kalau membuat brief konten sosmed baru → **baca `Guidelines/Social Media Marketing Gameplan.md` dulu** untuk pastikan alignment dengan content pillar dan AIDA framework.
+- Kalau brief untuk topik yang sudah pernah dibuat → cek file yang ada dulu, hindari duplikasi.
 
 ---
 
-### 📁 `Masterclass Workshop/`
+## 3. Draft & Brainstorm
 
-**Isi:** Brief masterclass / workshop yang sudah **dikonfirmasi**, khusus untuk **Saramonic Professional SKU**.
+Dokumen yang **belum confirmed** atau masih tahap eksplorasi (ide, draft awal, riset, post-mortem) → simpan di:
 
-**Masuk ke sini kalau:**
-- Workshop / masterclass brief untuk produk Saramonic lini pro (wireless system, intercom, dll.)
-- Rundown acara, speaker brief, materi presentasi yang sudah final
-- Activation plan workshop yang sudah di-sign off
+📁 `02 - Knowledge Repo/Brain Dump/`
 
-**Catatan penting:**
-- Folder ini **khusus Saramonic** — produk BOYA tidak masuk ke sini
-- Hanya SKU **Professional** — bukan entry-level atau consumer Saramonic
-- Kalau workshop BOYA atau workshop Saramonic non-pro → taruh di `Collaborations/` atau `Brainstorm Area/` sesuai statusnya
-
-**Naming convention:** `SR_Workshop_[Nama Acara/Partner]_[YYYY-MM]`
-*Contoh: `SR_Workshop_FilmmakersClubJKT_2026-09.docx`*
-
----
-
-## 3. Alur Kerja Default
-
-```
-IDEA / BRIEF MASUK
-       ↓
- Brainstorm Area/
-  (riset, draft, strategi)
-       ↓
-  CONFIRMED? ──→ NO → tetap di Analysis & Planning
-       ↓ YES
-  Jenis aktivitas?
-  ├─ Kolaborasi → Collaborations/
-  ├─ Pameran → Exhibition/
-  └─ Workshop Saramonic Pro → Masterclass Workshop/
-```
+Baru pindah ke subfolder Marketing Repo yang relevan setelah status confirmed.
 
 ---
 
 ## 4. Aturan Tambahan
 
-- **Status "confirmed"** = ada persetujuan eksplisit dari Kenny atau ada komitmen dari pihak eksternal (kontrak, PO, booking).
-- Kalau task meminta update atau membuat dokumen baru untuk aktivitas yang sudah ada di salah satu subfolder → **baca file yang sudah ada dulu** sebelum mulai.
-- Kalau ada conflict antara status di `01 - About/Marketing Activity.md` (global tracker) dan dokumen di subfolder ini → **tanya Kenny**, jangan asumsikan.
-- Semua file yang dibuat di sini tetap mengikuti **naming convention** dan **format output** dari instruksi global §8 dan §12.
+- **Status "confirmed"** = ada persetujuan eksplisit dari Kenny atau komitmen dari pihak eksternal (kontrak, PO, booking, sign-off).
+- Kalau task meminta update atau membuat dokumen baru untuk aktivitas yang sudah ada → **baca file yang sudah ada dulu** sebelum mulai.
 - **Hard Rules §5 dari CLAUDE.md global tetap berlaku** — tidak ada file yang di-overwrite, dihapus, atau dipublish tanpa konfirmasi eksplisit.
