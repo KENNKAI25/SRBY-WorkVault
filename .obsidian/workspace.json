@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
+                "file": "03 - Marketing Repo/CLAUDE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides)"
+              "title": "CLAUDE"
             }
           }
         ]
@@ -124,13 +124,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
+                "file": "03 - Marketing Repo/CLAUDE.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides)"
+              "title": "Outline of CLAUDE"
             }
           },
           {
@@ -247,16 +247,17 @@
   },
   "active": "8efbf7641a571bf2",
   "lastOpenFiles": [
+    "02 - Knowledge Repo/Brain Dump/Saramonic & BOYA Checklist.md",
+    "03 - Marketing Repo/CLAUDE.md",
+    "03 - Marketing Repo/AGENTS.md",
+    "03 - Marketing Repo/Guidelines/Social Media Marketing Gameplan.md",
+    "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
+    "03 - Marketing Repo/Guidelines",
     "07 - Drawings/Social Media Content Workflow.excalidraw.md",
     "07 - Drawings/Erafone Marketing Plan.excalidraw 1.md",
-    "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
-    "02 - Knowledge Repo/Wiki/Social Media Marketing Gameplan.md",
     "04 - Sales Data/AGENTS.md",
     "04 - Sales Data/CLAUDE.md",
-    "03 - Marketing Repo/AGENTS.md",
-    "03 - Marketing Repo/CLAUDE.md",
     "AGENTS.md",
-    "02 - Knowledge Repo/Wiki/Saramonic & BOYA Checklist.md",
     "02 - Knowledge Repo/Brain Dump/Marketing Follow Up Erajaya 2026.md",
     "03 - Marketing Repo/Collaborations/SR — Claude Design Prompt — Erafone Activity Report (Mei–Jun 2026).md",
     "03 - Marketing Repo/Collaborations/Content Brief — Saramonic × Erafone Region 1 KOL.md",
@@ -273,7 +274,6 @@
     "CLAUDE.md",
     "01 - About/Brand Context.md",
     "01 - About/Memory.md",
-    "04 - Sales Data/Saramonic/Claim (Sell-out) Data/Credit Note Usage Data.md",
     "Artifacts/saramonic-sales-dashboard/versions/1782098405350.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782096881616.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782096664301.html",
@@ -283,7 +283,6 @@
     "Artifacts/saramonic-sales-dashboard/versions/1781834718694.html",
     "Artifacts/saramonic-sales-dashboard/versions/1781677716094.html",
     "Artifacts/saramonic-sales-dashboard/thumbnail.png",
-    "Scheduled/refresh-saramonic-dashboard",
     "Artifacts/sales-software-comparison-saramonic/thumbnail.png",
     "Artifacts/saramonic-decision-matrix-v2/thumbnail.png",
     "Artifacts/saramonic-decision-matrix/thumbnail.png"
