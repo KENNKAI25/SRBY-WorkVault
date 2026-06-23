@@ -13,17 +13,17 @@
 
 ## BAGIAN 1 — Struktur Deck (9 slide)
 
-| # | Slide | Isi |
-|---|-------|-----|
-| 1 | Cover | Judul, periode, logo Saramonic × Erafone |
-| 2 | Executive Summary | Metrik besar: 4 training · 4 toko branding · 6 KOL · 21 peserta |
-| 3 | Erafone Training | Brief (4 toko) / Output / Challenges |
-| 4 | Visual Branding | Brief (4 toko) / Output / Challenges |
-| 5 | Dealer Program | Brief (special price & discount Erafone) / Output / Challenges |
-| 6 | Special Purchase Program & Voucher | Brief (bundling Blink900 + voucher Indomaret) / Output / Challenges |
-| 7 | Marketing Activity | Brief (PWP, Cross Brand Workshop, KOL, dll.) / Output / Challenges |
-| 8 | Content & Collaboration | Brief (Podcast R5) / Output / Challenges |
-| 9 | Key Learnings & Next Step | Ringkasan + rekomendasi Phase 2 |
+| #   | Slide                              | Isi                                                                 |
+| --- | ---------------------------------- | ------------------------------------------------------------------- |
+| 1   | Cover                              | Judul, periode, logo Saramonic × Erafone                            |
+| 2   | Executive Summary                  | Metrik besar: 4 training · 4 toko branding · 6 KOL · 21 peserta     |
+| 3   | Erafone Training                   | Brief (4 toko) / Output / Challenges                                |
+| 4   | Visual Branding                    | Brief (4 toko) / Output / Challenges                                |
+| 5   | Dealer Program                     | Brief (special price & discount Erafone) / Output / Challenges      |
+| 6   | Special Purchase Program & Voucher | Brief (bundling Blink900 + voucher Indomaret) / Output / Challenges |
+| 7   | Marketing Activity                 | Brief (PWP, Cross Brand Workshop, KOL, dll.) / Output / Challenges  |
+| 8   | Content & Collaboration            | Brief (Podcast R5) / Output / Challenges                            |
+| 9   | Key Learnings & Next Step          | Ringkasan + rekomendasi Phase Selanjutnya                           |
 
 > Tiap slide topik pakai 3 blok tetap: **Brief** · **Output** · **Challenges**. Sub-item disebut singkat di dalam slide, bukan dipecah jadi slide sendiri.
 
