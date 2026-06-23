@@ -43,7 +43,7 @@
 
 ### Global
 - Periode laporan: **Mei – Juni 2026**
-- Logo Saramonic: `{{PATH_LOGO_SARAMONIC}}`
+- Logo Saramonic: Saramonic Logo
 - Logo Erafone/Erajaya: `{{PATH_LOGO_ERAFONE}}`
 - Warna aksen deck: hitam/charcoal + aksen oranye Saramonic (ganti kalau ada hex resmi: `{{HEX_AKSEN}}`)
 
@@ -57,14 +57,14 @@
 ### A. Training (per sesi — isi yang sama buat tiap toko)
 **A1. Erafone Region 1 — Margonda** (selesai 2 Jun 2026)
 - Produk: Air, Air SE, Ultra, SR-C series
-- Jumlah peserta: `{{MARGONDA_PESERTA}}`
+- Jumlah peserta: 6
 - Output: `{{MARGONDA_OUTPUT}}` (mis. X staff paham demo Air, Y unit demo terpasang)
 - Challenges: `{{MARGONDA_CHALLENGE}}`
 - Foto: `{{MARGONDA_FOTO}}`
 
 **A2. Erafone Region 1 — Sedayu** (selesai awal Jun 2026)
 - Produk: Air, Air SE, Ultra, SR-C series
-- Peserta: `{{SEDAYU_PESERTA}}` · Output: `{{SEDAYU_OUTPUT}}` · Challenges: `{{SEDAYU_CHALLENGE}}` · Foto: `{{SEDAYU_FOTO}}`
+- Peserta: 5 orang · Output: Pembelajaran key selling point utama & cara jualan · Challenges: Orang terlalu sedikit dan transfer knowledge ke ERO lain kurang optimal  · Foto: `{{SEDAYU_FOTO}}`
 
 **A3. Erafone Region 5** (selesai ~6 Jun 2026)
 - Produk: Air, Air SE, Ultra, SR-C series
