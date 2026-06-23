@@ -54,18 +54,15 @@ Buatkan **presentasi visual (HTML deck, rasio 16:9, navigasi keyboard kiri/kanan
 
 4. **Visual Branding 4 Toko**
    - BRIEF: Produksi & pemasangan visual branding Saramonic di 4 toko Erafone: Bintaro Xchange, Ruko Kemang, Kelapa Gading, dan Mall of Indonesia.
-   - OUTPUT: {{BRANDING_OUTPUT}}.
+   - OUTPUT: Better visibility untuk Saramonic & juga demo untuk
    - CHALLENGES: {{BRANDING_CHALLENGE}}.
 
 5. **Dealer Program**
    - BRIEF: Program harga khusus & diskon untuk Erafone — PAYDAY (25 Mei–6 Jun), Double Date 5.5, dan Payday Sharing (25 Jun–7 Jul).
-   - OUTPUT: {{PROMO_OUTPUT}}.
-   - CHALLENGES: {{PROMO_CHALLENGE}}.
+   - OUTPUT: Membantu sell-out SKU Saramonic di Erafone
 
 6. **Special Purchase Program & Voucher**
    - BRIEF: Insentif pembelian & reward sell-out untuk Erafone — (1) Bundling: beli 500 pcs Saramonic Air / Air SE gratis 20 pcs Blink900 B2TG (nilai ≈ Rp 80 juta); (2) Voucher Indomaret Rp 500.000 untuk tiap toko yang mencapai target sell-out Rp 20 juta/toko.
-   - OUTPUT: {{SPP_OUTPUT}}.
-   - CHALLENGES: {{SPP_CHALLENGE}}.
 
 7. **Marketing Activity** (tampilkan sub-poin dalam 1 slide)
    - BRIEF: Inisiatif marketing pendukung di Erafone — (1) PWP Bundling: Purchase-With-Purchase Saramonic dengan pembelian OPPO/VIVO; (2) Cross Brand Workshop: {{WORKSHOP_BRIEF}}; (3) KOL Visit Program: 6 KOL kunjungi toko Erafone & buat konten (offline + online).
