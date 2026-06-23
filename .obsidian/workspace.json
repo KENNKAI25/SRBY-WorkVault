@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "9f0d784a69f3ea33",
+        "id": "b30dcfa5baaa1089",
         "type": "tabs",
         "children": [
           {
-            "id": "8efbf7641a571bf2",
+            "id": "68e82cc49853292d",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -245,18 +245,21 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8efbf7641a571bf2",
+  "active": "68e82cc49853292d",
   "lastOpenFiles": [
-    "02 - Knowledge Repo/Brain Dump/Saramonic & BOYA Checklist.md",
+    "07 - Drawings/Social Media Content Workflow.excalidraw.md",
+    "06 - Clippings/Higher usage limits for Claude and a compute deal with SpaceX.md",
+    "06 - Clippings/Getting better results with Claude.md",
+    "06 - Clippings/Your first conversation with Claude.md",
+    "04 - Sales Data/CLAUDE.md",
     "03 - Marketing Repo/CLAUDE.md",
+    "02 - Knowledge Repo/Brain Dump/Saramonic & BOYA Checklist.md",
     "03 - Marketing Repo/AGENTS.md",
     "03 - Marketing Repo/Guidelines/Social Media Marketing Gameplan.md",
     "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
     "03 - Marketing Repo/Guidelines",
-    "07 - Drawings/Social Media Content Workflow.excalidraw.md",
     "07 - Drawings/Erafone Marketing Plan.excalidraw 1.md",
     "04 - Sales Data/AGENTS.md",
-    "04 - Sales Data/CLAUDE.md",
     "AGENTS.md",
     "02 - Knowledge Repo/Brain Dump/Marketing Follow Up Erajaya 2026.md",
     "03 - Marketing Repo/Collaborations/SR — Claude Design Prompt — Erafone Activity Report (Mei–Jun 2026).md",
@@ -272,8 +275,6 @@
     "03 - Marketing Repo/Social Media Content/SR — Prompt (ChatGPT Image) — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
     "AI Assistant Workflow (Claude & Codex).md",
     "CLAUDE.md",
-    "01 - About/Brand Context.md",
-    "01 - About/Memory.md",
     "Artifacts/saramonic-sales-dashboard/versions/1782098405350.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782096881616.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782096664301.html",
