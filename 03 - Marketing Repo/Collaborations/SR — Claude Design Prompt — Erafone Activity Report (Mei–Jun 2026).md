@@ -55,7 +55,7 @@ Buatkan **presentasi visual (HTML deck, rasio 16:9, navigasi keyboard kiri/kanan
 4. **Visual Branding 4 Toko**
    - BRIEF: Produksi & pemasangan visual branding Saramonic di 4 toko Erafone: Bintaro Xchange, Ruko Kemang, Kelapa Gading, dan Mall of Indonesia.
    - OUTPUT: Better visibility untuk Saramonic & juga demo untuk
-   - CHALLENGES: {{BRANDING_CHALLENGE}}.
+   - CHALLENGES: Masih ada beberapa toko yang menampilkan SKu saramonic pada pojok bahwa toko (visibility kurang) juga belum ada demo yang terpasang (bisa share beberapa foto display toko)
 
 5. **Dealer Program**
    - BRIEF: Program harga khusus & diskon untuk Erafone — PAYDAY (25 Mei–6 Jun), Double Date 5.5, dan Payday Sharing (25 Jun–7 Jul).
@@ -66,13 +66,13 @@ Buatkan **presentasi visual (HTML deck, rasio 16:9, navigasi keyboard kiri/kanan
 
 7. **Marketing Activity** (tampilkan sub-poin dalam 1 slide)
    - BRIEF: Inisiatif marketing pendukung di Erafone — (1) PWP Bundling: Purchase-With-Purchase Saramonic dengan pembelian OPPO/VIVO; (2) Cross Brand Workshop: {{WORKSHOP_BRIEF}}; (3) KOL Visit Program: 6 KOL kunjungi toko Erafone & buat konten (offline + online).
-   - OUTPUT: PWP — {{PWP_OUTPUT}}; Workshop — {{WORKSHOP_OUTPUT}}; KOL — {{KOL_OUTPUT}}.
-   - CHALLENGES: {{PWP_CHALLENGE}} / {{WORKSHOP_CHALLENGE}} / {{KOL_CHALLENGE}}.
+   - OUTPUT: KOL - Video content & Sales increase di toko-toko Erafone Region 1 & 5
+   - CHALLENGES: KOL - Pada saat take content, tim ERO saling lempar yang akan in-frame jadi menyebabkan keterlambatan shoot content
 
 8. **Content & Collaboration**
    - BRIEF: Podcast & Live Session kolaborasi dengan Erafone Region 5 (terjadwal 25 Jun 2026).
-   - OUTPUT (target): {{PODCAST_TARGET}}.
-   - CHALLENGES / catatan: {{PODCAST_CHALLENGE}}.
+   - OUTPUT (target): Sharing product knowledge dan pembuatan reusable content yang bisa di up di multiple region
+
 
 9. **Key Learnings & Next Step** — 3–4 poin pembelajaran utama dari aktivitas Mei–Jun + rekomendasi Phase 2 (sesi training lanjutan untuk perluasan ERO, scale visual branding, perluas KOL & cross-brand). Tutup dengan kalimat komitmen partnership Saramonic × Erafone.
 
