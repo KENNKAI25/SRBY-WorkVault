@@ -68,4 +68,3 @@
 ### Offline Activity Tap In
 1. Offline event Erafone / iBox (kedepanya) untuk tap in di acara-acara pameran dimana kita akan membuka booth
 2. Pada saat offline event activity butuh booth design yang akan dikurasi terlebih dahulu oleh tim Erajaya, kemudian para vendor bisa berjualan langsung dengan menggunakan material number baru
-3. 
