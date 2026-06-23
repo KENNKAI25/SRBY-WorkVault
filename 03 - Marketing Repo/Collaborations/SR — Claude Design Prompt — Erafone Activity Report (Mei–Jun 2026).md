@@ -58,8 +58,8 @@
 **A1. Erafone Region 1 — Margonda** (selesai 2 Jun 2026)
 - Produk: Air, Air SE, Ultra, SR-C series
 - Jumlah peserta: 6
-- Output: `{{MARGONDA_OUTPUT}}` (mis. X staff paham demo Air, Y unit demo terpasang)
-- Challenges: `{{MARGONDA_CHALLENGE}}`
+- Output: Pembelajaran key selling point utama & cara jualan
+- Challenges: Orang terlalu sedikit dan transfer knowledge ke ERO lain kurang optimal 
 - Foto: `{{MARGONDA_FOTO}}`
 
 **A2. Erafone Region 1 — Sedayu** (selesai awal Jun 2026)
@@ -68,7 +68,7 @@
 
 **A3. Erafone Region 5** (selesai ~6 Jun 2026)
 - Produk: Air, Air SE, Ultra, SR-C series
-- Peserta: `{{R5_PESERTA}}` · Output: `{{R5_OUTPUT}}` · Challenges: `{{R5_CHALLENGE}}` · Foto: `{{R5_FOTO}}`
+- Peserta: 5 · Output: `{{R5_OUTPUT}}` · Challenges: `{{R5_CHALLENGE}}` · Foto: `{{R5_FOTO}}`
 
 **A4. Erafone MOI (Mall of Indonesia)** (selesai 15 Jun 2026)
 - Produk: Air, Air SE, Ultra, SR-C series
