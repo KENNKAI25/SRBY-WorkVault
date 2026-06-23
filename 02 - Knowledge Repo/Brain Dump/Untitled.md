@@ -5,4 +5,8 @@
 # Erafone Deck
 1. Share activity yang sudah dilakukan ke erafone
 2. Share kesulitan di Erafone
-3. 
+
+
+# Modern Channel
+1. Detailed Modern channel store & potential sharing
+2. 
