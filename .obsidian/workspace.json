@@ -11,12 +11,14 @@
             "id": "8efbf7641a571bf2",
             "type": "leaf",
             "state": {
-              "type": "excalidraw",
+              "type": "markdown",
               "state": {
-                "file": "07 - Drawings/Social Media Content Workflow.excalidraw.md"
+                "file": "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "excalidraw-icon",
-              "title": "Social Media Content Workflow.excalidraw"
+              "icon": "lucide-file",
+              "title": "SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides)"
             }
           }
         ]
@@ -122,13 +124,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "07 - Drawings/Social Media Content Workflow.excalidraw.md",
+                "file": "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Social Media Content Workflow.excalidraw"
+              "title": "Outline of SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides)"
             }
           },
           {
@@ -243,10 +245,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d7c239fe0b91e545",
+  "active": "8efbf7641a571bf2",
   "lastOpenFiles": [
-    "07 - Drawings/Erafone Marketing Plan.excalidraw 1.md",
     "07 - Drawings/Social Media Content Workflow.excalidraw.md",
+    "07 - Drawings/Erafone Marketing Plan.excalidraw 1.md",
     "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
     "02 - Knowledge Repo/Wiki/Social Media Marketing Gameplan.md",
     "04 - Sales Data/AGENTS.md",
