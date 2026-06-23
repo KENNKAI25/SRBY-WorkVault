@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02 - Knowledge Repo/Brain Dump/June 2026 kejar target point.md",
+                "file": "02 - Knowledge Repo/Brain Dump/Untitled.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "June 2026 kejar target point"
+              "title": "Untitled"
             }
           }
         ]
@@ -124,13 +124,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02 - Knowledge Repo/Brain Dump/June 2026 kejar target point.md",
+                "file": "02 - Knowledge Repo/Brain Dump/Untitled.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of June 2026 kejar target point"
+              "title": "Outline of Untitled"
             }
           },
           {
@@ -247,6 +247,8 @@
   },
   "active": "8efbf7641a571bf2",
   "lastOpenFiles": [
+    "02 - Knowledge Repo/Brain Dump/June 2026 kejar target point.md",
+    "02 - Knowledge Repo/Brain Dump/Untitled.md",
     "02 - Knowledge Repo/Brain Dump/Flow Claim Credit Note & Penggunaan Credit Note.md",
     "02 - Knowledge Repo/Brain Dump/Serbamulti (Blackmagic) Meeting Notes.md",
     "03 - Marketing Repo/Collaborations/SR — Claude Design Prompt — Erafone Activity Report (Mei–Jun 2026).md",
@@ -279,8 +281,6 @@
     "Artifacts/saramonic-sales-dashboard/versions/1782005312440.html",
     "Artifacts/saramonic-sales-dashboard/versions/1781834718694.html",
     "03 - Marketing Repo/Collaborations/Saramonic x Erajaya Marketing Plan.md",
-    "03 - Marketing Repo/Collaborations/Content Brief — Saramonic × Erafone Region 1 KOL.md",
-    "03 - Marketing Repo/Collaborations/Content Brief — Saramonic × Erafone Region 5 KOL.md",
     "Artifacts/saramonic-sales-dashboard/versions/1781677716094.html",
     "Artifacts/saramonic-sales-dashboard/thumbnail.png",
     "Scheduled/refresh-saramonic-dashboard",
