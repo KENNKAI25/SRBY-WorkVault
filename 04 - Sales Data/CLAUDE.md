@@ -21,6 +21,11 @@ Claude wajib baca file ini + semua file relevan di `04 - Sales Data/` **sebelum 
 - 📈 **Pricing strategy / repricing** — kapan naik/turun, kompetitor positioning
 - 📑 **Sales collateral** — price sheet, dealer card, proposal, sales deck pricing slide
 
+### 1.A.1 Saramonic Sales Dashboard (PENTING)
+
+- 🖥️ Kalau task menyentuh **Saramonic Sales Dashboard** (ubah tampilan, chart, tabel, flag, data, atau deploy ke Netlify) → **WAJIB baca dulu** `Saramonic/Sales Analysis/Saramonic Dashboard — Change Guide.md` sebelum eksekusi. File itu memetakan build pipeline, titik hardcoded, dan 5 langkah finalisasi supaya tidak ada yang kelewat.
+- ❗ Jangan pernah edit `Saramonic Sales Dashboard.html` langsung — itu file generate (ditimpa tiap pagi). Edit di `.dashboard_build/template.html` + `build_dashboard.py`.
+
 ### 1.B Sales Analysis, Forecasting & Performance
 
 - 📊 **Sales analysis** — performance per SKU, per dealer, per dealer type, trend bulanan/quarterly/yearly
