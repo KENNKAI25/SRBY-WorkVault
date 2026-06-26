@@ -10,8 +10,8 @@
 <style>
 :root{color-scheme:light;
  --bg:#f4f5f7;--card:#ffffff;--ink:#1a1d21;--mut:#6b7280;--line:#e6e8eb;
- --brand:#0b5cff;--brand2:#0a3a99;--good:#15a06b;--warn:#e0921a;--bad:#d8453b;
- --chip:#eef2ff;}
+ --brand:#FF6B00;--brand2:#B34A00;--good:#15a06b;--warn:#e0921a;--bad:#d8453b;
+ --chip:#fff1e6;}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:1.45}
 .wrap{max-width:1180px;margin:0 auto;padding:18px 18px 60px}
@@ -72,8 +72,8 @@ tbody tr:hover{background:#f8fafc}
 .tag-drop{background:#fbe7e5;color:#d8453b}
 .tag-once{background:#fdf2dd;color:#b5790f}
 .tag-dorm{background:#eef0f3;color:#555}
-.qcol{background:#f3f6ff}
-th.qcol{background:#e9eeff}
+.qcol{background:#fff4ec}
+th.qcol{background:#ffe2cc}
 .sec-h{font-size:13px;font-weight:700;margin:16px 0 9px;display:flex;align-items:center;gap:8px}
 .sec-h .cnt{background:#eef0f3;color:var(--mut);border-radius:10px;font-size:11px;padding:1px 8px}
 .searchbar{width:100%;padding:8px 11px;border:1px solid var(--line);border-radius:9px;font-size:13px;margin-bottom:11px}
@@ -398,10 +398,10 @@ let trendChart;
 function drawTrend(g){
   let labels,vals,colors;
   if(g==='month'){labels=M.map(fmtMonthLbl);vals=DATA.monthlyTotal;
-    colors=vals.map((_,i)=>i===M.length-1?'#a9c2ff':'#0b5cff');}
+    colors=vals.map((_,i)=>i===M.length-1?'#ffc08a':'#FF6B00');}
   else if(g==='quarter'){labels=Q.map(q=>q.lab+(q.partial?' *':''));vals=Q.map(qVal);
-    colors=Q.map(q=>q.partial?'#a9c2ff':'#0b5cff');}
-  else{labels=YEARS.map(y=>y.lab);vals=YEARS.map(y=>sum(y.idx.map(i=>DATA.monthlyTotal[i])));colors='#0b5cff';}
+    colors=Q.map(q=>q.partial?'#ffc08a':'#FF6B00');}
+  else{labels=YEARS.map(y=>y.lab);vals=YEARS.map(y=>sum(y.idx.map(i=>DATA.monthlyTotal[i])));colors='#FF6B00';}
   const ctx=document.getElementById('trendChart');
   if(trendChart)trendChart.destroy();
   trendChart=new Chart(ctx,{type:'bar',data:{labels,datasets:[{label:'Revenue',data:vals,backgroundColor:colors,borderRadius:6,maxBarThickness:64}]},
@@ -426,7 +426,7 @@ document.querySelectorAll('#perf-seg button').forEach(b=>b.onclick=()=>{
 (function(){
   const cat={};DATA.skus.forEach(s=>{cat[s.type]=(cat[s.type]||0)+s.totalValue;});
   const ent=Object.entries(cat).sort((a,b)=>b[1]-a[1]);
-  const palette=['#0b5cff','#15a06b','#e0921a','#7c3aed','#d8453b','#0891b2','#db2777','#65a30d','#94a3b8'];
+  const palette=['#FF6B00','#15a06b','#e0921a','#7c3aed','#d8453b','#0891b2','#db2777','#65a30d','#94a3b8'];
   new Chart(document.getElementById('catChart'),{type:'doughnut',
    data:{labels:ent.map(e=>e[0]),datasets:[{data:ent.map(e=>e[1]),backgroundColor:palette,borderWidth:1,borderColor:'#fff'}]},
    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{boxWidth:11,font:{size:11}}},
@@ -446,7 +446,7 @@ function barList(el,items,maxv,valFmt){
   const loc={};DATA.dealers.forEach(d=>{loc[d.location||'Lainnya']=(loc[d.location||'Lainnya']||0)+d.totalValue;});
   const ent=Object.entries(loc).sort((a,b)=>b[1]-a[1]);
   new Chart(document.getElementById('locChart'),{type:'bar',
-   data:{labels:ent.map(e=>e[0]),datasets:[{data:ent.map(e=>e[1]),backgroundColor:'#0b5cff',borderRadius:5}]},
+   data:{labels:ent.map(e=>e[0]),datasets:[{data:ent.map(e=>e[1]),backgroundColor:'#FF6B00',borderRadius:5}]},
    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
     tooltip:{callbacks:{label:c=>rpFull(c.raw)}}},scales:{x:{ticks:{callback:v=>rp(v)},grid:{color:'#eef0f3'}},y:{grid:{display:false},ticks:{font:{size:10.5}}}}}});
 })();
@@ -587,7 +587,7 @@ renderSkuTable();renderSkuQty();renderSkuVal();
     const hdr='<thead><tr><th>SKU</th>'+M.map(m=>'<th>'+fmtMonthLbl(m)+(m===M[M.length-1]?' *':'')+'</th>').join('')+'<th>Total</th></tr></thead>';
     let body=sm.map(r=>'<tr><td>'+r.name+'</td>'+r.m.map(x=>'<td>'+(x?x:'<span class=muted>·</span>')+'</td>').join('')+'<td><strong>'+r.t+'</strong></td></tr>').join('');
     const tot=M.map((_,i)=>sm.reduce((a,r)=>a+r.m[i],0));
-    body+='<tr style="background:#f3f6ff"><td><strong>Total unit</strong></td>'+tot.map(t=>'<td><strong>'+(t||0)+'</strong></td>').join('')+'<td><strong>'+tot.reduce((a,b)=>a+b,0)+'</strong></td></tr>';
+    body+='<tr style="background:#fff4ec"><td><strong>Total unit</strong></td>'+tot.map(t=>'<td><strong>'+(t||0)+'</strong></td>').join('')+'<td><strong>'+tot.reduce((a,b)=>a+b,0)+'</strong></td></tr>';
     document.getElementById('dealerSkuTable').innerHTML=hdr+'<tbody>'+body+'</tbody>';
   }
   sel.onchange=()=>render(sel.selectedIndex);
