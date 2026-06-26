@@ -466,6 +466,11 @@
       "folder": true,
       "tag": false,
       "property": false
+    },
+    "04 - Sales Data/Saramonic/SR Sales Data/New Dealer 2026.md": {
+      "folder": true,
+      "tag": false,
+      "property": false
     }
   },
   "collapsedPinnedContexts": {},
@@ -508,6 +513,9 @@
   "folderAppearances": {
     "SR & BY - Claude Cowork/About": {
       "groupBy": "none"
+    },
+    "04 - Sales Data/Saramonic/SR Sales Data": {
+      "mode": "compact"
     }
   },
   "tagIcons": {},
