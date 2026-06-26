@@ -17,9 +17,17 @@ LANGKAH:
    - html_path: <path OUTPUT_HTML tadi>
    - update_summary: "Auto-refresh data sales terbaru"
 
-4. Setelah update artifact berhasil, balas singkat: konfirmasi dashboard sudah di-refresh + tanggal/grand total dari baris "OK" tadi. Jangan tampilkan angka dealer/SKU detail di chat (data confidential).
+4. Siapkan file untuk publish Netlify: copy HTML hasil regenerate ke folder deploy sebagai index.html via bash:
+   cp "<path OUTPUT_HTML tadi>" "$(dirname "<path OUTPUT_HTML tadi>")/_deploy/index.html"
+   (Folder _deploy ini yang dibaca oleh deploy script di Mac Kenny. Tujuannya: folder deploy selalu berisi versi dashboard terbaru.)
+
+5. Setelah update artifact berhasil, balas singkat: konfirmasi dashboard sudah di-refresh + tanggal/grand total dari baris "OK" tadi. Jangan tampilkan angka dealer/SKU detail di chat (data confidential).
+
+CATATAN DEPLOY NETLIFY:
+- Sandbox Cowork TIDAK bisa push ke Netlify (network ke api.netlify.com / netlify-mcp.netlify.app diblokir — sudah dites, hasilnya fetch failed). Jadi task ini HANYA menyiapkan _deploy/index.html terbaru.
+- Push ke https://saramonic-salesdashboard.netlify.app dilakukan dari Mac Kenny (lewat deploy script / launchd di "_deploy/"). JANGAN coba jalankan npx netlify deploy di sandbox — pasti gagal.
 
 PENTING:
-- Data sales = confidential. Cuma regenerate + update artifact. Jangan kirim/ekspor ke mana pun.
+- Data sales = confidential. Task ini regenerate + update artifact + refresh _deploy/index.html lokal. Jangan kirim/ekspor ke channel lain.
 - Jangan edit file sumber di SR Sales Data. Script hanya MEMBACA file sumber dan MENULIS file dashboard HTML output.
 - Jangan ubah build_dashboard.py atau template.html kecuali user minta eksplisit.
