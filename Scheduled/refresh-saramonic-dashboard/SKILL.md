@@ -24,8 +24,8 @@ LANGKAH:
 5. Setelah update artifact berhasil, balas singkat: konfirmasi dashboard sudah di-refresh + tanggal/grand total dari baris "OK" tadi. Jangan tampilkan angka dealer/SKU detail di chat (data confidential).
 
 CATATAN DEPLOY NETLIFY:
-- Sandbox Cowork TIDAK bisa push ke Netlify (network ke api.netlify.com / netlify-mcp.netlify.app diblokir — sudah dites, hasilnya fetch failed). Jadi task ini HANYA menyiapkan _deploy/index.html terbaru.
-- Push ke https://saramonic-salesdashboard.netlify.app dilakukan dari Mac Kenny (lewat deploy script / launchd di "_deploy/"). JANGAN coba jalankan npx netlify deploy di sandbox — pasti gagal.
+- Sandbox Cowork TIDAK bisa push ke Netlify (network ke api.netlify.com / netlify-mcp.netlify.app diblokir — sudah dites, hasilnya fetch failed). Jadi task ini HANYA menyiapkan _deploy/index.html terbaru. JANGAN coba jalankan deploy/npx netlify di sandbox — pasti gagal.
+- Push ke https://saramonic-salesdashboard.netlify.app dilakukan OTOMATIS dari Mac Kenny oleh launchd job "com.kenny.saramonic-deploy" tiap hari 08:20 (17 menit setelah refresh ini), yang menjalankan ".deploy-tools/deploy.command". Task ini cukup pastikan _deploy/index.html sudah ter-update; deploy bukan tanggung jawab task ini.
 
 PENTING:
 - Data sales = confidential. Task ini regenerate + update artifact + refresh _deploy/index.html lokal. Jangan kirim/ekspor ke channel lain.
