@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Sales Data/Saramonic/Sales Analysis/SR - Sales Analysis Report - 2026-05-12.md",
+                "file": "04 - Sales Data/Saramonic/Sales Analysis/Saramonic Dashboard — Change Guide.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SR - Sales Analysis Report - 2026-05-12"
+              "title": "Saramonic Dashboard — Change Guide"
             }
           }
         ]
@@ -247,6 +247,8 @@
   },
   "active": "68e82cc49853292d",
   "lastOpenFiles": [
+    "04 - Sales Data/Saramonic/Sales Analysis/SR - Sales Analysis Report - 2026-05-12.md",
+    "04 - Sales Data/Saramonic/Sales Analysis/Saramonic Stock Analysis — May 2026.md",
     "04 - Sales Data/Saramonic/Sales Analysis/Saramonic Dashboard — Change Guide.md",
     "04 - Sales Data/Saramonic/Saramonic Stock Data.md",
     "04 - Sales Data/Saramonic/Saramonic Price List.md",
@@ -277,8 +279,6 @@
     "04 - Sales Data/AGENTS.md",
     "AGENTS.md",
     "02 - Knowledge Repo/Brain Dump/Marketing Follow Up Erajaya 2026.md",
-    "03 - Marketing Repo/Collaborations/SR — Claude Design Prompt — Erafone Activity Report (Mei–Jun 2026).md",
-    "03 - Marketing Repo/Collaborations/Content Brief — Saramonic × Erafone Region 1 KOL.md",
     "Artifacts/saramonic-sales-dashboard/versions/1782099299634.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782098405350.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782096881616.html",
