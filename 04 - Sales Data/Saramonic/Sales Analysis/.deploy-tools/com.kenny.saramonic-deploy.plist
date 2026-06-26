@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.kenny.saramonic-deploy</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/04 - Sales Data/Saramonic/Sales Analysis/.deploy-tools/deploy.command</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>8</integer>
+    <key>Minute</key><integer>20</integer>
+  </dict>
+  <key>StandardOutPath</key>
+  <string>/Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/04 - Sales Data/Saramonic/Sales Analysis/.deploy-tools/deploy.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/ken/Documents/KEN Work Stack/SRBY-WorkVault/04 - Sales Data/Saramonic/Sales Analysis/.deploy-tools/deploy.log</string>
+</dict>
+</plist>
