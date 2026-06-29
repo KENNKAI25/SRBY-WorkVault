@@ -96,10 +96,14 @@ th.qcol{background:#ffe2cc}
 .lochip{font-size:10.5px;color:var(--mut)}
 details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight:600}
 .det-skus{font-size:11.5px;color:#555;margin-top:5px;padding-left:4px}
+.langtog{position:fixed;top:10px;right:12px;display:inline-flex;background:#eef0f3;border-radius:9px;padding:3px;gap:2px;z-index:50;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.langtog button{border:none;background:none;padding:5px 11px;border-radius:7px;font-size:12px;font-weight:700;color:var(--mut);cursor:pointer}
+.langtog button.active{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
 </style>
 </head>
 <body>
 <div class="wrap">
+ <div class="langtog"><button data-l="id" class="active">ID</button><button data-l="zh">中文</button></div>
  <header class="top">
  <div class="brandhead">
   <img class="brandlogo" src="data:image/png;base64,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" alt="Saramonic">
@@ -666,6 +670,150 @@ document.getElementById('flagsList').innerHTML = flags.length ? flags.map((f,i)=
 document.getElementById('flagsMore').textContent = rawCount>flags.length ? `Menampilkan ${flags.length} teratas dari ${rawCount} dealer terdeteksi.` : '';
 
 drawTrend('month');
+</script>
+<script>
+(function(){
+  var LANG='id';
+  var DICT={
+"Sales Dashboard":"销售仪表盘",
+"Performance":"业绩",
+"Dealer":"经销商",
+"Flags":"预警",
+"Tren Revenue":"收入趋势",
+"Bulanan":"月度",
+"Quarterly":"季度",
+"Yearly":"年度",
+"Semesteran":"半年度",
+"Quarterly Breakdown":"季度明细",
+"Kontribusi per Kategori SKU":"各 SKU 类别收入贡献",
+"Kontribusi per Kategori Dealer":"各经销商类别收入贡献",
+"New vs Old Partner — Revenue":"新老客户对比 — 收入",
+"Top 12 Dealer":"前 12 经销商",
+"Revenue per Lokasi":"各地区收入",
+"Semua Dealer":"所有经销商",
+"Ringkasan":"概览",
+"Value Bulanan":"月度金额",
+"Value Quarter":"季度金额",
+"Detail SKU per Dealer — Qty (total & bulanan)":"各经销商 SKU 明细 — 数量（合计与月度）",
+"Top 12 SKU (Value)":"前 12 SKU（金额）",
+"Top 12 SKU (Qty)":"前 12 SKU（数量）",
+"Semua SKU":"所有 SKU",
+"Qty per Bulan":"月度数量",
+"Value per Bulan":"月度金额",
+"Butuh Perhatian — Dealer (Top 10 Prioritas)":"需关注 — 经销商（前 10 优先级）",
+"Urutkan SKU:":"SKU 排序：",
+"Urutkan:":"排序：",
+"Nilai ↓ (besar→kecil)":"金额 ↓（大→小）",
+"Nilai ↑ (kecil→besar)":"金额 ↑（小→大）",
+"Nama A→Z":"名称 A→Z",
+"Nama Z→A":"名称 Z→A",
+"Qty ↓ (besar→kecil)":"数量 ↓（大→小）",
+"Qty ↑ (kecil→besar)":"数量 ↑（小→大）",
+"Cari dealer / lokasi…":"搜索经销商 / 地区…",
+"Cari SKU / kategori…":"搜索 SKU / 类别…",
+"Partner":"客户",
+"Periode":"周期",
+"Revenue":"收入",
+"Total unit":"总数量",
+"Total":"总计",
+"Terakhir":"最近订单",
+"Nama":"名称",
+"Lokasi":"地区",
+"Kategori":"类别",
+"Value":"金额",
+"Qty":"数量",
+"Vel/bln":"月均销量",
+"Stok":"库存",
+"Cover":"覆盖月数",
+"top SKU":"热销 SKU",
+"Sales Bulan Ini · ":"本月销售 · ",
+"Sales Quarter Ini · ":"本季度销售 · ",
+"Sales Tahun Ini · ":"本年销售 · ",
+"Total Revenue · ":"总收入 · ",
+" (berjalan)":"（进行中）",
+" (YTD)":"（年初至今）",
+"Dealer Aktif":"活跃经销商",
+"SKU Aktif":"活跃 SKU",
+"Flags (prioritas)":"预警（优先级）",
+"akumulasi semua periode":"累计所有周期",
+"YoY: n/a — data 2025 belum genap setahun":"同比：暂无 — 2025 年数据不足一年",
+"MoM":"环比",
+"QoQ":"季环比",
+"berjalan":"进行中",
+"Drop ≥20%":"下降 ≥20%",
+"One-time":"一次性",
+"Dormant":"休眠",
+"Kritis":"严重",
+"Perhatian":"关注",
+" bln tanpa order — terakhir ":" 个月无订单 — 最近 ",
+"Total historis ":"历史总额 ",
+". Belum ada order s/d ":"。截至 ",
+" bln pernah order)":" 个月曾下单）",
+"Aksi: follow-up / re-aktivasi":"行动：跟进 / 重新激活",
+"Aksi: cek penyebab, dorong reorder":"行动：排查原因，推动再订购",
+"Turun ":"下降 ",
+" Q sblm ":" 上一季度 ",
+" Q akhir ":" 本季度 ",
+"Order besar sekali-jalan — ":"大额一次性订单 — ",
+"Hanya 1 bulan ada order":"仅 1 个月有订单",
+" bulan ada order":" 个月有订单",
+" dari total dealer ini.":" 占该经销商总额。",
+"Kemungkinan order proyek/tender — bukan demand reguler":"可能为项目 / 招标订单 — 非常规需求",
+"Menampilkan ":"显示 ",
+" teratas dari ":" 个（前列），共 ",
+" dealer terdeteksi.":" 个经销商被检测到。",
+"Tidak ada dealer yang perlu perhatian khusus. ✅":"没有需要特别关注的经销商。✅",
+"belum repurchase":"未复购",
+" repurchase ":" 复购 ",
+"Baru · ":"新 · ",
+"Diurutkan dari paling kritis. Dari 3 kondisi: ":"按严重程度排序。三种情况：",
+" (turun MoM & QoQ), ":"（环比与季环比下降），",
+" (1 order besar mendominasi), ":"（单笔大额订单为主），",
+" (tidak order ≥1 bln). Bulan penuh terakhir = Mei 2026. ":"（≥1 个月无订单）。最近完整月份 = 2026 年 5 月。",
+"Sell-in (value) Saramonic per periode. Toggle granularity di bawah.":"Saramonic 各周期 Sell-in（金额）。下方切换粒度。",
+"Q4'25 = Okt–Des · Q1'26 = Jan–Mar · Q2'26 = Apr–Jun (berjalan)":"Q4'25 = 10–12月 · Q1'26 = 1–3月 · Q2'26 = 4–6月（进行中）",
+"Share revenue per tipe produk (total periode).":"各产品类型收入占比（周期合计）。",
+"Kontribusi dealer baru (first purchase 2026) vs dealer lama, per bulan + proporsi %. Sumber: Sales by New and Old Dealer.":"新经销商（2026 年首购）与老经销商各月收入贡献 + 占比 %。来源：Sales by New and Old Dealer。",
+"Share revenue per tipe/kategori dealer (total periode). Sumber: Sales by Dealer (Value by Category).":"各经销商类型 / 类别收入占比（周期合计）。来源：Sales by Dealer (Value by Category)。",
+"Berdasarkan total revenue periode.":"按周期总收入。",
+"Agregat dealer per kota/wilayah.":"按城市 / 地区汇总经销商。",
+"Pilih dealer untuk lihat SKU apa saja yang dibeli + jumlah unit per bulan.":"选择经销商查看其采购的 SKU + 各月数量。",
+"Revenue per SKU, total periode.":"各 SKU 收入（周期合计）。",
+"Unit terjual, total periode.":"售出数量（周期合计）。",
+"\"Velocity\" = rata-rata unit/bln (Mar–Mei). \"Cover\" = stok ÷ velocity. \"Qty per Bulan\" = unit terjual per bulan. \"Value per Bulan\" = revenue per bulan + subtotal quarter (Q4'25 / Q1'26 / Q2'26 berjalan). Klik header untuk sort.":"\"Velocity\" = 月均销量（3–5月）。\"Cover\" = 库存 ÷ 销量。\"月度数量\" = 各月售出数量。\"月度金额\" = 各月收入 + 季度小计（Q4'25 / Q1'26 / Q2'26 进行中）。点击列标题排序。",
+"Klik header kolom untuk sort. Di tab ":"点击列标题排序。在标签 ",
+": dealer baru 2026 diberi badge \"Baru\" + sel bulan first-purchase ditandai oranye & bulan repurchase ditandai hijau. \"Ringkasan\": bulan penuh terakhir + total + terakhir order. \"Value per Bulan\": revenue per bulan + subtotal quarter. Q4'25=Okt–Des · Q1'26=Jan–Mar · Q2'26=Apr–Jun (berjalan).":"：2026 年新经销商带\"新\"标记 + 首购月份高亮橙色、复购月份高亮绿色。\"概览\"：最近完整月份 + 总计 + 最近订单。\"月度金额\"：各月收入 + 季度小计。Q4'25=10–12月 · Q1'26=1–3月 · Q2'26=4–6月（进行中）。",
+"Sell-in performance · Dealer & SKU · ":"Sell-in 业绩 · 经销商与 SKU · "
+};
+  var PAIRS=Object.keys(DICT).map(function(k){return [k,DICT[k]];}).sort(function(a,b){return b[0].length-a[0].length;});
+  function translate(s){var o=s;for(var i=0;i<PAIRS.length;i++){if(o.indexOf(PAIRS[i][0])>=0){o=o.split(PAIRS[i][0]).join(PAIRS[i][1]);}}return o;}
+  function walk(node){
+    if(node.nodeType===3){
+      if(node.__o==null)node.__o=node.nodeValue;
+      var b=node.__o; if(b&&b.trim())node.nodeValue=(LANG==='zh')?translate(b):b; return;
+    }
+    if(node.nodeType===1){
+      if(node.tagName==='SCRIPT'||node.tagName==='CANVAS'||node.tagName==='STYLE')return;
+      ['placeholder','title'].forEach(function(a){
+        if(node.hasAttribute&&node.hasAttribute(a)){var k='__a_'+a;if(node[k]==null)node[k]=node.getAttribute(a);
+          if(node[k]&&node[k].trim())node.setAttribute(a,(LANG==='zh')?translate(node[k]):node[k]);}
+      });
+      for(var c=node.firstChild;c;c=c.nextSibling)walk(c);
+    }
+  }
+  var mo=new MutationObserver(function(muts){
+    if(LANG==='id')return;
+    mo.disconnect();
+    try{muts.forEach(function(m){(m.addedNodes||[]).forEach(function(n){try{walk(n);}catch(e){}});});}
+    finally{mo.observe(document.body,{childList:true,subtree:true});}
+  });
+  function setLang(l){LANG=l;
+    document.querySelectorAll('.langtog button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-l')===l);});
+    mo.disconnect(); try{walk(document.body);}catch(e){} mo.observe(document.body,{childList:true,subtree:true});
+  }
+  document.querySelectorAll('.langtog button').forEach(function(b){b.addEventListener('click',function(){setLang(b.getAttribute('data-l'));});});
+  setLang('id');
+})();
 </script>
 </body>
 </html>
