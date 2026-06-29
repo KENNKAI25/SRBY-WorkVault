@@ -472,16 +472,6 @@
       "tag": false,
       "property": false
     },
-    "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value by Category).md": {
-      "folder": true,
-      "tag": false,
-      "property": false
-    },
-    "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (QTY by Category).md": {
-      "folder": true,
-      "tag": false,
-      "property": false
-    },
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by New and Old Dealer (Value).md": {
       "folder": true,
       "tag": false,
@@ -523,7 +513,9 @@
     "05 - Digest": "#d946ef"
   },
   "folderBackgroundColors": {},
-  "folderSortOverrides": {},
+  "folderSortOverrides": {
+    "04 - Sales Data/Saramonic/SR Sales Data": "title-asc"
+  },
   "folderTreeSortOverrides": {},
   "folderAppearances": {
     "SR & BY - Claude Cowork/About": {
