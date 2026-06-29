@@ -72,6 +72,9 @@ tbody tr:hover{background:#f8fafc}
 .tag-drop{background:#fbe7e5;color:#d8453b}
 .tag-once{background:#fdf2dd;color:#b5790f}
 .tag-dorm{background:#eef0f3;color:#555}
+.tag-new{background:#ffe2cc;color:#B34A00}
+tr.nd-new td:first-child{box-shadow:inset 3px 0 0 #FF6B00}
+tr.nd-rep td:first-child{box-shadow:inset 3px 0 0 #15a06b}
 .qcol{background:#fff4ec}
 th.qcol{background:#ffe2cc}
 .sec-h{font-size:13px;font-weight:700;margin:16px 0 9px;display:flex;align-items:center;gap:8px}
@@ -124,8 +127,15 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
     <button data-g="month" class="active">Bulanan</button>
     <button data-g="quarter">Quarterly</button>
     <button data-g="year">Yearly</button>
+    <button data-g="h1">H1 '26</button>
+    <button data-g="h2">H2 '26</button>
    </div>
    <div class="chartbox"><canvas id="trendChart"></canvas></div>
+  </div>
+  <div class="card">
+   <h2>New vs Old Partner — Revenue</h2>
+   <p class="hint">Kontribusi dealer baru (first purchase 2026) vs dealer lama, per bulan + proporsi %. Sumber: Sales by New and Old Dealer.</p>
+   <div class="tblwrap"><table id="newoldTable"></table></div>
   </div>
   <div class="row two">
    <div class="card">
@@ -138,6 +148,11 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
     <p class="hint">Share revenue per tipe produk (total periode).</p>
     <div class="chartbox sm"><canvas id="catChart"></canvas></div>
    </div>
+  </div>
+  <div class="card">
+   <h2>Kontribusi per Kategori Dealer</h2>
+   <p class="hint">Share revenue per tipe/kategori dealer (total periode). Sumber: Sales by Dealer (Value by Category).</p>
+   <div class="chartbox sm"><canvas id="catDealerChart"></canvas></div>
   </div>
  </section>
 
@@ -157,7 +172,7 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
   </div>
   <div class="card">
    <h2>Semua Dealer</h2>
-   <p class="hint">Klik header kolom untuk sort. "Ringkasan": bulan penuh terakhir + total + terakhir order. "Value per Bulan": revenue per bulan + subtotal quarter. Q4'25=Okt–Des · Q1'26=Jan–Mar · Q2'26=Apr–Jun (berjalan).</p>
+   <p class="hint">Klik header kolom untuk sort. <strong>Dealer baru 2026</strong> ditandai garis oranye (belum repurchase) / hijau (sudah repurchase) + badge "Baru". "Ringkasan": bulan penuh terakhir + total + terakhir order. "Value per Bulan": revenue per bulan + subtotal quarter. Q4'25=Okt–Des · Q1'26=Jan–Mar · Q2'26=Apr–Jun (berjalan).</p>
    <div class="seg" id="dealer-seg">
     <button data-v="ring" class="active">Ringkasan</button>
     <button data-v="mval">Value Bulanan</button>
@@ -313,7 +328,7 @@ DATA.dealers.forEach(d=>{
   const li=lastActive(v);
   const active=v.filter(x=>x>0).length;
   // KONDISI 3 — tidak order >=1 bulan penuh
-  const dormant = li>=0 && li<=LF-1;
+  const dormant = li>=0 && li<=LF-1 && (LF-li)<=3;
   if(dormant){
     const gap=LF-li; const sev=gap>=2?'bad':'warn';
     const consW = active>=3?1.4:active===2?1.0:0.55; // regular yg berhenti > one-shot
@@ -339,7 +354,7 @@ DATA.dealers.forEach(d=>{
   }
   // KONDISI 2 — big one-time purchase
   const mx=Math.max(...v), mi=v.indexOf(mx);
-  if(mx>=25e6 && mx/tot>=0.80 && active<=2){
+  if(mx>=25e6 && mx/tot>=0.80 && active<=2 && mi>=LF-2){
     rawFlags.push({cat:'One-time',catCls:'once',sev:'warn',name:d.name,loc:d.location,
       score:mx*0.7,
       title:'Order besar sekali-jalan — '+rp(mx)+' di '+fmtMonthLbl(M[mi]),
@@ -400,6 +415,13 @@ function drawTrend(g){
     colors=vals.map((_,i)=>i===M.length-1?'#ffc08a':'#FF6B00');}
   else if(g==='quarter'){labels=Q.map(q=>q.lab+(q.partial?' *':''));vals=Q.map(qVal);
     colors=Q.map(q=>q.partial?'#ffc08a':'#FF6B00');}
+  else if(g==='h1'||g==='h2'){
+    const lo=g==='h1'?1:7, hi=g==='h1'?6:12;
+    const idx=M.map((m,i)=>i).filter(i=>{const y=+M[i].split('-')[0],mo=+M[i].split('-')[1];return y===2026&&mo>=lo&&mo<=hi;});
+    labels=idx.map(i=>fmtMonthLbl(M[i])); vals=idx.map(i=>DATA.monthlyTotal[i]);
+    colors=idx.map(i=>i===M.length-1?'#ffc08a':'#FF6B00');
+    if(!idx.length){labels=['(belum ada data)'];vals=[0];colors=['#e6e8eb'];}
+  }
   else{labels=YEARS.map(y=>y.lab);vals=YEARS.map(y=>sum(y.idx.map(i=>DATA.monthlyTotal[i])));colors='#FF6B00';}
   const ctx=document.getElementById('trendChart');
   if(trendChart)trendChart.destroy();
@@ -430,6 +452,36 @@ document.querySelectorAll('#perf-seg button').forEach(b=>b.onclick=()=>{
    data:{labels:ent.map(e=>e[0]),datasets:[{data:ent.map(e=>e[1]),backgroundColor:palette,borderWidth:1,borderColor:'#fff'}]},
    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{boxWidth:11,font:{size:11}}},
     tooltip:{callbacks:{label:c=>c.label+': '+rp(c.raw)+' ('+(c.raw/grand*100).toFixed(0)+'%)'}}}}});
+})();
+
+/* ---------- NEW vs OLD partner table (Perf 3) ---------- */
+(function(){
+  const no=DATA.newold; if(!no||!no.rows||!no.rows.length)return;
+  const lbl=M.map((m,i)=>fmtMonthLbl(m)+(i===M.length-1?' *':''));
+  let h='<thead><tr><th>Partner</th>'+lbl.map(l=>'<th>'+l+'</th>').join('')+'<th>2025</th><th>2026</th><th>Total</th></tr></thead>';
+  function cell(x){return '<td>'+(x?rp(x):'<span class=muted>·</span>')+'</td>';}
+  let body='';
+  no.rows.forEach(r=>{ if(r.name==='Total')return;
+    body+='<tr><td>'+r.name+'</td>'+r.value.map(cell).join('')+cell(r.y2025)+cell(r.y2026)+'<td><strong>'+(r.sub?rp(r.sub):'·')+'</strong></td></tr>';
+  });
+  const tr=no.rows.find(r=>r.name==='Total');
+  if(tr) body+='<tr style="background:#fff4ec"><td><strong>Total</strong></td>'+tr.value.map(x=>'<td><strong>'+(x?rp(x):'·')+'</strong></td>').join('')+'<td><strong>'+(tr.y2025?rp(tr.y2025):'·')+'</strong></td><td><strong>'+(tr.y2026?rp(tr.y2026):'·')+'</strong></td><td><strong>'+(tr.sub?rp(tr.sub):'·')+'</strong></td></tr>';
+  no.prop.forEach(p=>{
+    body+='<tr class="muted"><td>'+p.name+' %</td>'+p.value.map(v=>'<td>'+(v&&v.indexOf('DIV')<0?v:'·')+'</td>').join('')+'<td>·</td><td>·</td><td>·</td></tr>';
+  });
+  document.getElementById('newoldTable').innerHTML=h+'<tbody>'+body+'</tbody>';
+})();
+
+/* ---------- category-dealer doughnut (Perf 2) ---------- */
+(function(){
+  const cats=DATA.categories||[]; if(!cats.length)return;
+  const ent=cats.map(c=>[c.name,c.total]).filter(e=>e[1]>0).sort((a,b)=>b[1]-a[1]);
+  const tot=ent.reduce((a,b)=>a+b[1],0);
+  const palette=['#FF6B00','#15a06b','#7c3aed','#0891b2','#e0921a','#d8453b','#db2777','#65a30d','#2563eb','#0d9488','#94a3b8'];
+  new Chart(document.getElementById('catDealerChart'),{type:'doughnut',
+   data:{labels:ent.map(e=>e[0]),datasets:[{data:ent.map(e=>e[1]),backgroundColor:palette,borderWidth:1,borderColor:'#fff'}]},
+   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{boxWidth:11,font:{size:11}}},
+    tooltip:{callbacks:{label:c=>c.label+': '+rp(c.raw)+' ('+(c.raw/tot*100).toFixed(0)+'%)'}}}}});
 })();
 
 /* ---------- DEALER ---------- */
@@ -466,7 +518,16 @@ function renderDealerTable(){
     const last=d._last>=0?fmtMonthLbl(M[d._last]):'—';
     const dormant=d._last>=0 && d._last<5;
     const top=(d.topSkus||[]).map(t=>t[0]+' ('+t[1]+')').join(', ');
-    return `<tr><td>${d.name} <span class="lochip">· ${d.location||'-'}</span>
+    let badge='', rowcls='';
+    if(d.newMonth){
+      const fi=M.indexOf(d.newMonth), rep=[];
+      for(let i=fi+1;i<M.length;i++) if(d.value[i]>0) rep.push(fmtMonthLbl(M[i]));
+      rowcls=rep.length?'nd-rep':'nd-new';
+      badge=`<span class="tag tag-new">Baru · ${fmtMonthLbl(d.newMonth)}</span>`+
+        (rep.length?`<span class="pill good" title="Repurchase di: ${rep.join(', ')}">↻ repurchase ${rep.length}× · ${rep.join(', ')}</span>`
+                   :`<span class="pill mut">belum repurchase</span>`);
+    }
+    return `<tr class="${rowcls}"><td>${d.name} <span class="lochip">· ${d.location||'-'}</span> ${badge}
       ${top?`<details class="det"><summary>top SKU</summary><div class="det-skus">${top}</div></details>`:''}</td>
      <td>${d.value[LASTFULL]>0?rp(d.value[LASTFULL]):'<span class=muted>–</span>'}</td>
      <td><strong>${rp(d.totalValue)}</strong></td>
