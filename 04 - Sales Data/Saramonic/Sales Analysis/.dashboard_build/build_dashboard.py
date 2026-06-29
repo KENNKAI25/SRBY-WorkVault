@@ -44,7 +44,7 @@ for r in rows(os.path.join(SR,"Sales by SKU (QTY).md"))[3:]:
     skus[name]["qty"]={MONTHS[i]:(num(r[1+i]) or 0) for i in range(9)}
 
 dealers={}; cl=""
-for r in rows(os.path.join(SR,"Sales by Dealer (Value).md"))[3:]:
+for r in rows(os.path.join(SR,"Sales by Dealer (Value by Location).md"))[3:]:
     if len(r)<12:continue
     loc=r[0].strip(); name=r[1].strip()
     if loc=="Total":continue
