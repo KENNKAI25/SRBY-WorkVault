@@ -34,7 +34,7 @@
 10. Plaza Foto
 11. Sentra Computer
 12. Wewe Mandiri Timur
-
+13. Digicam
 # May - 2026
 1. Erafone - EAR
 2. Panorama Photo
