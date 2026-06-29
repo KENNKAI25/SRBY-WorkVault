@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard/v.1.1 Changes.md",
+                "file": "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard Patch Notes/v.1.1 - New dealer & catagorized data display.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "v.1.1 Changes"
+              "title": "v.1.1 - New dealer & catagorized data display"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Sales Data/Saramonic/SR Sales Data/Sales by New and Old Dealer (Value).md",
+                "file": "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard Patch Notes/v.1.1 - New dealer & catagorized data display.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Sales by New and Old Dealer (Value)"
+              "title": "v.1.1 - New dealer & catagorized data display"
             }
           }
         ],
@@ -139,13 +139,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "03 - Marketing Repo/Guidelines/Social Media Marketing Gameplan.md",
+                "file": "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard Patch Notes/v.1.1 - New dealer & catagorized data display.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Social Media Marketing Gameplan"
+              "title": "Outline of v.1.1 - New dealer & catagorized data display"
             }
           },
           {
@@ -260,20 +260,20 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f2aeb96d1d36823a",
+  "active": "d7c239fe0b91e545",
   "lastOpenFiles": [
+    "04 - Sales Data/Saramonic/SR Sales Data/Sales by New and Old Dealer (Value).md",
     "04 - Sales Data/Saramonic/SR Sales Data/New Dealer 2026.md",
     "Artifacts/saramonic-sales-dashboard/versions/1782737179533.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782737013771.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782736608920.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782736065548.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782735368329.html",
-    "04 - Sales Data/Saramonic/SR Sales Data/Sales by New and Old Dealer (Value).md",
-    "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard/v.1.1 Changes.md",
+    "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard Patch Notes/v.1.1 - New dealer & catagorized data display.md",
     "Artifacts/saramonic-sales-dashboard/versions/1782734975665.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782733794886.html",
     "04 - Sales Data/CLAUDE.md",
-    "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard",
+    "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard Patch Notes",
     "Artifacts/saramonic-sales-dashboard/versions/1782694968632.html",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value by Category).md",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value by Location).md",

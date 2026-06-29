@@ -13,7 +13,6 @@ Now I want you to make adjustment referring to each menu inside Saramonic Sales 
 1. Refer to `New Dealer 2026.md` and all sales data,  inside this menu, please also highlight new dealers purchases
 2. Analyze every new dealer, from the point before. Please also make a different highlight if the new dealer re-purchase Saramonic (highlight at what month they repurchase)
 
-
 # SKU
 
 1. Create another filtering option to enable users to see Value of each SKU in each category (camera stores, modern channel, etc.)
@@ -21,3 +20,8 @@ Now I want you to make adjustment referring to each menu inside Saramonic Sales 
 
 # Flags
 1. Keep the 10 important flags, but it needs to be updated any flags or concern regarding dealer that's more than 3 months should be excluded. Flags is only for any important stuffs in the last trailing 2-3 months
+
+--- 
+#### Keynotes
+1. Every feature should be H3, don't create bullet points, claude won't get the detail that i want
+2. Every features should have minumum 2-3 bullet points that explain every detail (location, color, data displayed, etc.)
