@@ -73,6 +73,8 @@ tbody tr:hover{background:#f8fafc}
 .tag-once{background:#fdf2dd;color:#b5790f}
 .tag-dorm{background:#eef0f3;color:#555}
 .tag-new{background:#ffe2cc;color:#B34A00}
+.nd-first{background:#ffd9b8!important}
+.nd-rep-cell{background:#dcf2e6!important}
 tr.nd-new td:first-child{box-shadow:inset 3px 0 0 #FF6B00}
 tr.nd-rep td:first-child{box-shadow:inset 3px 0 0 #15a06b}
 .qcol{background:#fff4ec}
@@ -127,8 +129,7 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
     <button data-g="month" class="active">Bulanan</button>
     <button data-g="quarter">Quarterly</button>
     <button data-g="year">Yearly</button>
-    <button data-g="h1">H1 '26</button>
-    <button data-g="h2">H2 '26</button>
+    <button data-g="half">Semesteran</button>
    </div>
    <div class="chartbox"><canvas id="trendChart"></canvas></div>
   </div>
@@ -172,7 +173,7 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
   </div>
   <div class="card">
    <h2>Semua Dealer</h2>
-   <p class="hint">Klik header kolom untuk sort. <strong>Dealer baru 2026</strong> ditandai garis oranye (belum repurchase) / hijau (sudah repurchase) + badge "Baru". "Ringkasan": bulan penuh terakhir + total + terakhir order. "Value per Bulan": revenue per bulan + subtotal quarter. Q4'25=Okt–Des · Q1'26=Jan–Mar · Q2'26=Apr–Jun (berjalan).</p>
+   <p class="hint">Klik header kolom untuk sort. Di tab <strong>"Value Bulanan"</strong>: dealer baru 2026 diberi badge "Baru" + sel bulan first-purchase ditandai oranye & bulan repurchase ditandai hijau. "Ringkasan": bulan penuh terakhir + total + terakhir order. "Value per Bulan": revenue per bulan + subtotal quarter. Q4'25=Okt–Des · Q1'26=Jan–Mar · Q2'26=Apr–Jun (berjalan).</p>
    <div class="seg" id="dealer-seg">
     <button data-v="ring" class="active">Ringkasan</button>
     <button data-v="mval">Value Bulanan</button>
@@ -265,7 +266,7 @@ function qOf(v){return [v[0]+v[1]+v[2], v[3]+v[4]+v[5], v[6]+v[7]+v[8]];}
 function renderValMatrix(tableId, rows, c2head, state, rerender, mode){
   mode=mode||'full';
   const showM=mode!=='quarter', showQ=mode!=='month';
-  const data=rows.map(r=>({name:r.name,c2:r.c2,value:r.value,q:qOf(r.value),tot:r.value.reduce((a,b)=>a+b,0)}));
+  const data=rows.map(r=>({name:r.name,c2:r.c2,value:r.value,newMonth:r.newMonth,q:qOf(r.value),tot:r.value.reduce((a,b)=>a+b,0)}));
   const k=state.k,dir=state.dir;
   data.sort((a,b)=>{
     if(k==='name')return a.name<b.name?-dir:a.name>b.name?dir:0;
@@ -278,10 +279,13 @@ function renderValMatrix(tableId, rows, c2head, state, rerender, mode){
   if(showM)M.forEach((m,i)=>hdr+='<th class="sortable" data-k="m'+i+'">'+fmtMonthLbl(m)+(i===M.length-1?' *':'')+'</th>');
   if(showQ)QH.forEach((qq,i)=>hdr+='<th class="sortable qcol" data-k="q'+i+'">'+qq+'</th>');
   hdr+='<th class="sortable" data-k="tot">Total</th></tr></thead>';
-  const body=data.map(r=>'<tr><td>'+r.name+'</td><td><span class="lochip">'+(r.c2||'-')+'</span></td>'+
-    (showM?r.value.map(x=>'<td>'+(x?rp(x):'<span class=muted>·</span>')+'</td>').join(''):'')+
-    (showQ?r.q.map(x=>'<td class="qcol">'+(x?rp(x):'<span class=muted>·</span>')+'</td>').join(''):'')+
-    '<td><strong>'+rp(r.tot)+'</strong></td></tr>').join('');
+  const body=data.map(r=>{
+    const fi=r.newMonth?M.indexOf(r.newMonth):-1;
+    const badge=r.newMonth?' <span class="tag tag-new">Baru · '+fmtMonthLbl(r.newMonth)+'</span>':'';
+    const mcells=showM?r.value.map((x,i)=>{let cls='';if(fi>=0){if(i===fi)cls=' class="nd-first"';else if(i>fi&&x>0)cls=' class="nd-rep-cell"';}return '<td'+cls+'>'+(x?rp(x):'<span class=muted>·</span>')+'</td>';}).join(''):'';
+    const qcells=showQ?r.q.map(x=>'<td class="qcol">'+(x?rp(x):'<span class=muted>·</span>')+'</td>').join(''):'';
+    return '<tr><td>'+r.name+badge+'</td><td><span class="lochip">'+(r.c2||'-')+'</span></td>'+mcells+qcells+'<td><strong>'+rp(r.tot)+'</strong></td></tr>';
+  }).join('');
   const t=document.getElementById(tableId);t.innerHTML=hdr+'<tbody>'+body+'</tbody>';
   t.querySelectorAll('th.sortable').forEach(th=>th.onclick=()=>{const kk=th.dataset.k;if(state.k===kk)state.dir*=-1;else{state.k=kk;state.dir=(kk==='name'||kk==='c2')?1:-1;}rerender();});
 }
@@ -415,12 +419,14 @@ function drawTrend(g){
     colors=vals.map((_,i)=>i===M.length-1?'#ffc08a':'#FF6B00');}
   else if(g==='quarter'){labels=Q.map(q=>q.lab+(q.partial?' *':''));vals=Q.map(qVal);
     colors=Q.map(q=>q.partial?'#ffc08a':'#FF6B00');}
-  else if(g==='h1'||g==='h2'){
-    const lo=g==='h1'?1:7, hi=g==='h1'?6:12;
-    const idx=M.map((m,i)=>i).filter(i=>{const y=+M[i].split('-')[0],mo=+M[i].split('-')[1];return y===2026&&mo>=lo&&mo<=hi;});
-    labels=idx.map(i=>fmtMonthLbl(M[i])); vals=idx.map(i=>DATA.monthlyTotal[i]);
-    colors=idx.map(i=>i===M.length-1?'#ffc08a':'#FF6B00');
-    if(!idx.length){labels=['(belum ada data)'];vals=[0];colors=['#e6e8eb'];}
+  else if(g==='half'){
+    const buckets={}, order=[];
+    M.forEach((m,i)=>{const y=+m.split('-')[0],mo=+m.split('-')[1],hf=mo<=6?1:2,key=y+'-H'+hf;
+      if(!(key in buckets)){buckets[key]={sum:0,partial:false,yy:y,hf:hf};order.push(key);}
+      buckets[key].sum+=DATA.monthlyTotal[i]; if(i===M.length-1)buckets[key].partial=true;});
+    labels=order.map(k=>'H'+buckets[k].hf+" '"+String(buckets[k].yy).slice(2)+(buckets[k].partial?' *':''));
+    vals=order.map(k=>buckets[k].sum);
+    colors=order.map(k=>buckets[k].partial?'#ffc08a':'#FF6B00');
   }
   else{labels=YEARS.map(y=>y.lab);vals=YEARS.map(y=>sum(y.idx.map(i=>DATA.monthlyTotal[i])));colors='#FF6B00';}
   const ctx=document.getElementById('trendChart');
@@ -518,16 +524,7 @@ function renderDealerTable(){
     const last=d._last>=0?fmtMonthLbl(M[d._last]):'—';
     const dormant=d._last>=0 && d._last<5;
     const top=(d.topSkus||[]).map(t=>t[0]+' ('+t[1]+')').join(', ');
-    let badge='', rowcls='';
-    if(d.newMonth){
-      const fi=M.indexOf(d.newMonth), rep=[];
-      for(let i=fi+1;i<M.length;i++) if(d.value[i]>0) rep.push(fmtMonthLbl(M[i]));
-      rowcls=rep.length?'nd-rep':'nd-new';
-      badge=`<span class="tag tag-new">Baru · ${fmtMonthLbl(d.newMonth)}</span>`+
-        (rep.length?`<span class="pill good" title="Repurchase di: ${rep.join(', ')}">↻ repurchase ${rep.length}× · ${rep.join(', ')}</span>`
-                   :`<span class="pill mut">belum repurchase</span>`);
-    }
-    return `<tr class="${rowcls}"><td>${d.name} <span class="lochip">· ${d.location||'-'}</span> ${badge}
+    return `<tr><td>${d.name} <span class="lochip">· ${d.location||'-'}</span>
       ${top?`<details class="det"><summary>top SKU</summary><div class="det-skus">${top}</div></details>`:''}</td>
      <td>${d.value[LASTFULL]>0?rp(d.value[LASTFULL]):'<span class=muted>–</span>'}</td>
      <td><strong>${rp(d.totalValue)}</strong></td>
@@ -539,7 +536,7 @@ let dlrMState={k:'tot',dir:-1}, dlrQState={k:'tot',dir:-1};
 function dealerValRows(){
   const q=document.getElementById('dealerSearch').value.toLowerCase();
   return DATA.dealers.filter(d=>d.totalValue>0 && (d.name.toLowerCase().includes(q)||(d.location||'').toLowerCase().includes(q)))
-    .map(d=>({name:d.name,c2:d.location,value:d.value}));
+    .map(d=>({name:d.name,c2:d.location,value:d.value,newMonth:d.newMonth}));
 }
 function renderDealerMVal(){renderValMatrix('dealerMValTable',dealerValRows(),'Lokasi',dlrMState,renderDealerMVal,'month');}
 function renderDealerQVal(){renderValMatrix('dealerQValTable',dealerValRows(),'Lokasi',dlrQState,renderDealerQVal,'quarter');}

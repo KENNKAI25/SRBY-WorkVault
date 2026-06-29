@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard/v.1.1 Changes.md",
+                "file": "04 - Sales Data/Saramonic/SR Sales Data/New Dealer 2026.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "v.1.1 Changes"
+              "title": "New Dealer 2026"
             }
           }
         ],
@@ -260,13 +260,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d7c239fe0b91e545",
+  "active": "f2aeb96d1d36823a",
   "lastOpenFiles": [
+    "04 - Sales Data/Saramonic/SR Sales Data/Sales by New and Old Dealer (Value).md",
+    "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard/v.1.1 Changes.md",
     "Artifacts/saramonic-sales-dashboard/versions/1782734975665.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782733794886.html",
     "04 - Sales Data/CLAUDE.md",
-    "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard/v.1.1 Changes.md",
-    "04 - Sales Data/Saramonic/SR Sales Data/Sales by New and Old Dealer (Value).md",
     "04 - Sales Data/Saramonic/SR Sales Data/New Dealer 2026.md",
     "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard",
     "Artifacts/saramonic-sales-dashboard/versions/1782694968632.html",
@@ -293,7 +293,6 @@
     "Artifacts/saramonic-sales-dashboard/versions/1782470044525.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782469875374.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782469250442.html",
-    "Artifacts/saramonic-sales-dashboard/versions/1782467818297.html",
     "Artifacts/saramonic-decision-matrix/Media/Saramonic Black Logo.png",
     "04 - Sales Data/Saramonic/Sales Analysis/Saramonic Stock Analysis — May 2026.md",
     "03 - Marketing Repo/Guidelines/Social Media Marketing Gameplan.md",
