@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Saramonic Sales Dashboard",
+  "schemaVersion": 1,
+  "description": "Saramonic sell-in sales dashboard — monthly/quarterly/yearly performance, dealer performance, SKU performance, and auto-flags for dealers/SKUs needing attention. Data embedded from local SR Sales Data (Oct 2025–Jun 2026), generated 2026-06-17."
+}
+</script>
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -99,40 +106,6 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
 .langtog{position:fixed;top:10px;right:12px;display:inline-flex;background:#eef0f3;border-radius:9px;padding:3px;gap:2px;z-index:50;box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .langtog button{border:none;background:none;padding:5px 11px;border-radius:7px;font-size:12px;font-weight:700;color:var(--mut);cursor:pointer}
 .langtog button.active{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
-/* Chinese mode: 1.5x font for readability */
-body.zh-mode{font-size:21px}
-body.zh-mode .sub{font-size:18.75px}
-body.zh-mode h1{font-size:30px}
-body.zh-mode .note{font-size:18px}
-body.zh-mode .kpi .lab{font-size:17.25px}
-body.zh-mode .kpi .val{font-size:31.5px}
-body.zh-mode .kpi .delta{font-size:18px}
-body.zh-mode .kpis-primary .val{font-size:37.5px}
-body.zh-mode .kpis-secondary .val{font-size:27px}
-body.zh-mode .tab{font-size:20.25px}
-body.zh-mode .tab .badge{font-size:15.75px}
-body.zh-mode .card h2{font-size:21.75px}
-body.zh-mode .card .hint{font-size:18px}
-body.zh-mode .seg button{font-size:18.75px}
-body.zh-mode table{font-size:19.2px}
-body.zh-mode th{font-size:16.5px}
-body.zh-mode .pill{font-size:16.5px}
-body.zh-mode .tag{font-size:15.75px}
-body.zh-mode .flagcard .ft{font-size:19.5px}
-body.zh-mode .flagcard .fd{font-size:18.45px}
-body.zh-mode .flagcard .fm{font-size:17.25px}
-body.zh-mode .sec-h{font-size:19.5px}
-body.zh-mode .sec-h .cnt{font-size:16.5px}
-body.zh-mode .searchbar{font-size:19.5px}
-body.zh-mode .srt{font-size:18px}
-body.zh-mode .sortsel{font-size:18.75px}
-body.zh-mode .barrow{font-size:18.45px}
-body.zh-mode .foot{font-size:16.5px}
-body.zh-mode .lochip{font-size:15.75px}
-body.zh-mode details.det summary{font-size:18px}
-body.zh-mode .det-skus{font-size:17.25px}
-body.zh-mode .langtog button{font-size:18px}
-body.zh-mode .rank{font-size:16.5px}
 </style>
 </head>
 <body>
@@ -166,8 +139,8 @@ body.zh-mode .rank{font-size:16.5px}
    <div class="seg" id="perf-seg">
     <button data-g="month" class="active">Bulanan</button>
     <button data-g="quarter">Quarterly</button>
-    <button data-g="half">Semester</button>
     <button data-g="year">Yearly</button>
+    <button data-g="half">Semesteran</button>
    </div>
    <div class="chartbox"><canvas id="trendChart"></canvas></div>
   </div>
@@ -717,7 +690,7 @@ drawTrend('month');
 "Bulanan":"月度",
 "Quarterly":"季度",
 "Yearly":"年度",
-"Semester":"半年度",
+"Semesteran":"半年度",
 "Quarterly Breakdown":"季度明细",
 "Kontribusi per Kategori SKU":"各 SKU 类别收入贡献",
 "Kontribusi per Kategori Dealer":"各经销商类别收入贡献",
@@ -842,7 +815,6 @@ drawTrend('month');
     finally{mo.observe(document.body,{childList:true,subtree:true});}
   });
   function setLang(l){LANG=l;
-    document.body.classList.toggle('zh-mode',l==='zh');
     document.querySelectorAll('.langtog button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-l')===l);});
     mo.disconnect(); try{walk(document.body);}catch(e){} mo.observe(document.body,{childList:true,subtree:true});
   }

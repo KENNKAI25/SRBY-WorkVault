@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Saramonic Sales Dashboard",
+  "schemaVersion": 1,
+  "description": "Saramonic sell-in sales dashboard — monthly/quarterly/yearly performance, dealer performance, SKU performance, and auto-flags for dealers/SKUs needing attention. Data embedded from local SR Sales Data (Oct 2025–Jun 2026), generated 2026-06-17."
+}
+</script>
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -166,8 +173,8 @@ body.zh-mode .rank{font-size:16.5px}
    <div class="seg" id="perf-seg">
     <button data-g="month" class="active">Bulanan</button>
     <button data-g="quarter">Quarterly</button>
-    <button data-g="half">Semester</button>
     <button data-g="year">Yearly</button>
+    <button data-g="half">Semesteran</button>
    </div>
    <div class="chartbox"><canvas id="trendChart"></canvas></div>
   </div>
@@ -717,7 +724,7 @@ drawTrend('month');
 "Bulanan":"月度",
 "Quarterly":"季度",
 "Yearly":"年度",
-"Semester":"半年度",
+"Semesteran":"半年度",
 "Quarterly Breakdown":"季度明细",
 "Kontribusi per Kategori SKU":"各 SKU 类别收入贡献",
 "Kontribusi per Kategori Dealer":"各经销商类别收入贡献",
