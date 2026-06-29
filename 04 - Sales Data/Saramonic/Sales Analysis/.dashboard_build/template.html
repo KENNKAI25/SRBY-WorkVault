@@ -101,7 +101,6 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
   <h1>Sales Dashboard</h1>
  </div>
  <div class="sub">Sell-in performance · Dealer &amp; SKU · <span id="period-range"></span></div>
- <div class="sub">Data per <strong id="gendate"></strong> · Sumber: SR Sales Data (lokal)</div>
 </header>
 
  <div class="note" id="partial-note"></div>
@@ -233,7 +232,7 @@ details.det summary{cursor:pointer;font-size:12px;color:var(--brand);font-weight
   </div>
  </section>
 
- <div class="foot">Saramonic Sales Dashboard · dibuat untuk Kenny · angka internal/confidential</div>
+ <div class="foot">Made by Kenny · Saramonic, Sound. Remarkable.</div>
 </div>
 
 <script>
@@ -272,7 +271,7 @@ function renderValMatrix(tableId, rows, c2head, state, rerender, mode){
   t.querySelectorAll('th.sortable').forEach(th=>th.onclick=()=>{const kk=th.dataset.k;if(state.k===kk)state.dir*=-1;else{state.k=kk;state.dir=(kk==='name'||kk==='c2')?1:-1;}rerender();});
 }
 
-document.getElementById('gendate').textContent = DATA.generated;
+{const _gd=document.getElementById('gendate'); if(_gd)_gd.textContent=DATA.generated;}
 document.getElementById('period-range').textContent = fmtMonthLbl(M[0])+' – '+fmtMonthLbl(M[M.length-1]);
 document.getElementById('partial-note').innerHTML =
   '<strong>Catatan:</strong> '+fmtMonthLbl(M[M.length-1])+' masih berjalan (data parsial) — tren bulan terakhir akan naik. Perbandingan MoM &amp; velocity memakai bulan penuh terakhir ('+fmtMonthLbl(M[LASTFULL])+').';
