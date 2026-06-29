@@ -27,15 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Sales Data/CLAUDE.md",
+                "file": "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard/v.1.1 Changes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CLAUDE"
+              "title": "v.1.1 Changes"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -259,14 +260,14 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "68e82cc49853292d",
+  "active": "f2aeb96d1d36823a",
   "lastOpenFiles": [
     "04 - Sales Data/CLAUDE.md",
     "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard/v.1.1 Changes.md",
+    "04 - Sales Data/Saramonic/SR Sales Data/Sales by New and Old Dealer (Value).md",
     "04 - Sales Data/Saramonic/SR Sales Data/New Dealer 2026.md",
     "04 - Sales Data/Saramonic/Sales Analysis/Sales Dashboard",
     "Artifacts/saramonic-sales-dashboard/versions/1782694968632.html",
-    "04 - Sales Data/Saramonic/SR Sales Data/Sales by New and Old Dealer (Value).md",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value by Category).md",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value by Location).md",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by SKU (QTY).md",
