@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value).md",
+                "file": "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer Category (Value).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Sales by Dealer (Value)"
+              "title": "Sales by Dealer Category (Value)"
             }
           }
         ]
@@ -247,13 +247,14 @@
   },
   "active": "68e82cc49853292d",
   "lastOpenFiles": [
+    "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (QTY by Category).md",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (QTY).md",
+    "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer Category (Value).md",
+    "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value by Category).md",
+    "04 - Sales Data/Saramonic/SR Sales Data/New Dealer 2026.md",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by SKU (Value).md",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by SKU (QTY).md",
-    "04 - Sales Data/Saramonic/SR Sales Data/New Dealer 2026.md",
-    "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value).md",
-    "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer Category (Value).md",
-    "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer Category (QTY).md",
+    "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value by Location).md",
     "04 - Sales Data/CLAUDE.md",
     "04 - Sales Data/AGENTS.md",
     "02 - Knowledge Repo/Brain Dump/Serbamulti (Blackmagic) Meeting Notes.md",
@@ -283,7 +284,6 @@
     "03 - Marketing Repo/Social Media Content/SR — Prompt — Polar Pattern Mic (Omni vs Cardioid) Air, Air SE & SG Mic (6 Slides).md",
     "07 - Drawings/Social Media Content Workflow.excalidraw.md",
     "03 - Marketing Repo/Social Media Content/Instagram Audit - Saramonic_id - 2026-06-24.md",
-    "03 - Marketing Repo/Social Media Content/SR — Prompt — Apa itu Wireless Intercom Full Duplex (Witalk9) (6 Slides).md",
     "Artifacts/saramonic-sales-dashboard/thumbnail.png",
     "Artifacts/sales-software-comparison-saramonic/thumbnail.png",
     "Artifacts/saramonic-decision-matrix-v2/thumbnail.png",
