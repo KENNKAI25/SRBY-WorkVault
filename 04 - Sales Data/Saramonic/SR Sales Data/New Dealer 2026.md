@@ -20,7 +20,7 @@
 4. Alfa Foto
 5. Laris Musik
 6. Master Photo
-7. ADD Komputer
+7. ADD Computer
 # April - 2026
 1. Gravity Camera
 2. Trustfinite
