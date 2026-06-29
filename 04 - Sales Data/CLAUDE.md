@@ -2,7 +2,7 @@
 
 > Instruksi lokal khusus folder `04 - Sales Data/`. Berlaku **tambahan** di atas instruksi global di root `CLAUDE.md` (jangan menimpa — aturan global tetap berlaku, terutama Hard Rules §5 soal delete/send/publish/overwrite).
 
-*Last updated: 12 Mei 2026 — Tambah section sales analysis, stock forecasting, sales performance.*
+*Last updated: 29 Jun 2026 — Tambah 3 file data baru di SR Sales Data (New & Old Dealer, New Dealer 2026, Value by Category).*
 
 ---
 
@@ -62,6 +62,9 @@ Kalau task **bukan** salah satu di atas (misal content brief, social caption, br
 | `Sales by SKU (Value).md`                       | Revenue per SKU per bulan (rupiah)                               | Revenue contribution per SKU, top-performing SKU, pricing impact       |
 | `Sales by Dealer (QTY).md`                      | Quantity sold per dealer per bulan                               | Dealer performance per volume, dealer engagement, restock per dealer   |
 | `Sales by Dealer (Value).md`                    | Revenue per dealer per bulan (rupiah)                            | Dealer health check, kontribusi per dealer, target setting per dealer  |
+| `Sales by New and Old Dealer (Value).md`        | Revenue per bulan dipecah **Old Partner vs New Partner** + proporsi % + total 2025/2026. (Old = dealer lama, New = dealer yang baru pertama beli di 2026) | Kontribusi dealer baru vs lama, efektivitas akuisisi dealer 2026, growth dari new partner |
+| `New Dealer 2026.md`                            | Daftar **semua dealer baru** yang pertama kali beli Saramonic di 2026, **dikelompokkan per bulan first-purchase** (Jan–Jun 2026) | Tracking akuisisi dealer baru, berapa dealer baru per bulan, siapa saja dealer baru, onboarding follow-up |
+| `Sales by Dealer (Value by Category).md`        | Revenue per **kategori/tipe dealer** (Camera Stores, CEs, Audio Stores, Phone & Accessories, Computer Stores, dll.) per bulan + total | Channel/category mix, kontribusi per tipe dealer, performance per kategori (versi ringkas & terkini dari Categorized Sales Data) |
 
 #### Saramonic — file stok di `04 - Sales Data/Saramonic/`
 
@@ -90,7 +93,10 @@ Tergantung pertanyaan yang masuk, pilih kombinasi file yang relevan:
 | Pertanyaan / Task                                       | File yang harus dibaca                                                                  |
 | ------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | "SKU apa yang paling laku bulan ini di Saramonic?"     | `04 - Sales Data/Saramonic/SR Sales Data/Sales by SKU (QTY).md` + `Sales by SKU (Value).md`                       |
-| "Kontribusi Camera Stores berapa % di Saramonic?"      | `04 - Sales Data/Saramonic/SR Sales Data/Categorized Sales Data (By Dealer Type).md`                              |
+| "Kontribusi Camera Stores berapa % di Saramonic?"      | `04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value by Category).md` (atau `Categorized Sales Data (By Dealer Type).md`) |
+| "Berapa kontribusi dealer baru vs lama di 2026?"       | `04 - Sales Data/Saramonic/SR Sales Data/Sales by New and Old Dealer (Value).md`                                  |
+| "Berapa dealer baru yang masuk bulan ini / 2026?" / "Siapa saja dealer baru?" | `04 - Sales Data/Saramonic/SR Sales Data/New Dealer 2026.md`                               |
+| "Revenue per kategori/tipe dealer Saramonic"           | `04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value by Category).md`                                  |
 | "Dealer mana yang paling growth di BOYA?"              | `04 - Sales Data/BOYA/BY Sales Data/Sales by Dealer (Value).md` + `Sales by Dealer (QTY).md`                 |
 | "Forecast stock SKU X untuk 3 bulan ke depan"          | `Sales by SKU (QTY).md` brand terkait + `04 - Sales Data/Saramonic/Saramonic Stock Data.md`             |
 | "SKU mana yang slow mover?"                            | `Sales by SKU (QTY).md` + `Sales by SKU (Value).md` + `04 - Sales Data/Saramonic/Saramonic Stock Data.md` |
@@ -213,6 +219,7 @@ Selain hard rules global (`CLAUDE.md` §5), aturan tambahan khusus folder ini:
 |---|---|
 | 12 Mei 2026 | File dibuat. Tambah section sales analysis, stock forecasting, sales performance. |
 | 29 Mei 2026 | Tambah `Saramonic Stock Data.md` ke §2.B (file stok Saramonic) dan update §2.C (tabel lookup queries). |
+| 29 Jun 2026 | Tambah 3 file data baru Saramonic ke §2.B + §2.C: `Sales by New and Old Dealer (Value).md`, `New Dealer 2026.md`, `Sales by Dealer (Value by Category).md`. Claude wajib ikut pakai 3 file ini untuk task sales. |
 
 ---
 
