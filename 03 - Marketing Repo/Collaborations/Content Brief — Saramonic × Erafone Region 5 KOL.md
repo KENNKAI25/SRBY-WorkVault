@@ -85,7 +85,7 @@ Creator datang ke toko sebagai pembeli biasa. Sales counter Saramonic menjelaska
 
 ---
 
-## BRIEF — @technoboy.10 (Summarecon Mall Serpong)
+## BRIEF — @Hilyaa11 (Summarecon Mall Serpong)
 **Type:** Offline KOL Support — Store Visit
 **Platform:** TikTok
 **Product:** Saramonic Air SE (Air SE-01 atau Air SE-02)
