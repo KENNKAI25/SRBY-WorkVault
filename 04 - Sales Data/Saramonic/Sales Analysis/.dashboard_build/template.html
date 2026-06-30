@@ -449,7 +449,7 @@ document.getElementById('kpis-primary').innerHTML=[
  ['Sales Tahun Ini · '+curY+' (YTD)', rp(thisYV), 'YoY: n/a — data 2025 belum genap setahun', 'flat', rpFull(thisYV)],
 ].map(cardHtml).join('');
 document.getElementById('kpis-secondary').innerHTML=[
- ["Total Revenue · Okt'25–"+fmtMonthLbl(M[mi]), rp(grand), 'akumulasi semua periode','flat', rpFull(grand)],
+ ["Total Revenue · "+fmtMonthLbl(M[0])+"–"+fmtMonthLbl(M[mi]), rp(grand), 'akumulasi semua periode','flat', rpFull(grand)],
  ['Dealer Aktif', activeDealers, 'dari '+DATA.dealers.length+' total','flat'],
  ['SKU Aktif', activeSkus, 'dari '+DATA.skus.length+' SKU','flat'],
  ['Flags (prioritas)', totalFlags, 'top '+totalFlags+' dari '+rawCount+' terdeteksi', rawCount>0?'down':'up'],

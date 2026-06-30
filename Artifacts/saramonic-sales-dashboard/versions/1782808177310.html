@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<script type="application/json" id="cowork-artifact-meta">
+{
+  "name": "Saramonic Sales Dashboard",
+  "schemaVersion": 1,
+  "description": "Saramonic sell-in sales dashboard — monthly/quarterly/yearly performance, dealer performance, SKU performance, and auto-flags for dealers/SKUs needing attention. Data embedded from local SR Sales Data (Oct 2025–Jun 2026), generated 2026-06-17."
+}
+</script>
 <html lang="id">
 <head>
 <meta charset="utf-8">
@@ -449,7 +456,7 @@ document.getElementById('kpis-primary').innerHTML=[
  ['Sales Tahun Ini · '+curY+' (YTD)', rp(thisYV), 'YoY: n/a — data 2025 belum genap setahun', 'flat', rpFull(thisYV)],
 ].map(cardHtml).join('');
 document.getElementById('kpis-secondary').innerHTML=[
- ["Total Revenue · "+fmtMonthLbl(M[0])+"–"+fmtMonthLbl(M[mi]), rp(grand), 'akumulasi semua periode','flat', rpFull(grand)],
+ ["Total Revenue · Okt'25–"+fmtMonthLbl(M[mi]), rp(grand), 'akumulasi semua periode','flat', rpFull(grand)],
  ['Dealer Aktif', activeDealers, 'dari '+DATA.dealers.length+' total','flat'],
  ['SKU Aktif', activeSkus, 'dari '+DATA.skus.length+' SKU','flat'],
  ['Flags (prioritas)', totalFlags, 'top '+totalFlags+' dari '+rawCount+' terdeteksi', rawCount>0?'down':'up'],
