@@ -106,7 +106,8 @@ for r in rows(os.path.join(SR,"Sales by New and Old Dealer (Value).md")):
                 "y2026":(num(r[17]) if len(r)>17 else None),
                 "sub":(num(r[18]) if len(r)>18 else None)})
         elif _mode=="prop":
-            newold["prop"].append({"name":h,"value":[(r[1+i].strip() if len(r)>1+i else "") for i in range(9)]})
+            newold["prop"].append({"name":h,"value":[(r[1+i].strip() if len(r)>1+i else "") for i in range(9)],
+                "p2025":(r[16].strip() if len(r)>16 else ""),"p2026":(r[17].strip() if len(r)>17 else ""),"psub":(r[18].strip() if len(r)>18 else "")})
 
 # New dealers 2026 — first purchase month
 _MONLBL={"jan":"2026-01","feb":"2026-02","mar":"2026-03","apr":"2026-04","may":"2026-05","mei":"2026-05",

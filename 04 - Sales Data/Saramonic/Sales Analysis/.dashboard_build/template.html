@@ -511,7 +511,8 @@ document.querySelectorAll('#perf-seg button').forEach(b=>b.onclick=()=>{
   const tr=no.rows.find(r=>r.name==='Total');
   if(tr) body+='<tr style="background:#fff4ec"><td><strong>Total</strong></td>'+tr.value.map(x=>'<td><strong>'+(x?rp(x):'·')+'</strong></td>').join('')+'<td><strong>'+(tr.y2025?rp(tr.y2025):'·')+'</strong></td><td><strong>'+(tr.y2026?rp(tr.y2026):'·')+'</strong></td><td><strong>'+(tr.sub?rp(tr.sub):'·')+'</strong></td></tr>';
   no.prop.forEach(p=>{
-    body+='<tr class="muted"><td>'+p.name+' %</td>'+p.value.map(v=>'<td>'+(v&&v.indexOf('DIV')<0?v:'·')+'</td>').join('')+'<td>·</td><td>·</td><td>·</td></tr>';
+    const pc=v=>(v&&v.indexOf('DIV')<0?v:'·');
+    body+='<tr class="muted"><td>'+p.name+' %</td>'+p.value.map(v=>'<td>'+pc(v)+'</td>').join('')+'<td>'+pc(p.p2025)+'</td><td>'+pc(p.p2026)+'</td><td>'+pc(p.psub)+'</td></tr>';
   });
   document.getElementById('newoldTable').innerHTML=h+'<tbody>'+body+'</tbody>';
 })();
