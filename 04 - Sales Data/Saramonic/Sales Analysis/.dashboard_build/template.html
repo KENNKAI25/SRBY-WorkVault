@@ -133,10 +133,14 @@ body.zh-mode details.det summary{font-size:15px}
 body.zh-mode .det-skus{font-size:14.375px}
 body.zh-mode .langtog button{font-size:15px}
 body.zh-mode .rank{font-size:13.75px}
+.yeartog{position:fixed;top:10px;left:12px;display:inline-flex;background:#eef0f3;border-radius:9px;padding:3px;gap:2px;z-index:50;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.yeartog button{border:none;background:none;padding:5px 11px;border-radius:7px;font-size:12px;font-weight:700;color:var(--mut);cursor:pointer}
+.yeartog button.active{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
 </style>
 </head>
 <body>
 <div class="wrap">
+ <div class="yeartog"><button data-y="all" class="active">Semua</button><button data-y="2025">2025</button><button data-y="2026">2026</button></div>
  <div class="langtog"><button data-l="id" class="active">ID</button><button data-l="zh">中文</button></div>
  <header class="top">
  <div class="brandhead">
@@ -290,17 +294,43 @@ body.zh-mode .rank{font-size:13.75px}
 </div>
 
 <script>
-const DATA = __DATA__;
-const M = DATA.months;
-const LASTFULL = M.length-2; // index of last complete month (May 2026); last index = June partial
+const RAW = __DATA__;
+let YEARFILTER='all';
+const LATEST = RAW.months[RAW.months.length-1];
 const fmtMonthLbl = m => {const [y,mo]=m.split('-');const n=['','Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];return n[+mo]+" '"+y.slice(2);};
 function rp(v){v=Math.round(v);if(Math.abs(v)>=1e9)return 'Rp '+(v/1e9).toFixed(2).replace('.',',')+' M';if(Math.abs(v)>=1e6)return 'Rp '+(v/1e6).toFixed(0)+' jt';if(Math.abs(v)>=1e3)return 'Rp '+(v/1e3).toFixed(0)+' rb';return 'Rp '+v;}
 function rpFull(v){return 'Rp '+Math.round(v).toLocaleString('id-ID');}
 const sum=a=>a.reduce((x,y)=>x+y,0);
 
+function scopeData(raw,yf){
+  if(yf==='all') return raw;
+  const keep=raw.months.map((m,i)=>i).filter(i=>raw.months[i].slice(0,4)===yf);
+  const sl=arr=>keep.map(i=>arr[i]);
+  const sk=(raw.skus||[]).map(s=>{const v=sl(s.value),q=sl(s.qty);return Object.assign({},s,{value:v,qty:q,totalValue:v.reduce((a,b)=>a+b,0),totalQty:q.reduce((a,b)=>a+b,0)});});
+  const dl=(raw.dealers||[]).map(d=>{const v=sl(d.value),q=sl(d.qty);
+    let skuMonthly=d.skuMonthly,topSkus=d.topSkus;
+    if(d.skuMonthly){skuMonthly=d.skuMonthly.map(r=>{const m=keep.map(i=>r.m[i]);return {name:r.name,m:m,t:m.reduce((a,b)=>a+b,0)};}).filter(r=>r.t>0).sort((a,b)=>b.t-a.t);
+      topSkus=skuMonthly.slice(0,5).map(r=>[r.name,r.t]);}
+    return Object.assign({},d,{value:v,qty:q,totalValue:v.reduce((a,b)=>a+b,0),skuMonthly:skuMonthly,topSkus:topSkus,
+      newMonth:(d.newMonth&&d.newMonth.slice(0,4)===yf)?d.newMonth:null});});
+  const cats=(raw.categories||[]).map(c=>{const v=sl(c.value);return {name:c.name,value:v,total:v.reduce((a,b)=>a+b,0)};});
+  let newold=raw.newold;
+  if(newold){newold={rows:(newold.rows||[]).map(r=>Object.assign({},r,{value:sl(r.value)})),
+                     prop:(newold.prop||[]).map(p=>Object.assign({},p,{value:sl(p.value)}))};}
+  return {months:keep.map(i=>raw.months[i]),monthlyTotal:keep.map(i=>raw.monthlyTotal[i]),generated:raw.generated,
+          skus:sk,dealers:dl,categories:cats,newold:newold};
+}
+
+function renderAll(){
+  const DATA = scopeData(RAW, YEARFILTER);
+  const M = DATA.months;
+  const LASTFULL = (M.length>1 && M[M.length-1]===LATEST) ? M.length-2 : M.length-1;
+  if(window.Chart&&Chart.getChart){['trendChart','catChart','locChart','catDealerChart'].forEach(function(id){var c=Chart.getChart(id);if(c)c.destroy();});}
+  const QGROUPS=(function(){var map={},order=[];M.forEach(function(m,i){var y=+m.slice(0,4),mo=+m.slice(5,7),q=Math.ceil(mo/3),key=y+'-'+q;if(!(key in map)){map[key]={lab:"Q"+q+" '"+String(y).slice(2),idx:[],partial:false};order.push(key);}map[key].idx.push(i);if(m===LATEST)map[key].partial=true;});return order.map(function(k){return map[k];});})();
+
 /* shared value matrix: months + quarter subtotals + total, sortable */
-const QH=["Q4 '25","Q1 '26","Q2 '26 *"];
-function qOf(v){return [v[0]+v[1]+v[2], v[3]+v[4]+v[5], v[6]+v[7]+v[8]];}
+const QH=QGROUPS.map(function(g){return g.lab+(g.partial?' *':'');});
+function qOf(v){return QGROUPS.map(function(g){return g.idx.reduce(function(a,i){return a+(v[i]||0);},0);});}
 function renderValMatrix(tableId, rows, c2head, state, rerender, mode){
   mode=mode||'full';
   const showM=mode!=='quarter', showQ=mode!=='month';
@@ -314,7 +344,7 @@ function renderValMatrix(tableId, rows, c2head, state, rerender, mode){
     return (a.tot-b.tot)*dir;
   });
   let hdr='<thead><tr><th class="sortable" data-k="name">Nama</th><th class="sortable" data-k="c2">'+c2head+'</th>';
-  if(showM)M.forEach((m,i)=>hdr+='<th class="sortable" data-k="m'+i+'">'+fmtMonthLbl(m)+(i===M.length-1?' *':'')+'</th>');
+  if(showM)M.forEach((m,i)=>hdr+='<th class="sortable" data-k="m'+i+'">'+fmtMonthLbl(m)+(M[i]===LATEST?' *':'')+'</th>');
   if(showQ)QH.forEach((qq,i)=>hdr+='<th class="sortable qcol" data-k="q'+i+'">'+qq+'</th>');
   hdr+='<th class="sortable" data-k="tot">Total</th></tr></thead>';
   const body=data.map(r=>{
@@ -330,8 +360,8 @@ function renderValMatrix(tableId, rows, c2head, state, rerender, mode){
 
 {const _gd=document.getElementById('gendate'); if(_gd)_gd.textContent=DATA.generated;}
 document.getElementById('period-range').textContent = fmtMonthLbl(M[0])+' – '+fmtMonthLbl(M[M.length-1]);
-document.getElementById('partial-note').innerHTML =
-  '<strong>Catatan:</strong> '+fmtMonthLbl(M[M.length-1])+' masih berjalan (data parsial) — tren bulan terakhir akan naik. Perbandingan MoM &amp; velocity memakai bulan penuh terakhir ('+fmtMonthLbl(M[LASTFULL])+').';
+document.getElementById('partial-note').innerHTML = (M[M.length-1]===LATEST) ?
+  ('<strong>Catatan:</strong> '+fmtMonthLbl(M[M.length-1])+' masih berjalan (data parsial) — tren bulan terakhir akan naik. Perbandingan MoM &amp; velocity memakai bulan penuh terakhir ('+fmtMonthLbl(M[LASTFULL])+').') : '';
 
 /* ---------- KPI ---------- */
 const grand = sum(DATA.monthlyTotal);
@@ -358,9 +388,7 @@ function pctVal(cur,base,label){
 }
 
 /* ---------- FLAG ENGINE ---------- */
-function recentVel(s){ // avg qty Mar,Apr,May (idx 5,6,7)
-  return (s.qty[5]+s.qty[6]+s.qty[7])/3;
-}
+function recentVel(s){var a=Math.max(0,LASTFULL-2),c=0,n=0;for(var i=a;i<=LASTFULL;i++){c+=s.qty[i]||0;n++;}return n?c/n:0;}
 const LF=LASTFULL; // index of last complete month (May 2026); June = LF+1 (partial)
 const MAXFLAGS=10;
 function lastActive(v){let li=-1;for(let i=0;i<M.length;i++)if(v[i]>0)li=i;return li;}
@@ -382,7 +410,7 @@ DATA.dealers.forEach(d=>{
   } else {
     // KONDISI 1 — drop >=20% MoM DAN QoQ (dealer masih aktif)
     const prev=v[LF-1],cur=v[LF];
-    const rq=v[5]+v[6]+v[7], pq=v[2]+v[3]+v[4];   // Mar-Mei vs Des-Feb
+    var rq=0,pq=0;for(var ri=Math.max(0,LF-2);ri<=LF;ri++)rq+=v[ri]||0;for(var pi=Math.max(0,LF-5);pi<=LF-3;pi++)pq+=v[pi]||0;
     const md = prev>0 ? (prev-cur)/prev : 0;
     const qd = pq>0 ? (pq-rq)/pq : 0;
     if(prev>0 && pq>=5e6 && md>=0.20 && qd>=0.20){
@@ -438,23 +466,16 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
 });
 
 /* ---------- quarters ---------- */
-const Q=[
- {lab:"Q4 '25",idx:[0,1,2],partial:false},
- {lab:"Q1 '26",idx:[3,4,5],partial:false},
- {lab:"Q2 '26",idx:[6,7,8],partial:true},
-];
+const Q=QGROUPS;
 function qVal(q){return sum(q.idx.map(i=>DATA.monthlyTotal[i]||0));}
-const YEARS=[
- {lab:'2025 (Okt–Des)',idx:[0,1,2]},
- {lab:'2026 (Jan–Jun)',idx:[3,4,5,6,7,8]},
-];
+const YEARS=(function(){var map={},order=[];M.forEach(function(m,i){var y=m.slice(0,4);if(!(y in map)){map[y]={lab:y,idx:[]};order.push(y);}map[y].idx.push(i);});return order.map(function(k){return map[k];});})();
 
 /* ---------- charts ---------- */
 let trendChart;
 function drawTrend(g){
   let labels,vals,colors;
   if(g==='month'){labels=M.map(fmtMonthLbl);vals=DATA.monthlyTotal;
-    colors=vals.map((_,i)=>i===M.length-1?'#ffc08a':'#FF6B00');}
+    colors=vals.map((_,i)=>M[i]===LATEST?'#ffc08a':'#FF6B00');}
   else if(g==='quarter'){labels=Q.map(q=>q.lab+(q.partial?' *':''));vals=Q.map(qVal);
     colors=Q.map(q=>q.partial?'#ffc08a':'#FF6B00');}
   else if(g==='half'){
@@ -501,7 +522,7 @@ document.querySelectorAll('#perf-seg button').forEach(b=>b.onclick=()=>{
 /* ---------- NEW vs OLD partner table (Perf 3) ---------- */
 (function(){
   const no=DATA.newold; if(!no||!no.rows||!no.rows.length)return;
-  const lbl=M.map((m,i)=>fmtMonthLbl(m)+(i===M.length-1?' *':''));
+  const lbl=M.map((m,i)=>fmtMonthLbl(m)+(M[i]===LATEST?' *':''));
   let h='<thead><tr><th>Partner</th>'+lbl.map(l=>'<th>'+l+'</th>').join('')+'<th>2025</th><th>2026</th><th>Total</th></tr></thead>';
   function cell(x){return '<td>'+(x?rp(x):'<span class=muted>·</span>')+'</td>';}
   let body='';
@@ -608,7 +629,7 @@ let skuSort={k:'totalValue',dir:-1};
 function renderSkuTable(){
   const q=document.getElementById('skuSearch').value.toLowerCase();
   let arr=DATA.skus.filter(s=>(s.totalValue>0||s.totalQty>0) && (s.name.toLowerCase().includes(q)||s.type.toLowerCase().includes(q)));
-  arr.forEach(s=>{s._vel=(s.qty[5]+s.qty[6]+s.qty[7])/3;s._cov=(s.stock!=null&&s._vel>0)?s.stock/s._vel:(s.stock!=null?Infinity:null);});
+  arr.forEach(s=>{s._vel=recentVel(s);s._cov=(s.stock!=null&&s._vel>0)?s.stock/s._vel:(s.stock!=null?Infinity:null);});
   arr.sort((a,b)=>{let x,y;if(skuSort.k==='name'){x=a.name.toLowerCase();y=b.name.toLowerCase();return x<y?-skuSort.dir:x>y?skuSort.dir:0;}
     if(skuSort.k==='type'){x=a.type.toLowerCase();y=b.type.toLowerCase();return x<y?-skuSort.dir:x>y?skuSort.dir:0;}
     if(skuSort.k==='qty')x=a.totalQty,y=b.totalQty;else if(skuSort.k==='vel')x=a._vel,y=b._vel;
@@ -639,7 +660,7 @@ function renderSkuQty(){
   const q=document.getElementById('skuSearch').value.toLowerCase();
   let arr=DATA.skus.filter(s=>s.totalQty>0 && (s.name.toLowerCase().includes(q)||s.type.toLowerCase().includes(q)));
   arr.sort((a,b)=> skuQtyState.byName ? (a.name<b.name?-skuQtyState.dir:a.name>b.name?skuQtyState.dir:0) : (a.totalQty-b.totalQty)*skuQtyState.dir);
-  const hdr='<thead><tr><th>SKU</th><th>Kategori</th>'+M.map(m=>'<th>'+fmtMonthLbl(m)+(m===M[M.length-1]?' *':'')+'</th>').join('')+'<th>Total</th></tr></thead>';
+  const hdr='<thead><tr><th>SKU</th><th>Kategori</th>'+M.map(m=>'<th>'+fmtMonthLbl(m)+(m===LATEST?' *':'')+'</th>').join('')+'<th>Total</th></tr></thead>';
   const body=arr.map(s=>'<tr><td>'+s.name+'</td><td><span class="lochip">'+s.type+'</span></td>'+
     s.qty.map(x=>'<td>'+(x?x:'<span class=muted>·</span>')+'</td>').join('')+'<td><strong>'+s.totalQty+'</strong></td></tr>').join('');
   document.getElementById('skuQtyTable').innerHTML=hdr+'<tbody>'+body+'</tbody>';
@@ -680,7 +701,7 @@ renderSkuTable();renderSkuQty();renderSkuVal();
     const mode=document.getElementById('dlrSkuSortSel').value;
     const dir=(mode==='va'||mode==='az')?1:-1, byName=(mode==='az'||mode==='za');
     sm.sort((a,b)=> byName ? (a.name<b.name?-dir:a.name>b.name?dir:0) : (a.t-b.t)*dir);
-    const hdr='<thead><tr><th>SKU</th>'+M.map(m=>'<th>'+fmtMonthLbl(m)+(m===M[M.length-1]?' *':'')+'</th>').join('')+'<th>Total</th></tr></thead>';
+    const hdr='<thead><tr><th>SKU</th>'+M.map(m=>'<th>'+fmtMonthLbl(m)+(m===LATEST?' *':'')+'</th>').join('')+'<th>Total</th></tr></thead>';
     let body=sm.map(r=>'<tr><td>'+r.name+'</td>'+r.m.map(x=>'<td>'+(x?x:'<span class=muted>·</span>')+'</td>').join('')+'<td><strong>'+r.t+'</strong></td></tr>').join('');
     const tot=M.map((_,i)=>sm.reduce((a,r)=>a+r.m[i],0));
     body+='<tr style="background:#fff4ec"><td><strong>Total unit</strong></td>'+tot.map(t=>'<td><strong>'+(t||0)+'</strong></td>').join('')+'<td><strong>'+tot.reduce((a,b)=>a+b,0)+'</strong></td></tr>';
@@ -705,6 +726,11 @@ document.getElementById('flagsList').innerHTML = flags.length ? flags.map((f,i)=
 document.getElementById('flagsMore').textContent = rawCount>flags.length ? `Menampilkan ${flags.length} teratas dari ${rawCount} dealer terdeteksi.` : '';
 
 drawTrend('month');
+}
+window.renderAll=renderAll;
+renderAll();
+window.setYear=function(y){YEARFILTER=y;renderAll();document.querySelectorAll('.yeartog button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-y')===y);});};
+document.querySelectorAll('.yeartog button').forEach(function(b){b.addEventListener('click',function(){window.setYear(b.getAttribute('data-y'));});});
 </script>
 <script>
 (function(){
