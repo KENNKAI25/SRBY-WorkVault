@@ -55,22 +55,23 @@ Highlight:
 - Achievement JPC selalu di tier tertinggi dalam 2 quartal kebelakang (450 jt +)
 - Air, Air SE dan Witalk9 menjadi penopang utama untuk JPC mencapai target quartal
 
-### Air SE Launch Program
+### Air SE Launch Program 
 - 8 KOL support + 1 Additional support KOL (special case)
 - 5% cashback berupa CN dari value purchase (hanya purchase Air SE yang masih menggunakan normal price) 
 - Affiliate fee 8% selama 6 bulan untuk membantu KOL sell-out (akan dihitung diakhir periode)
 - Voucher indomaret senilai 25,000 untuk setiap sell-out Saramonic Air SE (total JPC mendapatkan 38 voucher)
 
-### Witalk9 Purchase Support
+### Witalk9 Purchase Support (20 Mei - 30 Juni 2026)
 - JPC akan mendapatkan 2% cashback berupa credit note dari akumulasi purchase Witalk9 & Witalk9 SE dalam satu bulan (min purchase 5 unit)
 - Nilai CN akan sesuai dengan value purchase setelah potongan CBD discount
 
-### Free Blink900 Untuk Air & Air SE
+### Free Blink900 Untuk Air & Air SE (1 Juni - 30 Juni 2026)
 - Pembelian 50 pcs Saramonic Air - 01 / Air - 02 akan mendapatkan 1 pcs free Blink900 B2TG
 - Pembelian 50 pcs Saramonic Air SE - 01 / Air SE - 02 akan mendapatkan 1 pcs free Blink900 S1
 
 ### Ads Support
-- 
+- JPC dapat mengajukan reimbursement sebesar 80% (reimbursement akan dibayarkan via transfer bank) dari total biaya iklan yang dikeluarkan, dengan batas maksimum reimbursement sebesar Rp 2.500.000. 
+- JPC dapat mengajukan reimbursement sebesar 100% (reimbursement akan dibayarkan via transfer bank) dari total biaya iklan yang dikeluarkan, dengan batas maksimum reimbursement sebesar Rp 500,000. 
 
 
 # Additional Program
