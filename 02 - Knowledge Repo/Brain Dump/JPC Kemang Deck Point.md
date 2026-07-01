@@ -5,7 +5,6 @@
 
 **2026 Purchase**
 1st Half = 809,203,508
-
 ### Quartal Performance
 **Nov 2025 - Jan 2026**
 Total purchase = 533,097,104 (purchase tertinggi ada di Desember 2025)
@@ -38,7 +37,9 @@ Target = 450 juta (4% CN)
 Ongoing purchase = 229,118,318 (masih kurang 173,413,072)
 
 ### SKU Breakdown
+**Wireless Mic (masukin mic breakdown JPC.jpg)**
 
+**Intercom (masukin intercom breakdown JPC.jpg)**
 
 # Completed Program
 
