@@ -29,14 +29,13 @@ July 2026 = TBD
 Target = 450 juta (4% CN)
 Total purchase = 533,097,104 **(target achieved)**
 
-
 **Feb - April 2026**
 Target = 450 juta (4% CN)
 Total purchase = 468,924,740 **(target achieved)**
 
 **May - Juli 2026 (Ongoing)**
 Target = 450 juta (4% CN) 
-Ongoing purchase = 229,118,318 (masih kurang 220,881,682)
+Ongoing purchase = 229,118,318 (masih kurang 173,413,072)
 
 ### SKU Breakdown
 
