@@ -97,8 +97,8 @@ Highlight:
 
 ### Sales Performance
 Total = 47,251,500
-May 2026 = 
-Juni 2026 = 
+May 2026 = 17,050,999
+Juni 2026 = 30,200,501
 
-
-
+### Key SKU
+Mini 2
