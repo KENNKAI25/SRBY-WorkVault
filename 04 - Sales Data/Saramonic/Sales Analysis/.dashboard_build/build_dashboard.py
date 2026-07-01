@@ -12,7 +12,12 @@ def find_base():
 BASE_WS = find_base()
 SAR = os.path.join(BASE_WS, "04 - Sales Data", "Saramonic")
 SR  = os.path.join(SAR, "SR Sales Data")
-MONTHS = ["2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05","2026-06"]
+def _detect_months(path):
+    for r in rows(path):
+        ms=[c.strip() for c in r if re.match(r'^\d{4}-\d{2}$', c.strip())]
+        if ms: return ms
+    raise SystemExit("ERROR: gagal deteksi kolom bulan (YYYY-MM) di "+path)
+
 
 def num(s):
     s=s.strip().replace(",","")
@@ -27,44 +32,47 @@ def rows(path):
         out.append(line.split("|")[1:-1])
     return out
 
+MONTHS = _detect_months(os.path.join(SR,"Sales by SKU (Value).md"))
+NM = len(MONTHS)
+
 skus={}; cur=""
 for r in rows(os.path.join(SR,"Sales by SKU (Value).md"))[3:]:
-    if len(r)<12:continue
+    if len(r) < 2+NM:continue
     t=r[0].strip(); name=r[1].strip()
     if name in("","Total"):continue
     if t:cur=t
     skus.setdefault(name,{"type":cur or "Other","value":{},"qty":{}})
     skus[name]["type"]=cur or skus[name]["type"]
-    skus[name]["value"]={MONTHS[i]:(num(r[2+i]) or 0) for i in range(9)}
+    skus[name]["value"]={MONTHS[i]:(num(r[2+i]) or 0) for i in range(NM)}
 for r in rows(os.path.join(SR,"Sales by SKU (QTY).md"))[3:]:
-    if len(r)<11:continue
+    if len(r) < 1+NM:continue
     name=r[0].strip()
     if name in("","Total"):continue
     skus.setdefault(name,{"type":"Other","value":{},"qty":{}})
-    skus[name]["qty"]={MONTHS[i]:(num(r[1+i]) or 0) for i in range(9)}
+    skus[name]["qty"]={MONTHS[i]:(num(r[1+i]) or 0) for i in range(NM)}
 
 dealers={}; cl=""
 for r in rows(os.path.join(SR,"Sales by Dealer (Value by Location).md"))[3:]:
-    if len(r)<12:continue
+    if len(r) < 2+NM:continue
     loc=r[0].strip(); name=r[1].strip()
     if loc=="Total":continue
     if loc:cl=loc
     if name=="":continue
     dealers.setdefault(name,{"location":cl,"value":{},"qty":{},"skus":{},"skuMon":{}})
     dealers[name]["location"]=cl
-    dealers[name]["value"]={MONTHS[i]:(num(r[2+i]) or 0) for i in range(9)}
+    dealers[name]["value"]={MONTHS[i]:(num(r[2+i]) or 0) for i in range(NM)}
 cd=""
 for r in rows(os.path.join(SR,"Sales by Dealer (QTY).md"))[3:]:
-    if len(r)<12:continue
+    if len(r) < 2+NM:continue
     c=r[0].strip(); sku=r[1].strip()
     if c=="Total":continue
     if c:cd=c
     if sku=="":continue
-    vals=[(num(r[2+i]) or 0) for i in range(9)]
+    vals=[(num(r[2+i]) or 0) for i in range(NM)]
     d=dealers.setdefault(cd,{"location":"","value":{},"qty":{},"skus":{},"skuMon":{}})
     d.setdefault("skuMon",{}); d.setdefault("skus",{})
     d["skus"][sku]=d["skus"].get(sku,0)+sum(vals)
-    sm=d["skuMon"].setdefault(sku,[0]*9)
+    sm=d["skuMon"].setdefault(sku,[0]*NM)
     for i,m in enumerate(MONTHS):
         sm[i]+=vals[i]; d["qty"][m]=d["qty"].get(m,0)+vals[i]
 
@@ -85,10 +93,10 @@ def ndnorm(s): return _re2.sub(r'[^a-z0-9]','',s.lower())
 # Categories — Sales by Dealer (Value by Category)
 categories=[]
 for r in rows(os.path.join(SR,"Sales by Dealer (Value by Category).md"))[3:]:
-    if len(r)<11: continue
+    if len(r) < 1+NM: continue
     cname=r[0].strip()
     if cname in("","Total"): continue
-    cvals=[num(r[1+i]) or 0 for i in range(9)]
+    cvals=[num(r[1+i]) or 0 for i in range(NM)]
     categories.append({"name":cname,"value":cvals,"total":sum(cvals)})
 
 # New vs Old partner — Sales by New and Old Dealer (Value)
@@ -101,12 +109,12 @@ for r in rows(os.path.join(SR,"Sales by New and Old Dealer (Value).md")):
     if h=="Sales Proportion": _mode="prop"; continue
     if h in("Old Partner","New Partner","Total"):
         if _mode=="rev":
-            newold["rows"].append({"name":h,"value":[num(r[1+i]) or 0 for i in range(9)],
+            newold["rows"].append({"name":h,"value":[(num(r[1+i]) or 0) if len(r)>1+i else 0 for i in range(NM)],
                 "y2025":(num(r[16]) if len(r)>16 else None),
                 "y2026":(num(r[17]) if len(r)>17 else None),
                 "sub":(num(r[18]) if len(r)>18 else None)})
         elif _mode=="prop":
-            newold["prop"].append({"name":h,"value":[(r[1+i].strip() if len(r)>1+i else "") for i in range(9)],
+            newold["prop"].append({"name":h,"value":[(r[1+i].strip() if len(r)>1+i else "") for i in range(NM)],
                 "p2025":(r[16].strip() if len(r)>16 else ""),"p2026":(r[17].strip() if len(r)>17 else ""),"psub":(r[18].strip() if len(r)>18 else "")})
 
 # New dealers 2026 — first purchase month
@@ -140,7 +148,7 @@ for name,d in dealers.items():
         "value":[v.get(m,0) for m in MONTHS],"qty":[q.get(m,0) for m in MONTHS],
         "totalValue":sum(v.get(m,0) for m in MONTHS),"topSkus":top,"skuMonthly":skuMonthly,
         "newMonth":newdealer.get(ndnorm(name))})
-monthly_total=[sum(s["value"][i] for s in sku_list) for i in range(9)]
+monthly_total=[sum(s["value"][i] for s in sku_list) for i in range(NM)]
 
 import datetime
 gen=datetime.date.today().isoformat()
