@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "02 - Knowledge Repo/Brain Dump/JPC Kemang Deck Point.md",
+                "file": "03 - Marketing Repo/Guidelines/Social Media Marketing Gameplan.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "JPC Kemang Deck Point"
+              "title": "Social Media Marketing Gameplan"
             }
           }
         ]
@@ -124,13 +124,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "02 - Knowledge Repo/Brain Dump/JPC Kemang Deck Point.md",
+                "file": "03 - Marketing Repo/Guidelines/Social Media Marketing Gameplan.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of JPC Kemang Deck Point"
+              "title": "Outline of Social Media Marketing Gameplan"
             }
           },
           {
@@ -146,8 +146,7 @@
               "title": "Files"
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "horizontal",
@@ -246,11 +245,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "78e000228cee402a",
+  "active": "f2aeb96d1d36823a",
   "lastOpenFiles": [
+    "03 - Marketing Repo/Social Media Content/Instagram Audit - Saramonic_id - 2026-06-24.md",
+    "03 - Marketing Repo/Social Media Content/Content Action Plan - Saramonic_id - 2026-06-24.md",
+    "02 - Knowledge Repo/Brain Dump/JPC Kemang Deck Point.md",
     "02 - Knowledge Repo/Brain Dump/Marketing Follow Up Erajaya 2026.md",
     "02 - Knowledge Repo/Brain Dump/Meeting Note Akhir Juni.md",
-    "02 - Knowledge Repo/Brain Dump/JPC Kemang Deck Point.md",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by New and Old Dealer (Value).md",
     "Artifacts/saramonic-sales-dashboard/versions/1782869101673.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782808984697.html",
@@ -282,9 +283,7 @@
     "05 - Digest/Weekly Digest/2026-06-29.md",
     "04 - Sales Data/Saramonic/Saramonic Price List.md",
     "04 - Sales Data/Saramonic/Saramonic Stock Data.md",
-    "04 - Sales Data/Saramonic Sales Dashboard Guidebook.md",
     "Artifacts/saramonic-decision-matrix/Media/Saramonic Black Logo.png",
-    "04 - Sales Data/Saramonic/Sales Analysis/Saramonic Stock Analysis — May 2026.md",
     "Artifacts/saramonic-sales-dashboard/thumbnail.png",
     "Artifacts/sales-software-comparison-saramonic/thumbnail.png",
     "Artifacts/saramonic-decision-matrix-v2/thumbnail.png",
