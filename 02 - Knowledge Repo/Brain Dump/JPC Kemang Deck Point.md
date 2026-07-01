@@ -39,10 +39,13 @@ Ongoing purchase = 229,118,318 (masih kurang 173,413,072 *angka setelah ditambah
 ### SKU Breakdown
 **Wireless Mic (masukin mic breakdown JPC.jpg)**
 Highlight:
-- Purchase Saramonic Air di Mei & Juni menurun
-- Air SE 
+- Purchase Air di Mei & Juni menurun
+- Performa Air SE masih lumayan stabil di Mei & Juni 2026
+- 
 
 **Intercom (masukin intercom breakdown JPC.jpg)**
+Highlight:
+- Kenaikan performa Witalk9 & Witalk9 SE start dari Maret 2026
 
 
 # Completed Program

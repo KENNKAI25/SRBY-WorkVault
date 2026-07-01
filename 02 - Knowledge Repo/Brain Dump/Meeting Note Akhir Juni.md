@@ -6,7 +6,5 @@
 1. Share activity yang sudah dilakukan ke erafone
 2. Share kesulitan di Erafone
 
-
 # Modern Channel
 1. Detailed Modern channel store & potential sharing
-2. 
