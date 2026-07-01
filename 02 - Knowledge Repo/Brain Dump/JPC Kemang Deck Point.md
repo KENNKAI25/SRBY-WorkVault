@@ -34,12 +34,16 @@ Total purchase = 468,924,740 **(target achieved)**
 
 **May - Juli 2026 (Ongoing)**
 Target = 450 juta (4% CN) 
-Ongoing purchase = 229,118,318 (masih kurang 173,413,072)
+Ongoing purchase = 229,118,318 (masih kurang 173,413,072 *angka setelah ditambahkan CN*)
 
 ### SKU Breakdown
 **Wireless Mic (masukin mic breakdown JPC.jpg)**
+Highlight:
+- Purchase Saramonic Air di Mei & Juni menurun
+- Air SE 
 
 **Intercom (masukin intercom breakdown JPC.jpg)**
+
 
 # Completed Program
 
