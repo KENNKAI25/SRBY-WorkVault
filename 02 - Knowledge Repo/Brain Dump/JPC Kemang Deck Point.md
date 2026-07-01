@@ -76,10 +76,29 @@ Highlight:
 
 # Additional Program
 
+### New Purchase Support (Each SKU)
+1. Saramonic Air (Juli, Agustus, September, Oktober, November,  Desember 2026)
+	- Pembelian 10 pcs: 2% CN
+	- Pembelian 30 pcs: 3% CN
+	- Pembelian 50 pcs: 4% CN
+2. Saramonic Air SE (Juli, Augustus, September 2026)
+	- Pembelian 50 pcs: 2% CN
+	- Pembelian 100 pcs: 3% CN 
+	- Pembelian 150 pcs: 4% CN
+3. Witalk9 dan Witalk9 SE  (Juli 2026)
+	- Pembelian 5 pcs: 2% CN
+4. Witalk9X (Juli 2026)
+	- Pembelian 2 pcs: Mendapatkan 1 set Witalk9X (3 person - Single, Double, Helmet) *tidak berlaku kelipatan, maksimal mendapatkan 1 set / dealer dan hanya available untuk 20 dealer pertama  
+5. Witalk9X & BASE (Juli, Agustus 2026)
+	- Pembelian 1 pcs: 2% CN
+
 
 # Note: BOYA
 
-
+### Sales Performance
+Total = 47,251,500
+May 2026 = 
+Juni 2026 = 
 
 
 
