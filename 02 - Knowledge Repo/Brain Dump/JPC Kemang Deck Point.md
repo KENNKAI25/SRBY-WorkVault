@@ -41,15 +41,17 @@ Ongoing purchase = 229,118,318 (masih kurang 173,413,072 *angka setelah ditambah
 Highlight:
 - Purchase Air di Mei & Juni menurun
 - Performa Air SE masih lumayan stabil di Mei & Juni 2026
-- 
+- Blink500 T4 masih stabil setiap bulannya
 
 **Intercom (masukin intercom breakdown JPC.jpg)**
 Highlight:
 - Kenaikan performa Witalk9 & Witalk9 SE start dari Maret 2026
+- Witalk9 SE performa stabil start dari Mei 2026
+- Belum ada purchase Witalk9 lagi di Mei & Juni 2026
 
 
 # Completed Program
-
+### 
 
 
 # Additional Program

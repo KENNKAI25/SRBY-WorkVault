@@ -146,7 +146,8 @@
               "title": "Files"
             }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "horizontal",
@@ -245,7 +246,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f2aeb96d1d36823a",
+  "active": "78e000228cee402a",
   "lastOpenFiles": [
     "02 - Knowledge Repo/Brain Dump/Marketing Follow Up Erajaya 2026.md",
     "02 - Knowledge Repo/Brain Dump/Meeting Note Akhir Juni.md",
