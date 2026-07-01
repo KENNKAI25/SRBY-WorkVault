@@ -51,7 +51,16 @@ Highlight:
 
 
 # Completed Program
-### 
+### Quartal Tiering
+- Achievement JPC selalu di tier tertinggi dalam 2 quartal kebelakang
+
+### Air SE Launch Program
+- 8 KOL support + 1 Additional support KOL (special case)
+- 5% Cashback  
+
+### Witalk9 Purchase Support
+- JPC akan mendapatkan 2% cashback berupa credit note dari akumulasi purchase Witalk9 & Witalk9 SE dalam satu bulan (min purchase 5 unit)
+- Nilai CN akan sesuai dengan value purchase setelah potongan CBD discount
 
 
 # Additional Program
