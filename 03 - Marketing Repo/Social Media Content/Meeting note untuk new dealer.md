@@ -14,7 +14,7 @@ Terus, kayak kerja sama kita dengan business partner kita, apa saja yang kita la
 
 Kayak, oh, kita ada marketing activity juga nih, kayak workshop, terus event.
 
-Terus, kita juga ada, apa namanya, bisa datengin ke OL ke store, tapi by cash ya, kalau yang ini ya.
+Terus, kita juga ada, apa namanya, bisa datengin ke KOL ke store, tapi by cash ya, kalau yang ini ya.
 Yang ketiga, kita juga ada program dukungan, kan? Program ini berupa promo. Misalkan, program-program seperti Witok, gitu. Tiba-tiba ada program yang kita set, kalau misalkan ada cash doang. 
 
 Misalkan, oh barangnya slow nih, polisinya. Kayak, misalkan barangnya slow nih, oh kita tidak tinggal diam. Kita juga memikirkan cara lain. Kita bisa naikin ke media sosial kita, atau kita bisa buat podcast dan lain sebagainya, streaming bareng. 
@@ -26,3 +26,9 @@ Ya, kebijakan kita, eh, apa, eh, ini, omzet rata-rata kita, penyumbang terbesar 
 Nanti kan kita sounding ke mereka, kan. Produk fast moving sama, kalau misalkan ada event dan lain-lain, kita juga punya intercom. Kita kan harus jelasin ke mereka juga nih.
 
 Kita bisa tap ini event juga dan lain sebagainya. Kan, kemungkinannya, mereka ada event-event nih kalau Unitec 
+
+Berapa bulan terus ininya, berapa bulan After Sales kan berarti?
+
+Ya udah, pokoknya poinnya:
+
+Garansi kan Saramonic dua tahun, Boya tiga tahun, gitu-gitu. Ini dua, loh, Boya sama Saramonic. 
