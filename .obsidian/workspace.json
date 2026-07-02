@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "03 - Marketing Repo/Guidelines/Social Media Marketing Gameplan.md",
+                "file": "03 - Marketing Repo/Social Media Content/Content Action Plan - Saramonic_id - 2026-06-24.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Social Media Marketing Gameplan"
+              "title": "Content Action Plan - Saramonic_id - 2026-06-24"
             }
           }
         ]
@@ -124,13 +124,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "03 - Marketing Repo/Guidelines/Social Media Marketing Gameplan.md",
+                "file": "03 - Marketing Repo/Social Media Content/Content Action Plan - Saramonic_id - 2026-06-24.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Social Media Marketing Gameplan"
+              "title": "Outline of Content Action Plan - Saramonic_id - 2026-06-24"
             }
           },
           {
@@ -245,8 +245,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d7c239fe0b91e545",
+  "active": "f2aeb96d1d36823a",
   "lastOpenFiles": [
+    "03 - Marketing Repo/Guidelines/Social Media Marketing Gameplan.md",
     "Artifacts/saramonic-sales-dashboard/versions/1782873510952.html",
     "03 - Marketing Repo/Social Media Content/Instagram Audit - Saramonic_id - 2026-06-24.md",
     "03 - Marketing Repo/Social Media Content/Content Action Plan - Saramonic_id - 2026-06-24.md",
@@ -267,7 +268,6 @@
     "Artifacts/saramonic-sales-dashboard/versions/1782737586790.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782737179533.html",
     "Artifacts/saramonic-sales-dashboard/versions/1782737013771.html",
-    "Artifacts/saramonic-sales-dashboard/versions/1782736608920.html",
     "04 - Sales Data/CLAUDE.md",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value by Category).md",
     "04 - Sales Data/Saramonic/SR Sales Data/Sales by Dealer (Value by Location).md",
